@@ -17,7 +17,7 @@ public class ActoNotarial {
 	
 	@Id
 	@Column(name="IDACTONOTARIAL")
-	private Long id;
+	private Long idActoNotarial;
 	
 	//TODO Forein key de base cobro 
 	@Column(name = "IDBASECOBRO")
@@ -35,7 +35,7 @@ public class ActoNotarial {
 	private String articuloActoNotarial;
 	
 	@Column(name = "GRAVALIVACATALOGOACTONOTARIAL")
-	private Boolean grabalIva;
+	private Boolean gravalIva;
 	
 	@Column(name = "VALOREXONERACIONCATALOGOACTONOTARIAL") 	
 	private Long valorExoneracion;
@@ -62,12 +62,12 @@ public class ActoNotarial {
 			String articuloActoNotarial, Boolean grabalIva, Long valorExoneracion, Long valorExtra,
 			Boolean habilitanteCiudadano, Boolean tramiteUnilateralCiudadano, Boolean estado) {
 		super();
-		this.id = id;
+		this.idActoNotarial = id;
 		this.baseCobro = baseCobro;
 		this.libroActoNotarial = libroActoNotarial;
 		this.nombreActoNotarial = nombreActoNotarial;
 		this.articuloActoNotarial = articuloActoNotarial;
-		this.grabalIva = grabalIva;
+		this.gravalIva = grabalIva;
 		this.valorExoneracion = valorExoneracion;
 		this.valorExtra = valorExtra;
 		this.habilitanteCiudadano = habilitanteCiudadano;
@@ -76,11 +76,11 @@ public class ActoNotarial {
 	}
 
 	public Long getId() {
-		return id;
+		return idActoNotarial;
 	}
 
 	public void setId(Long id) {
-		this.id = id;
+		this.idActoNotarial = id;
 	}
 
 	public Long getBaseCobro() {
@@ -116,11 +116,11 @@ public class ActoNotarial {
 	}
 
 	public Boolean getGrabalIva() {
-		return grabalIva;
+		return gravalIva;
 	}
 
 	public void setGrabalIva(Boolean grabalIva) {
-		this.grabalIva = grabalIva;
+		this.gravalIva = grabalIva;
 	}
 
 	public Long getValorExoneracion() {
@@ -165,9 +165,9 @@ public class ActoNotarial {
 
 	@Override
 	public String toString() {
-		return "ActoNotarial [id=" + id + ", baseCobro=" + baseCobro + ", libroActoNotarial=" + libroActoNotarial
+		return "ActoNotarial [idActoNotarial=" + idActoNotarial + ", baseCobro=" + baseCobro + ", libroActoNotarial=" + libroActoNotarial
 				+ ", nombreActoNotarial=" + nombreActoNotarial + ", articuloActoNotarial=" + articuloActoNotarial
-				+ ", grabalIva=" + grabalIva + ", valorExoneracion=" + valorExoneracion + ", valorExtra=" + valorExtra
+				+ ", gravalIva=" + gravalIva + ", valorExoneracion=" + valorExoneracion + ", valorExtra=" + valorExtra
 				+ ", habilitanteCiudadano=" + habilitanteCiudadano + ", tramiteUnilateralCiudadano="
 				+ tramiteUnilateralCiudadano + ", estado=" + estado + "]";
 	}	
