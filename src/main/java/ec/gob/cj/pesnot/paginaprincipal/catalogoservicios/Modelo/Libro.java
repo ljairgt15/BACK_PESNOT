@@ -4,8 +4,16 @@ package ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 
 @Entity
@@ -13,11 +21,14 @@ import javax.persistence.Table;
 public class Libro {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="IDTIPOLIBRO")
 	private Long idTipoLibro;
-	//TODO poner referencia al adjunto libro
-	@Column(name="IDADJUNTOLIBRO")
-	private Long idAdjuntoLibro;
+	
+	@ManyToOne(targetEntity = AdjuntoLibro.class, fetch = FetchType.EAGER)
+	@JoinColumn(name = "IDADJUNTOLIBRO",nullable=false)
+	@JsonProperty(access = Access.READ_WRITE)
+	private AdjuntoLibro idAdjuntoLibro;
 	
 	@Column(name="NOMBRETIPOLIBRO")
 	private String nombreTipoLibro;
@@ -31,17 +42,15 @@ public class Libro {
 		super();
 	}
 
-	
 
 
-	public Libro(Long idTipoLibro, Long idAdjuntoLibro, String nombreTipoLibro, boolean estadoActivo) {
+	public Libro(Long idTipoLibro, AdjuntoLibro idAdjuntoLibro, String nombreTipoLibro, boolean estadoActivo) {
 		super();
 		this.idTipoLibro = idTipoLibro;
 		this.idAdjuntoLibro = idAdjuntoLibro;
 		this.nombreTipoLibro = nombreTipoLibro;
 		this.estadoActivo = estadoActivo;
 	}
-
 
 
 
@@ -57,13 +66,13 @@ public class Libro {
 
 
 
-	public Long getIdAdjuntoLibro() {
+	public AdjuntoLibro getIdAdjuntoLibro() {
 		return idAdjuntoLibro;
 	}
 
 
 
-	public void setIdAdjuntoLibro(Long idAdjuntoLibro) {
+	public void setIdAdjuntoLibro(AdjuntoLibro idAdjuntoLibro) {
 		this.idAdjuntoLibro = idAdjuntoLibro;
 	}
 
@@ -93,11 +102,10 @@ public class Libro {
 
 
 
-
 	@Override
 	public String toString() {
 		return "Libro [idTipoLibro=" + idTipoLibro + ", idAdjuntoLibro=" + idAdjuntoLibro + ", nombreTipoLibro="
 				+ nombreTipoLibro + ", estadoActivo=" + estadoActivo + "]";
 	}
-
+	
 }

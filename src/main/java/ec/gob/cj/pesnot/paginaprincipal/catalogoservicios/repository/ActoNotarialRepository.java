@@ -9,18 +9,14 @@ import org.springframework.stereotype.Repository;
 
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.ActoNotarial;
 
-
-
-
-
 @Repository
 public interface ActoNotarialRepository extends JpaRepository<ActoNotarial, Long> {
 	
 	List<ActoNotarial> findByNombreActoNotarial(String nombreActoNotarial);
 	
-	@Query(nativeQuery = true,value = "SELECT * FROM acto_notarial a WHERE a.nombre_acto_notarial LIKE :nombre%") //revisar si es "a" o "as a"
+	@Query(nativeQuery = true,value = "SELECT * FROM CATALOGOACTONOTARIAL a WHERE a.NOMBRECATALOGOACTONOTARIAL LIKE :nombre%") //revisar si es "a" o "as a"
 	List<ActoNotarial> getActosLike(@Param("nombre") String nombre);	
 	
-	@Query(nativeQuery = true,value = "SELECT * FROM acto_notarial a WHERE a.libro_acto_notarial LIKE :libro%") //revisar si es "a" o "as a"
+	@Query(nativeQuery = true,value = "SELECT * FROM CATALOGOACTONOTARIAL a WHERE a.IDTIPOLIBRO = :libro") //revisar si es "a" o "as a"
 	List<ActoNotarial> getActosLibros(@Param("libro") String libro);	
 }

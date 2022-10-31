@@ -35,7 +35,7 @@ public class LibroControlador {
 	}	
 	
 	@PostMapping("/saveLibros")
-	public Libro guardarActos(@RequestBody Libro objLibro) {
+	public Libro guardarLibro(@RequestBody Libro objLibro) {
 		
 		return libroService.ingresarLibrosL(objLibro);		
 	}
