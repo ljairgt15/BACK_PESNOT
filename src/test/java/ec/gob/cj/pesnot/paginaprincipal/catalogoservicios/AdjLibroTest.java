@@ -22,7 +22,6 @@ import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.repository.AdjuntoLibr
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.service.AdjuntoLibroService;
 
 @SpringBootTest
-@RunWith(SpringRunner.class)
 public class AdjLibroTest {
 	@Autowired
 	@Spy
