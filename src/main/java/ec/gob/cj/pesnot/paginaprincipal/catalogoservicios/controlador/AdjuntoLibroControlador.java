@@ -28,25 +28,25 @@ public class AdjuntoLibroControlador {
 	}	
 	
 	@GetMapping("/getAdjLibros")
-	public List<AdjuntoLibro> getLibros()
+	public List<AdjuntoLibro> getAdjLibros()
 	{		
 	List<AdjuntoLibro> ListaAdjLibros = aLibroService.getAdjuntoLibros();
 	return ListaAdjLibros;	
 	}	
 	
 	@PostMapping("/saveAdjLibros")
-	public AdjuntoLibro guardarLibro(@RequestBody AdjuntoLibro objAdjLibro) {
+	public AdjuntoLibro guardarAdjLibro(@RequestBody AdjuntoLibro objAdjLibro) {
 		
 		return aLibroService.ingresarAdjuntoLibro(objAdjLibro);		
 	}
 	
 	@GetMapping("/getAdjLibroById/{id}")
-	public Optional<AdjuntoLibro> obtenerLibroById(@PathVariable("id") Long id) {
+	public Optional<AdjuntoLibro> obtenerAdjLibroById(@PathVariable("id") Long id) {
 		return aLibroService.aLibroById(id);
 	}
 	
 	@GetMapping("/getAdjLibroByNombre/{nombre}")
-	public Optional<AdjuntoLibro> obtenerLibroByNombre(@PathVariable("nombre") String id) {
+	public Optional<AdjuntoLibro> obtenerAdjLibroByNombre(@PathVariable("nombre") String id) {
 		return aLibroService.getAdjuntoLibroByNombre(id);
 	}
 	

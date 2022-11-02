@@ -40,7 +40,6 @@ public class ActoNotarialControlador {
 		return ListaActosNotariales;
 
 	}
-	
 
 	@GetMapping("getActoById/{id}")
 	public ActoNotarial getActoNotarialTarifa(@PathVariable("id") Long id) {
@@ -48,9 +47,6 @@ public class ActoNotarialControlador {
 		return actoNotarialService.getActoNotarialTarifa(id);
 
 	}
-	//TODO no esta implementado nada en el repositorio
-
-
 	@GetMapping("getActosLike/{nombre}")
 	public List<ActoNotarial> getActoLik(@PathVariable("nombre") String nombre) {
 
