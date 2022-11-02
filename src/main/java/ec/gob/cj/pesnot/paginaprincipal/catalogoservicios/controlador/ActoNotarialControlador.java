@@ -53,12 +53,7 @@ public class ActoNotarialControlador {
 
 	}
 	//TODO no esta implementado nada en el repositorio
-	@GetMapping("getActoByNombre/{nombre}")
-	public List<ActoNotarial> getActoNotarialNombre(@PathVariable("nombre") String nombre) {
 
-		return actoNotarialService.getActoNotarialNombre(nombre);
-
-	}
 
 	@GetMapping("getActosLike/{nombre}")
 	public List<ActoNotarial> getActoLik(@PathVariable("nombre") String nombre) {

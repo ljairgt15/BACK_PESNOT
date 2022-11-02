@@ -12,7 +12,7 @@ import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.repository.ActoNotaria
 @Service
 public class ActoNotarialService {	
 	
-	public ActoNotarialRepository     actoNotarialRepository;
+	public ActoNotarialRepository actoNotarialRepository;
 	
 	
 	public ActoNotarialService(ActoNotarialRepository actoNotarialRepository) {
@@ -39,14 +39,7 @@ public class ActoNotarialService {
 			return actoNotarialTarifa;
 	}	
 	
-	public List<ActoNotarial> getActoNotarialNombre(String NombreActo){		
-		
-		List<ActoNotarial> ListaActosNotarialesNombre = new ArrayList<>();
-		
-		ListaActosNotarialesNombre= actoNotarialRepository.findByNombreActoNotarial(NombreActo);
 
-		return ListaActosNotarialesNombre;		
-	}	
 
 	public List<ActoNotarial>getActosLike(String nombre) {		
 			

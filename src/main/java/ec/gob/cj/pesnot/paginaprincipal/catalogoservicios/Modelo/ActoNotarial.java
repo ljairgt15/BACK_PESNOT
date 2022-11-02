@@ -16,161 +16,215 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
 public class ActoNotarial {
 	
 	@Id
-	@Column(name="IDACTONOTARIAL")
-	private Long idActoNotarial;
+	@Column(name="IDCATALOGOACTONOTARIAL")
+	private Long idCatalogoActoNotarial;
 	
 	//TODO Forein key de base cobro 
-	@Column(name = "IDBASECOBRO")
-	private Long baseCobro;
+	@Column(name = "IDBASECOBROACTO")
+	private Long idBaseCobroActo;
 
 	@ManyToOne(targetEntity = Libro.class, fetch = FetchType.EAGER)
 	@JoinColumn(name = "IDTIPOLIBRO",nullable=false)
 	@JsonProperty(access = Access.READ_WRITE)
-	private Libro libroActoNotarial;
+	private Libro idTipoLibro;
 	
 	@Column(name = "NOMBRECATALOGOACTONOTARIAL")
-	private String nombreActoNotarial;
+	private String nombreCatalogoActoNotarial;
 
 	@Column(name = "ARTICULOCATALOGOACTONOTARIAL")
-	private String articuloActoNotarial;
+	private String articuloCatalogoActoNotarial;
 	
 	@Column(name = "GRAVALIVACATALOGOACTONOTARIAL")
-	private Boolean gravalIva;
+	private Boolean gravalIvaCatalogoActoNotarial;
 	
 	@Column(name = "VALOREXONERACIONCATALOGOACTONOTARIAL") 	
-	private Long valorExoneracion;
+	private Long valorExoneracionCatalogoActoNotarial;
 	
 	@Column(name = "VALOREXTRACATALOGOACTONOTARIAL") 	
-	private Long valorExtra;
+	private Long valorExtraCatalogoActoNotarial;
 
 	@Column(name = "HABILITANTECIUDADANOACTONOTARIAL")
-	private Boolean habilitanteCiudadano;
+	private Boolean habilitanteCiudadanoCatalogoActoNotarial;
 	
 	@Column(name = "TRAMITEUNILATERALACTONOTARIAL")
-	private Boolean tramiteUnilateralCiudadano;
+	private Boolean tramiteUnilateralCatalogoActoNotarial;
 
 	@Column(name = "ESTADOACTONOTARIAL")
-	private Boolean estado;
+	private Boolean estadoCatalogoActoNotarial;
 
 	
 	
 	public ActoNotarial() {
 		super();
 	}
-	
-	public ActoNotarial(Long id, Long baseCobro, Libro libroActoNotarial, String nombreActoNotarial,
-			String articuloActoNotarial, Boolean grabalIva, Long valorExoneracion, Long valorExtra,
-			Boolean habilitanteCiudadano, Boolean tramiteUnilateralCiudadano, Boolean estado) {
+
+
+
+	public ActoNotarial(Long idCatalogoActoNotarial, Long idBaseCobroActo, Libro idTipoLibro,
+			String nombreCatalogoActoNotarial, String articuloCatalogoActoNotarial,
+			Boolean gravalIvaCatalogoActoNotarial, Long valorExoneracionCatalogoActoNotarial,
+			Long valorExtraCatalogoActoNotarial, Boolean habilitanteCiudadanoCatalogoActoNotarial,
+			Boolean tramiteUnilateralCatalogoActoNotarial, Boolean estadoCatalogoActoNotarial) {
 		super();
-		this.idActoNotarial = id;
-		this.baseCobro = baseCobro;
-		this.libroActoNotarial = libroActoNotarial;
-		this.nombreActoNotarial = nombreActoNotarial;
-		this.articuloActoNotarial = articuloActoNotarial;
-		this.gravalIva = grabalIva;
-		this.valorExoneracion = valorExoneracion;
-		this.valorExtra = valorExtra;
-		this.habilitanteCiudadano = habilitanteCiudadano;
-		this.tramiteUnilateralCiudadano = tramiteUnilateralCiudadano;
-		this.estado = estado;
+		this.idCatalogoActoNotarial = idCatalogoActoNotarial;
+		this.idBaseCobroActo = idBaseCobroActo;
+		this.idTipoLibro = idTipoLibro;
+		this.nombreCatalogoActoNotarial = nombreCatalogoActoNotarial;
+		this.articuloCatalogoActoNotarial = articuloCatalogoActoNotarial;
+		this.gravalIvaCatalogoActoNotarial = gravalIvaCatalogoActoNotarial;
+		this.valorExoneracionCatalogoActoNotarial = valorExoneracionCatalogoActoNotarial;
+		this.valorExtraCatalogoActoNotarial = valorExtraCatalogoActoNotarial;
+		this.habilitanteCiudadanoCatalogoActoNotarial = habilitanteCiudadanoCatalogoActoNotarial;
+		this.tramiteUnilateralCatalogoActoNotarial = tramiteUnilateralCatalogoActoNotarial;
+		this.estadoCatalogoActoNotarial = estadoCatalogoActoNotarial;
 	}
 
-	public Long getId() {
-		return idActoNotarial;
+
+
+	public Long getIdCatalogoActoNotarial() {
+		return idCatalogoActoNotarial;
 	}
 
-	public void setId(Long id) {
-		this.idActoNotarial = id;
+
+
+	public void setIdCatalogoActoNotarial(Long idCatalogoActoNotarial) {
+		this.idCatalogoActoNotarial = idCatalogoActoNotarial;
 	}
 
-	public Long getBaseCobro() {
-		return baseCobro;
+
+
+	public Long getIdBaseCobroActo() {
+		return idBaseCobroActo;
 	}
 
-	public void setBaseCobro(Long baseCobro) {
-		this.baseCobro = baseCobro;
+
+
+	public void setIdBaseCobroActo(Long idBaseCobroActo) {
+		this.idBaseCobroActo = idBaseCobroActo;
 	}
 
-	public Libro getLibroActoNotarial() {
-		return libroActoNotarial;
+
+
+	public Libro getIdTipoLibro() {
+		return idTipoLibro;
 	}
 
-	public void setLibroActoNotarial(Libro libroActoNotarial) {
-		this.libroActoNotarial = libroActoNotarial;
+
+
+	public void setIdTipoLibro(Libro idTipoLibro) {
+		this.idTipoLibro = idTipoLibro;
 	}
 
-	public String getNombreActoNotarial() {
-		return nombreActoNotarial;
+
+
+	public String getNombreCatalogoActoNotarial() {
+		return nombreCatalogoActoNotarial;
 	}
 
-	public void setNombreActoNotarial(String nombreActoNotarial) {
-		this.nombreActoNotarial = nombreActoNotarial;
+
+
+	public void setNombreCatalogoActoNotarial(String nombreCatalogoActoNotarial) {
+		this.nombreCatalogoActoNotarial = nombreCatalogoActoNotarial;
 	}
 
-	public String getArticuloActoNotarial() {
-		return articuloActoNotarial;
+
+
+	public String getArticuloCatalogoActoNotarial() {
+		return articuloCatalogoActoNotarial;
 	}
 
-	public void setArticuloActoNotarial(String articuloActoNotarial) {
-		this.articuloActoNotarial = articuloActoNotarial;
+
+
+	public void setArticuloCatalogoActoNotarial(String articuloCatalogoActoNotarial) {
+		this.articuloCatalogoActoNotarial = articuloCatalogoActoNotarial;
 	}
 
-	public Boolean getGrabalIva() {
-		return gravalIva;
+
+
+	public Boolean getGravalIvaCatalogoActoNotarial() {
+		return gravalIvaCatalogoActoNotarial;
 	}
 
-	public void setGrabalIva(Boolean grabalIva) {
-		this.gravalIva = grabalIva;
+
+
+	public void setGravalIvaCatalogoActoNotarial(Boolean gravalIvaCatalogoActoNotarial) {
+		this.gravalIvaCatalogoActoNotarial = gravalIvaCatalogoActoNotarial;
 	}
 
-	public Long getValorExoneracion() {
-		return valorExoneracion;
+
+
+	public Long getValorExoneracionCatalogoActoNotarial() {
+		return valorExoneracionCatalogoActoNotarial;
 	}
 
-	public void setValorExoneracion(Long valorExoneracion) {
-		this.valorExoneracion = valorExoneracion;
+
+
+	public void setValorExoneracionCatalogoActoNotarial(Long valorExoneracionCatalogoActoNotarial) {
+		this.valorExoneracionCatalogoActoNotarial = valorExoneracionCatalogoActoNotarial;
 	}
 
-	public Long getValorExtra() {
-		return valorExtra;
+
+
+	public Long getValorExtraCatalogoActoNotarial() {
+		return valorExtraCatalogoActoNotarial;
 	}
 
-	public void setValorExtra(Long valorExtra) {
-		this.valorExtra = valorExtra;
+
+
+	public void setValorExtraCatalogoActoNotarial(Long valorExtraCatalogoActoNotarial) {
+		this.valorExtraCatalogoActoNotarial = valorExtraCatalogoActoNotarial;
 	}
 
-	public Boolean getHabilitanteCiudadano() {
-		return habilitanteCiudadano;
+
+
+	public Boolean getHabilitanteCiudadanoCatalogoActoNotarial() {
+		return habilitanteCiudadanoCatalogoActoNotarial;
 	}
 
-	public void setHabilitanteCiudadano(Boolean habilitanteCiudadano) {
-		this.habilitanteCiudadano = habilitanteCiudadano;
+
+
+	public void setHabilitanteCiudadanoCatalogoActoNotarial(Boolean habilitanteCiudadanoCatalogoActoNotarial) {
+		this.habilitanteCiudadanoCatalogoActoNotarial = habilitanteCiudadanoCatalogoActoNotarial;
 	}
 
-	public Boolean getTramiteUnilateralCiudadano() {
-		return tramiteUnilateralCiudadano;
+
+
+	public Boolean getTramiteUnilateralCatalogoActoNotarial() {
+		return tramiteUnilateralCatalogoActoNotarial;
 	}
 
-	public void setTramiteUnilateralCiudadano(Boolean tramiteUnilateralCiudadano) {
-		this.tramiteUnilateralCiudadano = tramiteUnilateralCiudadano;
+
+
+	public void setTramiteUnilateralCatalogoActoNotarial(Boolean tramiteUnilateralCatalogoActoNotarial) {
+		this.tramiteUnilateralCatalogoActoNotarial = tramiteUnilateralCatalogoActoNotarial;
 	}
 
-	public Boolean getEstado() {
-		return estado;
+
+
+	public Boolean getEstadoCatalogoActoNotarial() {
+		return estadoCatalogoActoNotarial;
 	}
 
-	public void setEstado(Boolean estado) {
-		this.estado = estado;
+
+
+	public void setEstadoCatalogoActoNotarial(Boolean estadoCatalogoActoNotarial) {
+		this.estadoCatalogoActoNotarial = estadoCatalogoActoNotarial;
 	}
+
+
 
 	@Override
 	public String toString() {
-		return "ActoNotarial [idActoNotarial=" + idActoNotarial + ", baseCobro=" + baseCobro + ", libroActoNotarial=" + libroActoNotarial
-				+ ", nombreActoNotarial=" + nombreActoNotarial + ", articuloActoNotarial=" + articuloActoNotarial
-				+ ", gravalIva=" + gravalIva + ", valorExoneracion=" + valorExoneracion + ", valorExtra=" + valorExtra
-				+ ", habilitanteCiudadano=" + habilitanteCiudadano + ", tramiteUnilateralCiudadano="
-				+ tramiteUnilateralCiudadano + ", estado=" + estado + "]";
-	}	
+		return "ActoNotarial [idCatalogoActoNotarial=" + idCatalogoActoNotarial + ", idBaseCobroActo=" + idBaseCobroActo
+				+ ", idTipoLibro=" + idTipoLibro + ", nombreCatalogoActoNotarial=" + nombreCatalogoActoNotarial
+				+ ", articuloCatalogoActoNotarial=" + articuloCatalogoActoNotarial + ", gravalIvaCatalogoActoNotarial="
+				+ gravalIvaCatalogoActoNotarial + ", valorExoneracionCatalogoActoNotarial="
+				+ valorExoneracionCatalogoActoNotarial + ", valorExtraCatalogoActoNotarial="
+				+ valorExtraCatalogoActoNotarial + ", habilitanteCiudadanoCatalogoActoNotarial="
+				+ habilitanteCiudadanoCatalogoActoNotarial + ", tramiteUnilateralCatalogoActoNotarial="
+				+ tramiteUnilateralCatalogoActoNotarial + ", estadoCatalogoActoNotarial=" + estadoCatalogoActoNotarial
+				+ "]";
+	}
 	
 
 }
