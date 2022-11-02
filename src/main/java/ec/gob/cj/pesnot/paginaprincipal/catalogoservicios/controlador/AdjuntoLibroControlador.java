@@ -40,9 +40,14 @@ public class AdjuntoLibroControlador {
 		return aLibroService.ingresarAdjuntoLibro(objAdjLibro);		
 	}
 	
-	@GetMapping("/getAdjLibro/{id}")
+	@GetMapping("/getAdjLibroById/{id}")
 	public Optional<AdjuntoLibro> obtenerLibroById(@PathVariable("id") Long id) {
 		return aLibroService.aLibroById(id);
+	}
+	
+	@GetMapping("/getAdjLibroByNombre/{nombre}")
+	public Optional<AdjuntoLibro> obtenerLibroByNombre(@PathVariable("nombre") String id) {
+		return aLibroService.getAdjuntoLibroByNombre(id);
 	}
 	
 

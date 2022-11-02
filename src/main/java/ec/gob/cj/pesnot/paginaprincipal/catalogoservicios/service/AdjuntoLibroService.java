@@ -28,6 +28,10 @@ public class AdjuntoLibroService {
 	{		
 		return  aLibroRepository.save(adjuntoLibro); 		
 	}
+	public Optional<AdjuntoLibro> getAdjuntoLibroByNombre(String adjuntoLibro) 
+	{		
+		return  aLibroRepository.getAdjuntoByNombre(adjuntoLibro); 		
+	}
 	public Optional<AdjuntoLibro> aLibroById(Long idEntrante)
 	{		
 		return  aLibroRepository.findById(idEntrante);
