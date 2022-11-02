@@ -40,9 +40,13 @@ public class LibroControlador {
 		return libroService.ingresarLibrosL(objLibro);		
 	}
 	
-	@GetMapping("/getLibro/{id}")
+	@GetMapping("/getLibroById/{id}")
 	public Optional<Libro> obtenerLibroById(@PathVariable("id") Long id) {
 		return libroService.libroById(id);
+	}
+	@GetMapping("/getLibroByNombre/{nombre}")
+	public Optional<Libro> obtenerLibroByNombre(@PathVariable("nombre") String id) {
+		return libroService.getLibroByNombre(id);
 	}
 
 }
