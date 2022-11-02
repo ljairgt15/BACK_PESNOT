@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.ActoNotarial;
+import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.Libro;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.repository.ActoNotarialRepository;
 
 
@@ -29,6 +30,10 @@ public class ActoNotarialService {
 				
 	    return ListActosNotariales;		
      }
+	public ActoNotarial ingresarActoNotarialL(ActoNotarial actNot) 
+	{		
+		return  actoNotarialRepository.save(actNot); 		
+	}
 	
 	public ActoNotarial getActoNotarialTarifa(Long id) {		
 		

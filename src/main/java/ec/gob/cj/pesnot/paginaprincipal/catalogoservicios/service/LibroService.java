@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.AdjuntoLibro;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.Libro;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.repository.LibroRepository;
 
@@ -25,6 +26,10 @@ public class LibroService {
 		ListaLibros = libroRepository.findAll();
 		return ListaLibros;
 	}
+	public Optional<Libro> getLibroByNombre(String adjuntoLibro) 
+	{		
+		return  libroRepository.getLibroByNombre(adjuntoLibro); 		
+	}
 
 	public Libro ingresarLibrosL(Libro libro) 
 	{		
@@ -34,6 +39,7 @@ public class LibroService {
 	{		
 		return  libroRepository.findById(idEntrante);
 	}
+	
 
 
 }

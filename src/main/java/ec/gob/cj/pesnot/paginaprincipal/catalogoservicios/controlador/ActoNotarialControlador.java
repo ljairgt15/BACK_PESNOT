@@ -6,9 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.ActoNotarial;
+import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.Libro;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.RequisitoActoNotarial;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.service.ActoNotarialService;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.service.RequisitoActoNotarialService;
@@ -38,13 +41,6 @@ public class ActoNotarialControlador {
 
 	}
 	
-	//TODO es por la tbala de requisitos que no se que hace  
-	@GetMapping("/requisitos/{id}")
-	public List<RequisitoActoNotarial> ListaRequisitosActos(@PathVariable("id") Long id) {
-
-		return requisitoActoNotarialService.getRequisitosActosNotarialesId(id);
-
-	}
 
 	@GetMapping("getActoById/{id}")
 	public ActoNotarial getActoNotarialTarifa(@PathVariable("id") Long id) {
@@ -66,6 +62,11 @@ public class ActoNotarialControlador {
 	public List<ActoNotarial> getActoLibro(@PathVariable("libro") String libro) {
 		return actoNotarialService.getActosLibros(libro);
 
+	}
+	@PostMapping("/saveActNot")
+	public ActoNotarial guardarActNot(@RequestBody ActoNotarial objAct) {
+		
+		return actoNotarialService.ingresarActoNotarialL(objAct);		
 	}
 
 }
