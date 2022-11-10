@@ -17,5 +17,5 @@ public interface ActoNotarialRepository extends JpaRepository<ActoNotarial, Long
 	List<ActoNotarial> getActosLike(@Param("nombre") String nombre);	
 	
 	@Query(nativeQuery = true,value = "SELECT * FROM CATALOGOACTONOTARIAL a WHERE a.IDTIPOLIBRO = :libro") //revisar si es "a" o "as a"
-	List<ActoNotarial> getActosLibros(@Param("libro") String libro);	
+	List<ActoNotarial> getActosByIdLibro(@Param("libro") String libro);	
 }

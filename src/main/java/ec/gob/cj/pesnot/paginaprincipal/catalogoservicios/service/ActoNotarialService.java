@@ -59,7 +59,7 @@ public class ActoNotarialService {
 		
 		List<ActoNotarial> ListaActosLibros = new ArrayList<>();
 		
-		ListaActosLibros = actoNotarialRepository.getActosLibros(libro);
+		ListaActosLibros = actoNotarialRepository.getActosByIdLibro(libro);
 		
 		return ListaActosLibros;		
 	}

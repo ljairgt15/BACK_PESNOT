@@ -32,7 +32,13 @@ public class LibroControlador {
 	{		
 	List<Libro> ListaLibros = libroService.getLibros();	
 	return ListaLibros;	
-	}	
+	}
+	@GetMapping("/getLibrosActivos")
+	public List<Libro> getLibrosActivos()
+	{		
+	List<Libro> ListaLibros = libroService.getLibrosActivos();	
+	return ListaLibros;	
+	}
 	
 	@PostMapping("/saveLibros")
 	public Libro guardarLibro(@RequestBody Libro objLibro) {
