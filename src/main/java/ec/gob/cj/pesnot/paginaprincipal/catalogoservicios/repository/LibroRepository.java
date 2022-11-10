@@ -19,4 +19,10 @@ public interface LibroRepository extends JpaRepository<Libro, Long > {
 	@Query(nativeQuery = true,value="SELECT * FROM TIPOLIBRO where ESTADOACTIVO='true'")
 	List<Libro> getAllActives();
 	
+	@Query(nativeQuery = true,value="select  DISTINCT j.IDTIPOLIBRO, j.ESTADOACTIVO, j.NOMBRETIPOLIBRO, j.IDADJUNTOLIBRO from CATALOGOACTONOTARIAL as c left join TIPOLIBRO as j on j.IDTIPOLIBRO=c.IDTIPOLIBRO")
+	List<Libro>getAllLibrosWithActosN();
+	
+	
+
+	
 }

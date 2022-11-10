@@ -29,6 +29,10 @@ public class LibroService {
 	public List<Libro> getLibrosActivos(){
 		return libroRepository.getAllActives();
 	}
+	public List<Libro> getLibrosWithActN(){
+		return libroRepository.	getAllLibrosWithActosN();
+	}
+
 	public Optional<Libro> getLibroByNombre(String adjuntoLibro) 
 	{		
 		return  libroRepository.getLibroByNombre(adjuntoLibro); 		

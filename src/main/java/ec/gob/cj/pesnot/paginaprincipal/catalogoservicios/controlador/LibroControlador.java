@@ -33,6 +33,12 @@ public class LibroControlador {
 	List<Libro> ListaLibros = libroService.getLibros();	
 	return ListaLibros;	
 	}
+	@GetMapping("/getLibrosConActosN")
+	public List<Libro> getLibrosConActosN()
+	{		
+	List<Libro> ListaLibros = libroService.getLibrosWithActN();
+	return ListaLibros;	
+	}
 	@GetMapping("/getLibrosActivos")
 	public List<Libro> getLibrosActivos()
 	{		
