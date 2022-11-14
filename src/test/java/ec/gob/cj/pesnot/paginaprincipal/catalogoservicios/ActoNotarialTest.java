@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.ActoNotarial;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.AdjuntoLibro;
+import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.BaseCobroActo;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.Libro;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.controlador.ActoNotarialControlador;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.controlador.AdjuntoLibroControlador;
@@ -71,6 +72,7 @@ public class ActoNotarialTest {
 	@DisplayName("Debe pasar cuando se obtenga una lista no nula de actos")
 	void guardarActos() {
 		AdjuntoLibro adjuntoGuardado = new AdjuntoLibro();
+		BaseCobroActo base = new BaseCobroActo();
 		adjuntoGuardado.setNombreAdjuntoLibro("nuevo");
 		adjuntoGuardado.setArchivoAdjuntoLibro((byte) 1);
 		adjuntoGuardado.setObservacionAdjuntoLibro("111");
@@ -84,9 +86,9 @@ public class ActoNotarialTest {
 		ActoNotarial actoNot = new ActoNotarial();
 		actoNot.setArticuloCatalogoActoNotarial("art 22");
 		actoNot.setEstadoCatalogoActoNotarial(false);
-		actoNot.setGravalIvaCatalogoActoNotarial(true);
+		actoNot.setGravaIvaCatalogoActoNotarial(true);
 		actoNot.setHabilitanteCiudadanoCatalogoActoNotarial(false);
-		actoNot.setIdBaseCobroActo(10l);
+		actoNot.setIdBaseCobroActo(base);
 		actoNot.setIdTipoLibro(libroGuardado);
 		actoNot.setNombreCatalogoActoNotarial("multas");
 		actoNot.setTramiteUnilateralCatalogoActoNotarial(true);
@@ -104,6 +106,7 @@ public class ActoNotarialTest {
 	@DisplayName("Debe pasar cuado se obtenga la lista de actos por id")
 	void getActoNotById() {
 		AdjuntoLibro adjuntoGuardado = new AdjuntoLibro();
+		BaseCobroActo base = new BaseCobroActo();
 		adjuntoGuardado.setNombreAdjuntoLibro("nuevo");
 		adjuntoGuardado.setArchivoAdjuntoLibro((byte) 1);
 		adjuntoGuardado.setObservacionAdjuntoLibro("111");
@@ -117,9 +120,9 @@ public class ActoNotarialTest {
 		ActoNotarial actoNot = new ActoNotarial();
 		actoNot.setArticuloCatalogoActoNotarial("art 22");
 		actoNot.setEstadoCatalogoActoNotarial(false);
-		actoNot.setGravalIvaCatalogoActoNotarial(true);
+		actoNot.setGravaIvaCatalogoActoNotarial(true);
 		actoNot.setHabilitanteCiudadanoCatalogoActoNotarial(false);
-		actoNot.setIdBaseCobroActo(10l);
+		actoNot.setIdBaseCobroActo(base);
 		actoNot.setIdTipoLibro(libroGuardado);
 		actoNot.setNombreCatalogoActoNotarial("multas");
 		actoNot.setTramiteUnilateralCatalogoActoNotarial(true);
@@ -136,6 +139,7 @@ public class ActoNotarialTest {
 	@DisplayName("Debe pasar cuado se obtenga la lista de actos por nombre")
 	void getActoNotByNombre() {
 		AdjuntoLibro adjuntoGuardado = new AdjuntoLibro();
+		BaseCobroActo base = new BaseCobroActo();
 		adjuntoGuardado.setNombreAdjuntoLibro("nuevo");
 		adjuntoGuardado.setArchivoAdjuntoLibro((byte) 1);
 		adjuntoGuardado.setObservacionAdjuntoLibro("111");
@@ -149,9 +153,9 @@ public class ActoNotarialTest {
 		ActoNotarial actoNot = new ActoNotarial();
 		actoNot.setArticuloCatalogoActoNotarial("art 22");
 		actoNot.setEstadoCatalogoActoNotarial(false);
-		actoNot.setGravalIvaCatalogoActoNotarial(true);
+		actoNot.setGravaIvaCatalogoActoNotarial(true);
 		actoNot.setHabilitanteCiudadanoCatalogoActoNotarial(false);
-		actoNot.setIdBaseCobroActo(10l);
+		actoNot.setIdBaseCobroActo(base);
 		actoNot.setIdTipoLibro(libroGuardado);
 		actoNot.setNombreCatalogoActoNotarial("multas");
 		actoNot.setTramiteUnilateralCatalogoActoNotarial(true);
@@ -166,6 +170,7 @@ public class ActoNotarialTest {
 	@Test
 	@DisplayName("Debe pasar cuado se obtenga la lista de actos por nombre")
 	void getActoNotByLibro() {
+		BaseCobroActo base = new BaseCobroActo();
 		AdjuntoLibro adjuntoGuardado = new AdjuntoLibro();
 		adjuntoGuardado.setNombreAdjuntoLibro("nuevo");
 		adjuntoGuardado.setArchivoAdjuntoLibro((byte) 1);
@@ -180,9 +185,9 @@ public class ActoNotarialTest {
 		ActoNotarial actoNot = new ActoNotarial();
 		actoNot.setArticuloCatalogoActoNotarial("art 22");
 		actoNot.setEstadoCatalogoActoNotarial(false);
-		actoNot.setGravalIvaCatalogoActoNotarial(true);
+		actoNot.setGravaIvaCatalogoActoNotarial(true);
 		actoNot.setHabilitanteCiudadanoCatalogoActoNotarial(false);
-		actoNot.setIdBaseCobroActo(10l);
+		actoNot.setIdBaseCobroActo(base);
 		actoNot.setIdTipoLibro(libroGuardado);
 		actoNot.setNombreCatalogoActoNotarial("multas");
 		actoNot.setTramiteUnilateralCatalogoActoNotarial(true);
@@ -197,6 +202,7 @@ public class ActoNotarialTest {
 	@Test
 	@DisplayName("Debe pasar cuado se obtenga la lista de actos por nombre")
 	void getLibroConActos() {
+		BaseCobroActo base = new BaseCobroActo();
 		AdjuntoLibro adjuntoGuardado = new AdjuntoLibro();
 		adjuntoGuardado.setNombreAdjuntoLibro("nuevo");
 		adjuntoGuardado.setArchivoAdjuntoLibro((byte) 1);
@@ -211,9 +217,9 @@ public class ActoNotarialTest {
 		ActoNotarial actoNot = new ActoNotarial();
 		actoNot.setArticuloCatalogoActoNotarial("art 22");
 		actoNot.setEstadoCatalogoActoNotarial(false);
-		actoNot.setGravalIvaCatalogoActoNotarial(true);
+		actoNot.setGravaIvaCatalogoActoNotarial(true);
 		actoNot.setHabilitanteCiudadanoCatalogoActoNotarial(false);
-		actoNot.setIdBaseCobroActo(10l);
+		actoNot.setIdBaseCobroActo(base);
 		actoNot.setIdTipoLibro(libroGuardado);
 		actoNot.setNombreCatalogoActoNotarial("multas");
 		actoNot.setTramiteUnilateralCatalogoActoNotarial(true);
@@ -229,16 +235,15 @@ public class ActoNotarialTest {
 	@Test
 	@DisplayName("Debe pasar cuando se pruebe todo lo del modelo")
 	void probarModelo() {
-		Libro libro=new Libro();
-		ActoNotarial acto= new ActoNotarial(1l,2l,libro,"iar","art 24",
-				true, 2l,2l
-				,true,true,true
-				);
+		Libro libro = new Libro();
+		BaseCobroActo base = new BaseCobroActo();
+		ActoNotarial acto = new ActoNotarial(1l, base, libro, "iar", "art 24", true, 2l, 2l, true, true, true, 1l,
+				true);
 		acto.setIdCatalogoActoNotarial(4l);
 		acto.toString();
 		acto.getArticuloCatalogoActoNotarial();
 		acto.getEstadoCatalogoActoNotarial();
-		acto.getGravalIvaCatalogoActoNotarial();
+		acto.getGravaIvaCatalogoActoNotarial();
 		acto.getHabilitanteCiudadanoCatalogoActoNotarial();
 		acto.getIdBaseCobroActo();
 		acto.getIdCatalogoActoNotarial();
@@ -247,7 +252,7 @@ public class ActoNotarialTest {
 		acto.getTramiteUnilateralCatalogoActoNotarial();
 		acto.getValorExoneracionCatalogoActoNotarial();
 		acto.getValorExtraCatalogoActoNotarial();
-		
+
 	}
 
 }

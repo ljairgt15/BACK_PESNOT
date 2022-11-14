@@ -1,6 +1,7 @@
 package ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.controlador;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -37,7 +38,7 @@ public class ActoNotarialControlador {
 	}
 
 	@GetMapping("getActoById/{id}")
-	public ActoNotarial obtenerActoNotarialPorId(@PathVariable("id") Long id) {
+	public Optional<ActoNotarial> obtenerActoNotarialPorId(@PathVariable("id") Long id) {
 
 		return actoNotarialService.getActoNotarialById(id);
 

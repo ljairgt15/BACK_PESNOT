@@ -2,11 +2,11 @@ package ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.ActoNotarial;
-import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.Libro;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.repository.ActoNotarialRepository;
 
 
@@ -35,11 +35,9 @@ public class ActoNotarialService {
 		return  actoNotarialRepository.save(actNot); 		
 	}
 	
-	public ActoNotarial getActoNotarialById(Long id) {		
+	public Optional<ActoNotarial> getActoNotarialById(Long id) {		
 		
-		ActoNotarial actoNotarialTarifa= new ActoNotarial();
-				
-			actoNotarialTarifa= actoNotarialRepository.findById(id).get();
+		Optional<ActoNotarial> actoNotarialTarifa= actoNotarialRepository.findById(id);
 		
 			return actoNotarialTarifa;
 	}	
