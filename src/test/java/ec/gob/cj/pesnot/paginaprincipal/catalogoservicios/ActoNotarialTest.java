@@ -64,7 +64,7 @@ public class ActoNotarialTest {
 	void listarActos() {
 		assertNotNull(actNotRepo.findAll());
 		assertNotNull(actNotSvc.getActosNotariales());
-		assertNotNull(actNotCont.getActosNotariales());
+		assertNotNull(actNotCont.obtenerActosNotariales());
 	}
 
 	@Test
@@ -128,7 +128,7 @@ public class ActoNotarialTest {
 		actoNot = actNotRepo.save(actoNot);
 		assertNotNull(actNotRepo.findById(actoNot.getIdCatalogoActoNotarial()));
 		assertNotNull(actNotSvc.getActoNotarialById(actoNot.getIdCatalogoActoNotarial()));
-		assertNotNull(actNotCont.getActoNotarialById(actoNot.getIdCatalogoActoNotarial()));
+		assertNotNull(actNotCont.obtenerActoNotarialPorId(actoNot.getIdCatalogoActoNotarial()));
 
 	}
 
@@ -160,7 +160,7 @@ public class ActoNotarialTest {
 		actoNot = actNotRepo.save(actoNot);
 		assertNotNull(actNotRepo.getActosLike(actoNot.getNombreCatalogoActoNotarial()));
 		assertNotNull(actNotSvc.getActosLike(actoNot.getNombreCatalogoActoNotarial()));
-		assertNotNull(actNotCont.getActoLik(actoNot.getNombreCatalogoActoNotarial()));
+		assertNotNull(actNotCont.obtenerActoLikeNombre(actoNot.getNombreCatalogoActoNotarial()));
 	}
 
 	@Test
@@ -191,7 +191,7 @@ public class ActoNotarialTest {
 		actoNot = actNotRepo.save(actoNot);
 		assertNotNull(actNotRepo.getActosByIdLibro(libroGuardado.getIdTipoLibro().toString()));
 		assertNotNull(actNotSvc.getActosLibros(libroGuardado.getIdTipoLibro().toString()));
-		assertNotNull(actNotCont.getActoLibro(libroGuardado.getIdTipoLibro().toString()));
+		assertNotNull(actNotCont.obtenerActoLibro(libroGuardado.getIdTipoLibro().toString()));
 	}
 
 	@Test
@@ -222,7 +222,7 @@ public class ActoNotarialTest {
 		actoNot = actNotRepo.save(actoNot);
 		assertNotNull(libroRepo.getAllLibrosWithActosN());
 		assertNotNull(libroSvc.getLibrosWithActN());
-		assertNotNull(libroCont.getLibrosConActosN());
+		assertNotNull(libroCont.obtenerLibrosConActosN());
 
 	}
 

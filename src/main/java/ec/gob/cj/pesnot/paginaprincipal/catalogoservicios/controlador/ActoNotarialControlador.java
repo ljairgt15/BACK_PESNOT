@@ -29,7 +29,7 @@ public class ActoNotarialControlador {
 	}
 
 	@GetMapping("/getActos")
-	public List<ActoNotarial> getActosNotariales() {
+	public List<ActoNotarial> obtenerActosNotariales() {
 
 		List<ActoNotarial> ListaActosNotariales = actoNotarialService.getActosNotariales();
 		return ListaActosNotariales;
@@ -37,20 +37,20 @@ public class ActoNotarialControlador {
 	}
 
 	@GetMapping("getActoById/{id}")
-	public ActoNotarial getActoNotarialById(@PathVariable("id") Long id) {
+	public ActoNotarial obtenerActoNotarialPorId(@PathVariable("id") Long id) {
 
 		return actoNotarialService.getActoNotarialById(id);
 
 	}
 	@GetMapping("getActosLike/{nombre}")
-	public List<ActoNotarial> getActoLik(@PathVariable("nombre") String nombre) {
+	public List<ActoNotarial> obtenerActoLikeNombre(@PathVariable("nombre") String nombre) {
 
 		return actoNotarialService.getActosLike(nombre);
 
 	}
 
 	@GetMapping("geActoByLibros/{libro}")
-	public List<ActoNotarial> getActoLibro(@PathVariable("libro") String libro) {
+	public List<ActoNotarial> obtenerActoLibro(@PathVariable("libro") String libro) {
 		return actoNotarialService.getActosLibros(libro);
 
 	}

@@ -51,10 +51,10 @@ class LibroTest {
 
 	@Test
 	@DisplayName("Debe pasar cuando se obtenga una lista de Libro y no sea nulo")
-	void listarAdjuntos() {
+	void listarLibros() {
 		assertNotNull(libroRepo.findAll());
 		assertNotNull(libroSvc.getLibros());
-		assertNotNull(libroCont.getLibros());
+		assertNotNull(libroCont.obtenerLibros());
 	}
 
 	@Test
@@ -116,7 +116,7 @@ class LibroTest {
 		libroRepo.save(libroGuardado);
 		assertNotNull(libroRepo.getAllActives());
 		assertNotNull(libroSvc.getLibrosActivos());
-		assertNotNull(libroCont.getLibrosActivos());
+		assertNotNull(libroCont.obtenerLibrosActivos());
 
 	}
 	

@@ -28,7 +28,7 @@ public class AdjuntoLibroControlador {
 	}	
 	
 	@GetMapping("/getAdjLibros")
-	public List<AdjuntoLibro> getAdjLibros()
+	public List<AdjuntoLibro> obtenerAdjLibros()
 	{		
 	List<AdjuntoLibro> ListaAdjLibros = aLibroService.getAdjuntoLibros();
 	return ListaAdjLibros;	

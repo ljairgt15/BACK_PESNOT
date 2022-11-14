@@ -57,7 +57,7 @@ public class AdjLibroTest {
 	void listarAdjuntos() {
 		assertNotNull(adjLibroRepo.findAll());
 		assertNotNull(adjLibroSvc.getAdjuntoLibros());
-		assertNotNull(adjLibroCont.getAdjLibros());
+		assertNotNull(adjLibroCont.obtenerAdjLibros());
 	}
 
 	@Test
@@ -83,7 +83,7 @@ public class AdjLibroTest {
 
 	@Test
 	@DisplayName("Debe pasar cuando se obtenga un objeto adjuntosLibro")
-	void getAdjuntoById() {
+	void obtenerAdjuntoPorId() {
 		AdjuntoLibro adjuntoGuardado = new AdjuntoLibro();
 		adjuntoGuardado.setNombreAdjuntoLibro("nuevo");
 		adjuntoGuardado.setArchivoAdjuntoLibro((byte) 1);
@@ -99,7 +99,7 @@ public class AdjLibroTest {
 
 	@Test
 	@DisplayName("Debe pasar cuando se obtenga un objeto adjuntosLibro")
-	void getAdjuntoByNombre() {
+	void obtenerAdjuntoPorNombre() {
 		AdjuntoLibro adjuntoGuardado = new AdjuntoLibro();
 		adjuntoGuardado.setNombreAdjuntoLibro("nuevo");
 		adjuntoGuardado.setArchivoAdjuntoLibro((byte) 1);
