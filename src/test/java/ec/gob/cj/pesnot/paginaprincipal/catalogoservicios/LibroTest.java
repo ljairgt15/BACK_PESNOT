@@ -100,6 +100,26 @@ class LibroTest {
 		assertNotNull(libroSvc.libroById(libroGuardadoR.getIdTipoLibro()));
 		assertNotNull(libroCont.obtenerLibroById(libroGuardadoR.getIdTipoLibro()));		
 	}
+	@Test
+	@DisplayName("Debe pasar cuando se obtenga un objeto adjuntosLibro")
+	void getLibrosActivos() {
+		AdjuntoLibro adjuntoGuardado = new AdjuntoLibro();
+		adjuntoGuardado.setNombreAdjuntoLibro("nuevo");
+		adjuntoGuardado.setArchivoAdjuntoLibro((byte) 1);
+		adjuntoGuardado.setObservacionAdjuntoLibro("111");
+		adjuntoGuardado=adjLibroRepo.save(adjuntoGuardado);
+		Libro libroGuardado= new Libro();
+		libroGuardado.setIdAdjuntoLibro(adjuntoGuardado);
+		libroGuardado.setEstadoActivo(true);
+		libroGuardado.setIdTipoLibro(1l);
+		libroGuardado.setNombreTipoLibro("jair");
+		libroRepo.save(libroGuardado);
+		assertNotNull(libroRepo.getAllActives());
+		assertNotNull(libroSvc.getLibrosActivos());
+		assertNotNull(libroCont.getLibrosActivos());
+
+	}
+	
 
 	@Test
 	@DisplayName("Debe pasar cuando se obtenga un objeto adjuntosLibro")

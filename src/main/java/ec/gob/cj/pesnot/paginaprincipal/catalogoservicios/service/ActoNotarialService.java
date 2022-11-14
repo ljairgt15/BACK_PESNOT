@@ -35,7 +35,7 @@ public class ActoNotarialService {
 		return  actoNotarialRepository.save(actNot); 		
 	}
 	
-	public ActoNotarial getActoNotarialTarifa(Long id) {		
+	public ActoNotarial getActoNotarialById(Long id) {		
 		
 		ActoNotarial actoNotarialTarifa= new ActoNotarial();
 				

@@ -37,9 +37,9 @@ public class ActoNotarialControlador {
 	}
 
 	@GetMapping("getActoById/{id}")
-	public ActoNotarial getActoNotarialTarifa(@PathVariable("id") Long id) {
+	public ActoNotarial getActoNotarialById(@PathVariable("id") Long id) {
 
-		return actoNotarialService.getActoNotarialTarifa(id);
+		return actoNotarialService.getActoNotarialById(id);
 
 	}
 	@GetMapping("getActosLike/{nombre}")
