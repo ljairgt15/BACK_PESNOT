@@ -30,4 +30,8 @@ public class BaseCobroActoService {
 		return baseRepository.save(baseActo);
 	}
 
+	public Optional<BaseCobroActo> getActoByNombre(String id) {
+		return baseRepository.getBaseActoByNombre(id);
+	}
+
 }

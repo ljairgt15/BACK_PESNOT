@@ -38,11 +38,18 @@ public class BaseCobroActoControlador {
 		
 		return baseCobroService.actoById(id);	
 	}
+	@GetMapping("/getBaseCobroByNombre/{nombre}")
+	public Optional<BaseCobroActo> obtenerBaseCobroByNombre(@PathVariable("nombre") String id) {
+		return baseCobroService.getActoByNombre(id);
+	}
+
 	
 	@GetMapping("/saveBaseCobro")
 	public BaseCobroActo guardarBaseCobro(@RequestBody BaseCobroActo baseObj) {
 		return baseCobroService.ingresarBase(baseObj);
 	}
+	
+	
 
 
 }
