@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "CATALOGOACTO")
+@Table(name = "MOTIVOCOBROACTO")
 public class MotivoCobroActo {
 	
 	@Id
@@ -24,6 +24,7 @@ public class MotivoCobroActo {
 	
 	@Column(name="ESTADOMOTIVOCOBROACTO")
 	private Boolean estadoMotivoCobroActo;
+	
 
 	public MotivoCobroActo() {
 		super();

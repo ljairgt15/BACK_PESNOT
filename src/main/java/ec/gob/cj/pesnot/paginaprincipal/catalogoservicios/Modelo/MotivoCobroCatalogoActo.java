@@ -32,13 +32,14 @@ public class MotivoCobroCatalogoActo {
 	private MotivoCobroActo idMotivoCobroActo;
 	
 	@Column(name="VALORMOTIVOCOBROCATALOGOACTO")
-	private Long valorMotivoCobroCatalogoActo;
+	private Double valorMotivoCobroCatalogoActo;
 	
 	@Column(name="PORCENTAJEMOTIVOCOBROCATALOGOACTO")
-	private Double porcentaajeMotivoCobroCatalogoActo;
+	private Double porcentajeMotivoCobroCatalogoActo;
 	
 	@Column(name="ESTADOMOTIVOCOBROCATALOGOACTO")
-	private Boolean estadomotivoCobroCatalogoActo;
+	private Boolean estadoMotivoCobroCatalogoActo;
+	
 
 	public MotivoCobroCatalogoActo() {
 		super();
@@ -46,15 +47,15 @@ public class MotivoCobroCatalogoActo {
 	}
 
 	public MotivoCobroCatalogoActo(Long idMotivoCobroCatalogoActo, ActoNotarial idCatalogoActoNotarial,
-			MotivoCobroActo idMotivoCobroActo, Long valorMotivoCobroCatalogoActo,
+			MotivoCobroActo idMotivoCobroActo, Double valorMotivoCobroCatalogoActo,
 			Double porcentaajeMotivoCobroCatalogoActo, Boolean estadomotivoCobroCatalogoActo) {
 		super();
 		this.idMotivoCobroCatalogoActo = idMotivoCobroCatalogoActo;
 		this.idCatalogoActoNotarial = idCatalogoActoNotarial;
 		this.idMotivoCobroActo = idMotivoCobroActo;
 		this.valorMotivoCobroCatalogoActo = valorMotivoCobroCatalogoActo;
-		this.porcentaajeMotivoCobroCatalogoActo = porcentaajeMotivoCobroCatalogoActo;
-		this.estadomotivoCobroCatalogoActo = estadomotivoCobroCatalogoActo;
+		this.porcentajeMotivoCobroCatalogoActo = porcentaajeMotivoCobroCatalogoActo;
+		this.estadoMotivoCobroCatalogoActo = estadomotivoCobroCatalogoActo;
 	}
 
 	public Long getIdMotivoCobroCatalogoActo() {
@@ -81,28 +82,28 @@ public class MotivoCobroCatalogoActo {
 		this.idMotivoCobroActo = idMotivoCobroActo;
 	}
 
-	public Long getValorMotivoCobroCatalogoActo() {
+	public Double getValorMotivoCobroCatalogoActo() {
 		return valorMotivoCobroCatalogoActo;
 	}
 
-	public void setValorMotivoCobroCatalogoActo(Long valorMotivoCobroCatalogoActo) {
+	public void setValorMotivoCobroCatalogoActo(Double valorMotivoCobroCatalogoActo) {
 		this.valorMotivoCobroCatalogoActo = valorMotivoCobroCatalogoActo;
 	}
 
-	public Double getPorcentaajeMotivoCobroCatalogoActo() {
-		return porcentaajeMotivoCobroCatalogoActo;
+	public Double getPorcentajeMotivoCobroCatalogoActo() {
+		return porcentajeMotivoCobroCatalogoActo;
 	}
 
-	public void setPorcentaajeMotivoCobroCatalogoActo(Double porcentaajeMotivoCobroCatalogoActo) {
-		this.porcentaajeMotivoCobroCatalogoActo = porcentaajeMotivoCobroCatalogoActo;
+	public void setPorcentajeMotivoCobroCatalogoActo(Double porcentaajeMotivoCobroCatalogoActo) {
+		this.porcentajeMotivoCobroCatalogoActo = porcentaajeMotivoCobroCatalogoActo;
 	}
 
 	public Boolean getEstadomotivoCobroCatalogoActo() {
-		return estadomotivoCobroCatalogoActo;
+		return estadoMotivoCobroCatalogoActo;
 	}
 
 	public void setEstadomotivoCobroCatalogoActo(Boolean estadomotivoCobroCatalogoActo) {
-		this.estadomotivoCobroCatalogoActo = estadomotivoCobroCatalogoActo;
+		this.estadoMotivoCobroCatalogoActo = estadomotivoCobroCatalogoActo;
 	}
 
 	@Override
@@ -110,8 +111,8 @@ public class MotivoCobroCatalogoActo {
 		return "MotivoCobroCatalogoActo [idMotivoCobroCatalogoActo=" + idMotivoCobroCatalogoActo
 				+ ", idCatalogoActoNotarial=" + idCatalogoActoNotarial + ", idMotivoCobroActo=" + idMotivoCobroActo
 				+ ", valorMotivoCobroCatalogoActo=" + valorMotivoCobroCatalogoActo
-				+ ", porcentaajeMotivoCobroCatalogoActo=" + porcentaajeMotivoCobroCatalogoActo
-				+ ", estadomotivoCobroCatalogoActo=" + estadomotivoCobroCatalogoActo + "]";
+				+ ", porcentaajeMotivoCobroCatalogoActo=" + porcentajeMotivoCobroCatalogoActo
+				+ ", estadomotivoCobroCatalogoActo=" + estadoMotivoCobroCatalogoActo + "]";
 	}	
 	
 }

@@ -8,7 +8,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.BaseCobroActo;
-import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.Libro;
 
 @Repository
 public interface BaseCobroActoRepository extends JpaRepository<BaseCobroActo,Long>{
