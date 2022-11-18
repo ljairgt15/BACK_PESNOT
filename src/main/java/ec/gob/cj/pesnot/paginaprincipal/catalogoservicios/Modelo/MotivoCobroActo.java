@@ -10,21 +10,20 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "MOTIVOCOBROACTO")
 public class MotivoCobroActo {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="IDMOTIVOCOBROACTO")
+	@Column(name = "IDMOTIVOCOBROACTO")
 	private Long idMotivoCobroActo;
-	
-	@Column(name="NOMBREMOTIVOCOBROACTO")
+
+	@Column(name = "NOMBREMOTIVOCOBROACTO")
 	private String nombreMotivoCobroActo;
-	
-	@Column(name="DESCRIPCIONMOTIVOCOBROACTO")
+
+	@Column(name = "DESCRIPCIONMOTIVOCOBROACTO")
 	private String descripcionMotivoCobroActo;
-	
-	@Column(name="ESTADOMOTIVOCOBROACTO")
+
+	@Column(name = "ESTADOMOTIVOCOBROACTO")
 	private Boolean estadoMotivoCobroActo;
-	
 
 	public MotivoCobroActo() {
 		super();
@@ -78,8 +77,5 @@ public class MotivoCobroActo {
 				+ nombreMotivoCobroActo + ", descripcionMotivoCobroActo=" + descripcionMotivoCobroActo
 				+ ", estadoMotivoCobroActo=" + estadoMotivoCobroActo + "]";
 	}
-	
-	
-	
 
 }

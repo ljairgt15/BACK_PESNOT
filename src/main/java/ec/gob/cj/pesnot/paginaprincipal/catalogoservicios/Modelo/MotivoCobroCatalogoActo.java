@@ -18,28 +18,27 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
 public class MotivoCobroCatalogoActo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="IDMOTIVOCOBROCATALOGOACTO")
+	@Column(name = "IDMOTIVOCOBROCATALOGOACTO")
 	private Long idMotivoCobroCatalogoActo;
-	
+
 	@ManyToOne(targetEntity = ActoNotarial.class, fetch = FetchType.EAGER)
-	@JoinColumn(name = "IDCATALOGOACTONOTARIAL",nullable=false)
+	@JoinColumn(name = "IDCATALOGOACTONOTARIAL", nullable = false)
 	@JsonProperty(access = Access.READ_WRITE)
 	private ActoNotarial idCatalogoActoNotarial;
-	
+
 	@ManyToOne(targetEntity = MotivoCobroActo.class, fetch = FetchType.EAGER)
-	@JoinColumn(name = "IDMOTIVOCOBROACTO",nullable=false)
+	@JoinColumn(name = "IDMOTIVOCOBROACTO", nullable = false)
 	@JsonProperty(access = Access.READ_WRITE)
 	private MotivoCobroActo idMotivoCobroActo;
-	
-	@Column(name="VALORMOTIVOCOBROCATALOGOACTO")
+
+	@Column(name = "VALORMOTIVOCOBROCATALOGOACTO")
 	private Double valorMotivoCobroCatalogoActo;
-	
-	@Column(name="PORCENTAJEMOTIVOCOBROCATALOGOACTO")
+
+	@Column(name = "PORCENTAJEMOTIVOCOBROCATALOGOACTO")
 	private Double porcentajeMotivoCobroCatalogoActo;
-	
-	@Column(name="ESTADOMOTIVOCOBROCATALOGOACTO")
+
+	@Column(name = "ESTADOMOTIVOCOBROCATALOGOACTO")
 	private Boolean estadoMotivoCobroCatalogoActo;
-	
 
 	public MotivoCobroCatalogoActo() {
 		super();
@@ -113,6 +112,6 @@ public class MotivoCobroCatalogoActo {
 				+ ", valorMotivoCobroCatalogoActo=" + valorMotivoCobroCatalogoActo
 				+ ", porcentaajeMotivoCobroCatalogoActo=" + porcentajeMotivoCobroCatalogoActo
 				+ ", estadomotivoCobroCatalogoActo=" + estadoMotivoCobroCatalogoActo + "]";
-	}	
-	
+	}
+
 }

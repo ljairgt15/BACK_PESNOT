@@ -19,7 +19,7 @@ public class MotivoCobroActoService {
 	}
 
 	public List<MotivoCobroActo> getMotivoCobroActo() {
-
+		
 		return motivoRepo.findAll();
 	}
 
