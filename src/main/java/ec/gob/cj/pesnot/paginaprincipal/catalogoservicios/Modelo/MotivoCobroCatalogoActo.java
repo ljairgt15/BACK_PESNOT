@@ -47,14 +47,14 @@ public class MotivoCobroCatalogoActo {
 
 	public MotivoCobroCatalogoActo(Long idMotivoCobroCatalogoActo, ActoNotarial idCatalogoActoNotarial,
 			MotivoCobroActo idMotivoCobroActo, Double valorMotivoCobroCatalogoActo,
-			Double porcentaajeMotivoCobroCatalogoActo, Boolean estadomotivoCobroCatalogoActo) {
+			Double porcentajeMotivoCobroCatalogoActo, Boolean estadoMotivoCobroCatalogoActo) {
 		super();
 		this.idMotivoCobroCatalogoActo = idMotivoCobroCatalogoActo;
 		this.idCatalogoActoNotarial = idCatalogoActoNotarial;
 		this.idMotivoCobroActo = idMotivoCobroActo;
 		this.valorMotivoCobroCatalogoActo = valorMotivoCobroCatalogoActo;
-		this.porcentajeMotivoCobroCatalogoActo = porcentaajeMotivoCobroCatalogoActo;
-		this.estadoMotivoCobroCatalogoActo = estadomotivoCobroCatalogoActo;
+		this.porcentajeMotivoCobroCatalogoActo = porcentajeMotivoCobroCatalogoActo;
+		this.estadoMotivoCobroCatalogoActo = estadoMotivoCobroCatalogoActo;
 	}
 
 	public Long getIdMotivoCobroCatalogoActo() {
@@ -93,16 +93,16 @@ public class MotivoCobroCatalogoActo {
 		return porcentajeMotivoCobroCatalogoActo;
 	}
 
-	public void setPorcentajeMotivoCobroCatalogoActo(Double porcentaajeMotivoCobroCatalogoActo) {
-		this.porcentajeMotivoCobroCatalogoActo = porcentaajeMotivoCobroCatalogoActo;
+	public void setPorcentajeMotivoCobroCatalogoActo(Double porcentajeMotivoCobroCatalogoActo) {
+		this.porcentajeMotivoCobroCatalogoActo = porcentajeMotivoCobroCatalogoActo;
 	}
 
-	public Boolean getEstadomotivoCobroCatalogoActo() {
+	public Boolean getEstadoMotivoCobroCatalogoActo() {
 		return estadoMotivoCobroCatalogoActo;
 	}
 
-	public void setEstadomotivoCobroCatalogoActo(Boolean estadomotivoCobroCatalogoActo) {
-		this.estadoMotivoCobroCatalogoActo = estadomotivoCobroCatalogoActo;
+	public void setEstadoMotivoCobroCatalogoActo(Boolean estadoMotivoCobroCatalogoActo) {
+		this.estadoMotivoCobroCatalogoActo = estadoMotivoCobroCatalogoActo;
 	}
 
 	@Override
@@ -110,8 +110,10 @@ public class MotivoCobroCatalogoActo {
 		return "MotivoCobroCatalogoActo [idMotivoCobroCatalogoActo=" + idMotivoCobroCatalogoActo
 				+ ", idCatalogoActoNotarial=" + idCatalogoActoNotarial + ", idMotivoCobroActo=" + idMotivoCobroActo
 				+ ", valorMotivoCobroCatalogoActo=" + valorMotivoCobroCatalogoActo
-				+ ", porcentaajeMotivoCobroCatalogoActo=" + porcentajeMotivoCobroCatalogoActo
-				+ ", estadomotivoCobroCatalogoActo=" + estadoMotivoCobroCatalogoActo + "]";
+				+ ", porcentajeMotivoCobroCatalogoActo=" + porcentajeMotivoCobroCatalogoActo
+				+ ", estadoMotivoCobroCatalogoActo=" + estadoMotivoCobroCatalogoActo + "]";
 	}
+
+	
 
 }
