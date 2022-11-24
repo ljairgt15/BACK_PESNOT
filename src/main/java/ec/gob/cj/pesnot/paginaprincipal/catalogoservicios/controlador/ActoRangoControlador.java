@@ -32,7 +32,7 @@ public class ActoRangoControlador {
 		return service.getActoRangoTarifa();
 	}
 	
-	@GetMapping("/ActogetRangoTarifaById/{id}")
+	@GetMapping("/getActogetRangoTarifaById/{id}")
 	private Optional<ActoRangoTarifa> obtenerActoRangoTarifaById(@PathVariable("id") Long id)
 	{
 		return service.getActoRangoTarifaById(id);

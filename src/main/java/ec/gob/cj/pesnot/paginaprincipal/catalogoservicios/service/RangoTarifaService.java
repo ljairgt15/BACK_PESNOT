@@ -33,5 +33,9 @@ public class RangoTarifaService {
 	{
 		return rangoTarifarepo.findById(id);
 	}
+	public Optional<RangoTarifa> getRangoTarifaByMinMax(Double max, Double min)
+	{
+		return rangoTarifarepo.getRangoByMinMax(max,min);
+	}
 
 }
