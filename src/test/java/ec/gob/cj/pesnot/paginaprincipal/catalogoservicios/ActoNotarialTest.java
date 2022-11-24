@@ -237,7 +237,7 @@ public class ActoNotarialTest {
 	void probarModelo() {
 		Libro libro = new Libro();
 		BaseCobroActo base = new BaseCobroActo();
-		ActoNotarial acto = new ActoNotarial(1l, base, libro, "iar", "art 24", true, 2l, 2l, true, true, true, 1l,
+		ActoNotarial acto = new ActoNotarial(1l, base, libro, "iar", "art 24", true, 2l, 2l, true, true, true,12.50,
 				true);
 		acto.setIdCatalogoActoNotarial(4l);
 		acto.toString();

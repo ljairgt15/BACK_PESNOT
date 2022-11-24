@@ -57,7 +57,7 @@ public class ActoNotarial {
 	private Boolean estadoCatalogoActoNotarial;
 	
 	@Column(name="TARIFACATALOGOACTONOTARIAL")
-	private Long tarifaCatalogoActoNotarial;
+	private Double tarifaCatalogoActoNotarial;
 	
 	@Column(name="USACALCULOTABLACATALOGOACTONOTARIAL")
 	private Boolean usaCalculoTablaCatalogoActoNotarial;
@@ -78,7 +78,7 @@ public class ActoNotarial {
 			Boolean gravaIvaCatalogoActoNotarial, Long valorExoneracionCatalogoActoNotarial,
 			Long valorExtraCatalogoActoNotarial, Boolean habilitanteCiudadanoCatalogoActoNotarial,
 			Boolean tramiteUnilateralCatalogoActoNotarial, Boolean estadoCatalogoActoNotarial,
-			Long tarifaCatalogoActoNotarial, Boolean usaCalculoTablaCatalogoActoNotarial) {
+			Double tarifaCatalogoActoNotarial, Boolean usaCalculoTablaCatalogoActoNotarial) {
 		super();
 		this.idCatalogoActoNotarial = idCatalogoActoNotarial;
 		this.idBaseCobroActo = idBaseCobroActo;
@@ -253,14 +253,14 @@ public class ActoNotarial {
 
 
 
-	public Long getTarifaCatalogoActoNotarial() {
+	public Double getTarifaCatalogoActoNotarial() {
 		return tarifaCatalogoActoNotarial;
 	}
 
 
 
 
-	public void setTarifaCatalogoActoNotarial(Long tarifaCatalogoActoNotarial) {
+	public void setTarifaCatalogoActoNotarial(Double tarifaCatalogoActoNotarial) {
 		this.tarifaCatalogoActoNotarial = tarifaCatalogoActoNotarial;
 	}
 

@@ -17,10 +17,10 @@ public class RangoTarifa {
 	private Long idRangoTarifa;
 
 	@Column(name = "VALORMAXIMORANGOTARIFA")
-	private Long valorMaximoRangoTarifa;
+	private Double valorMaximoRangoTarifa;
 
 	@Column(name = "VALORMINIMORANGOTARIFA")
-	private Long valorMinimoRangoTarifa;
+	private Double valorMinimoRangoTarifa;
 
 	@Column(name = "ESTADORANGOTARIFA")
 	private Boolean estadoRangoTarifa;
@@ -29,7 +29,7 @@ public class RangoTarifa {
 		super();
 	}
 
-	public RangoTarifa(Long idRangoTarifa, Long valorMaximoRangoTarifa, Long valorMinimoRangoTarifa,
+	public RangoTarifa(Long idRangoTarifa, Double valorMaximoRangoTarifa, Double valorMinimoRangoTarifa,
 			Boolean estadoRangoTarifa) {
 		super();
 		this.idRangoTarifa = idRangoTarifa;
@@ -46,19 +46,19 @@ public class RangoTarifa {
 		this.idRangoTarifa = idRangoTarifa;
 	}
 
-	public Long getValorMaximoRangoTarifa() {
+	public Double getValorMaximoRangoTarifa() {
 		return valorMaximoRangoTarifa;
 	}
 
-	public void setValorMaximoRangoTarifa(Long valorMaximoRangoTarifa) {
+	public void setValorMaximoRangoTarifa(Double valorMaximoRangoTarifa) {
 		this.valorMaximoRangoTarifa = valorMaximoRangoTarifa;
 	}
 
-	public Long getValorMinimoRangoTarifa() {
+	public Double getValorMinimoRangoTarifa() {
 		return valorMinimoRangoTarifa;
 	}
 
-	public void setValorMinimoRangoTarifa(Long valorMinimoRangoTarifa) {
+	public void setValorMinimoRangoTarifa(Double valorMinimoRangoTarifa) {
 		this.valorMinimoRangoTarifa = valorMinimoRangoTarifa;
 	}
 
