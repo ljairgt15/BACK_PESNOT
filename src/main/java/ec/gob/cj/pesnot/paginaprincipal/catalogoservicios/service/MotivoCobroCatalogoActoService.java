@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.MotivoCobroCatalogoActo;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.repository.MotivoCobroCatalogoActoRepository;
@@ -28,5 +29,9 @@ public class MotivoCobroCatalogoActoService {
 	
 	public Optional<MotivoCobroCatalogoActo> getMotivoCobroCatalogoById(Long id){
 		return motivoCatalogoRepo.findById(id);
+	}
+	@Transactional
+	public void deshabilitar(String idCatalogo) {
+		motivoCatalogoRepo.deshabilitar(idCatalogo);
 	}
 }

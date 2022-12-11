@@ -37,6 +37,11 @@ public class ActoRangoControlador {
 	{
 		return service.getActoRangoTarifaById(id);
 	}
+	@GetMapping("/actualizar/{id}")
+	private void deshabilitar(@PathVariable("id") String id)
+	{
+		service.deshabilitar(id);
+	}
 	
 	@PostMapping("/saveActoRangoTarifa")
 	private ActoRangoTarifa ingresarRangoTarifa(@RequestBody ActoRangoTarifa arangoTafEntrante)

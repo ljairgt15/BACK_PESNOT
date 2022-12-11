@@ -43,6 +43,7 @@ public class RangoTarifaControlador {
 	{
 		return service.getRangoTarifaByMinMax(max, min);
 	}
+
 	
 	@PostMapping("/saveRangoTarifa")
 	private RangoTarifa ingresarRangoTarifa(@RequestBody RangoTarifa rangoTafEntrante)

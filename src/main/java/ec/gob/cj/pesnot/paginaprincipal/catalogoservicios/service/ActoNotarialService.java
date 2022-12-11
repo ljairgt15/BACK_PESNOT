@@ -30,6 +30,24 @@ public class ActoNotarialService {
 				
 	    return ListActosNotariales;		
      }
+	public List<ActoNotarial> getActosNotarialesActivos()
+    {		
+		List<ActoNotarial> ListActosNotariales= new ArrayList<>();
+		
+		ListActosNotariales= actoNotarialRepository.getActosActivos();
+				
+	    return ListActosNotariales;		
+    }
+	
+	public List<ActoNotarial> getActosConTarifas()
+    {		
+		List<ActoNotarial> ListActosNotariales= new ArrayList<>();
+		
+		ListActosNotariales= actoNotarialRepository.getActosConTarifa();
+				
+	    return ListActosNotariales;		
+    }
+	
 	public ActoNotarial ingresarActoNotarialL(ActoNotarial actNot) 
 	{		
 		return  actoNotarialRepository.save(actNot); 		

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.ActoRangoTarifa;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.repository.ActoRangoTarifaRepository;
@@ -25,6 +26,11 @@ public class ActoRangoTarifaService {
 
 	public ActoRangoTarifa ingresarActoRangoTarifa(ActoRangoTarifa actoRangoTarifa) {
 		return actoRangoTarifaRepository.save(actoRangoTarifa);
+	}
+	
+	@Transactional
+	public void deshabilitar(String idCatalogo) {
+		actoRangoTarifaRepository.deshabilitar(idCatalogo);
 	}
 
 	public Optional<ActoRangoTarifa> getActoRangoTarifaById(Long id) {
