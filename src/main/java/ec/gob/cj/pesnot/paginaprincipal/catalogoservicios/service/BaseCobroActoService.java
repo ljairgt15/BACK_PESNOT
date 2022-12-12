@@ -22,7 +22,7 @@ public class BaseCobroActoService {
 		return baseRepository.findAll();
 	}
 
-	public Optional<BaseCobroActo> actoById(Long idEntrante) {
+	public Optional<BaseCobroActo> baseById(Long idEntrante) {
 		return baseRepository.findById(idEntrante);
 	}
 

@@ -7,26 +7,56 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.ActoNotarial;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.AdjuntoLibro;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.BaseCobroActo;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.Libro;
+import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.MotivoCobroActo;
+import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.MotivoCobroCatalogoActo;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.controlador.ActoNotarialControlador;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.controlador.AdjuntoLibroControlador;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.controlador.BaseCobroActoControlador;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.controlador.LibroControlador;
+import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.controlador.MotivoCobroActoControlador;
+import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.controlador.MotivoCobroCatalogoActoControlador;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.repository.ActoNotarialRepository;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.repository.AdjuntoLibroRepository;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.repository.BaseCobroActoRepository;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.repository.LibroRepository;
+import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.repository.MotivoCobroActoRepository;
+import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.repository.MotivoCobroCatalogoActoRepository;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.service.ActoNotarialService;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.service.AdjuntoLibroService;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.service.BaseCobroActoService;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.service.LibroService;
+import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.service.MotivoCobroActoService;
+import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.service.MotivoCobroCatalogoActoService;
 
-@SpringBootTest
-public class ActoNotarialTest {
+public class MotivoCobroCatalogoActoTest {
+	@Autowired
+	@Spy
+	private MotivoCobroActoRepository motivoRepo = Mockito.mock(MotivoCobroActoRepository.class);
+
+	@Autowired
+	@Spy
+	private MotivoCobroActoService motivoSvc = Mockito.mock(MotivoCobroActoService.class);
+
+	@Autowired
+	@Spy
+	private MotivoCobroActoControlador motivoCont = Mockito.mock(MotivoCobroActoControlador.class);
+
+	@Autowired
+	@Spy
+	private MotivoCobroCatalogoActoRepository motivoCatRepo = Mockito.mock(MotivoCobroCatalogoActoRepository.class);
+
+	@Autowired
+	@Spy
+	private MotivoCobroCatalogoActoService motivoCatSvc = Mockito.mock(MotivoCobroCatalogoActoService.class);
+
+	@Autowired
+	@Spy
+	private MotivoCobroCatalogoActoControlador motivoCatCont = Mockito.mock(MotivoCobroCatalogoActoControlador.class);
 
 	@Autowired
 	@Spy
@@ -76,55 +106,16 @@ public class ActoNotarialTest {
 	private ActoNotarialControlador actNotCont = Mockito.mock(ActoNotarialControlador.class);
 
 	@Test
-	@DisplayName("Debe pasar cuando se obtenga una lista no nula de actos")
-	void listarActos() {
-		assertNotNull(actNotRepo.findAll());
-		assertNotNull(actNotSvc.getActosNotariales());
-		assertNotNull(actNotCont.obtenerActosNotariales());
+	@DisplayName("Debe pasar cuando se obtenga una lista de base cobros y no sea nulo")
+	void listarLibros() {
+		assertNotNull(motivoCatRepo.findAll());
+		assertNotNull(motivoCatSvc.getMotivoCobroCatalogo());
+		assertNotNull(motivoCatCont.getMotivoCobroCatalogo());
 	}
 
 	@Test
-	@DisplayName("Debe pasar cuando se obtenga una lista no nula de actos")
-	void guardarActos() {
-		AdjuntoLibro adjuntoGuardado = new AdjuntoLibro();
-		BaseCobroActo baseObj = new BaseCobroActo();
-		baseObj.setNombreBaseCobroActo("por acto");
-		baseObj.setDescripcionBaseCobroActo("por acto notarial");
-		baseObj.setEstadoBaseCobroActo(true);
-		baseObj = baseRepo.save(baseObj);
-		adjuntoGuardado.setNombreAdjuntoLibro("nuevo");
-		adjuntoGuardado.setArchivoAdjuntoLibro((byte) 1);
-		adjuntoGuardado.setObservacionAdjuntoLibro("111");
-		adjuntoGuardado = adjLibroRepo.save(adjuntoGuardado);
-		Libro libroGuardado = new Libro();
-		libroGuardado.setIdAdjuntoLibro(adjuntoGuardado);
-		libroGuardado.setEstadoActivo(false);
-		libroGuardado.setIdTipoLibro(1l);
-		libroGuardado.setNombreTipoLibro("jair");
-		libroGuardado = libroRepo.save(libroGuardado);
-		ActoNotarial actoNot = new ActoNotarial();
-		actoNot.setArticuloCatalogoActoNotarial("art 22");
-		actoNot.setEstadoCatalogoActoNotarial(false);
-		actoNot.setGravaIvaCatalogoActoNotarial(true);
-		actoNot.setHabilitanteCiudadanoCatalogoActoNotarial(false);
-		actoNot.setIdBaseCobroActo(baseObj);
-		actoNot.setIdTipoLibro(libroGuardado);
-		actoNot.setNombreCatalogoActoNotarial("multas");
-		actoNot.setTramiteUnilateralCatalogoActoNotarial(true);
-		actoNot.setValorExoneracionCatalogoActoNotarial(1l);
-		actoNot.setValorExtraCatalogoActoNotarial(1l);
-		actoNot = actNotRepo.save(actoNot);
-		assertNotNull(actoNot);
-		actoNot = actNotSvc.ingresarActoNotarialL(actoNot);
-		assertNotNull(actoNot);
-		actoNot = actNotCont.guardarActNot(actoNot);
-		assertNotNull(actoNot);
-	}
-
-	@Test
-
-	@DisplayName("Debe pasar cuado se obtenga la lista de actos por id")
-	void getActoNotById() {
+	@DisplayName("Debe pasar cuando se obtenga la base de cobro guardado y no sea nulo ")
+	void guardarLibro() {
 
 		AdjuntoLibro adjuntoGuardado = new AdjuntoLibro();
 		BaseCobroActo baseObj = new BaseCobroActo();
@@ -154,22 +145,88 @@ public class ActoNotarialTest {
 		actoNot.setValorExoneracionCatalogoActoNotarial(1l);
 		actoNot.setValorExtraCatalogoActoNotarial(1l);
 		actoNot = actNotRepo.save(actoNot);
+
+		MotivoCobroActo motivo = new MotivoCobroActo();
+		motivo.setNombreMotivoCobroActo(null);
+		motivo.setDescripcionMotivoCobroActo(null);
+		motivo.setEstadoMotivoCobroActo(true);
+		MotivoCobroActo motivoS = motivoRepo.save(motivo);
+
+		MotivoCobroCatalogoActo motivoCat = new MotivoCobroCatalogoActo();
+		motivoCat.setEstadoMotivoCobroCatalogoActo(true);
+		motivoCat.setPorcentajeMotivoCobroCatalogoActo(new Double(10));
+		motivoCat.setValorMotivoCobroCatalogoActo(new Double(40));
+		motivoCat.setIdCatalogoActoNotarial(actoNot);
+		motivoCat.setIdMotivoCobroActo(motivoS);
+		MotivoCobroCatalogoActo motivoNot = motivoCatRepo.save(motivoCat);
+		assertNotNull(motivoNot);
+		motivoNot = motivoCatSvc.ingresarMotivoCobroCatalogoActo(motivoCat);
+		assertNotNull(actoNot);
+		motivoNot = motivoCatCont.guardarMotivoCobroCatalogoActo(motivoCat);
+		assertNotNull(actoNot);
+
+	}
+
+	@Test
+	@DisplayName("Debe pasar cuando se obtenga un objeto adjuntosLibro")
+	void getLibroById() {
+
+		AdjuntoLibro adjuntoGuardado = new AdjuntoLibro();
+		BaseCobroActo baseObj = new BaseCobroActo();
+		baseObj.setNombreBaseCobroActo("por acto");
+		baseObj.setDescripcionBaseCobroActo("por acto notarial");
+		baseObj.setEstadoBaseCobroActo(true);
+		baseObj = baseRepo.save(baseObj);
+		adjuntoGuardado.setNombreAdjuntoLibro("nuevo");
+		adjuntoGuardado.setArchivoAdjuntoLibro((byte) 1);
+		adjuntoGuardado.setObservacionAdjuntoLibro("111");
+		adjuntoGuardado = adjLibroRepo.save(adjuntoGuardado);
+		Libro libroGuardado = new Libro();
+		libroGuardado.setIdAdjuntoLibro(adjuntoGuardado);
+		libroGuardado.setEstadoActivo(false);
+		libroGuardado.setIdTipoLibro(1l);
+		libroGuardado.setNombreTipoLibro("jair");
+		libroGuardado = libroRepo.save(libroGuardado);
+		ActoNotarial actoNot = new ActoNotarial();
+		actoNot.setArticuloCatalogoActoNotarial("art 22");
+		actoNot.setEstadoCatalogoActoNotarial(false);
+		actoNot.setGravaIvaCatalogoActoNotarial(true);
+		actoNot.setHabilitanteCiudadanoCatalogoActoNotarial(false);
+		actoNot.setIdBaseCobroActo(baseObj);
+		actoNot.setIdTipoLibro(libroGuardado);
+		actoNot.setNombreCatalogoActoNotarial("multas");
+		actoNot.setTramiteUnilateralCatalogoActoNotarial(true);
+		actoNot.setValorExoneracionCatalogoActoNotarial(1l);
+		actoNot.setValorExtraCatalogoActoNotarial(1l);
+		actoNot = actNotRepo.save(actoNot);
+
+		MotivoCobroActo motivo = new MotivoCobroActo();
+		motivo.setNombreMotivoCobroActo(null);
+		motivo.setDescripcionMotivoCobroActo(null);
+		motivo.setEstadoMotivoCobroActo(true);
+		MotivoCobroActo motivoS = motivoRepo.save(motivo);
+
+		MotivoCobroCatalogoActo motivoCat = new MotivoCobroCatalogoActo();
+		motivoCat.setEstadoMotivoCobroCatalogoActo(true);
+		motivoCat.setPorcentajeMotivoCobroCatalogoActo(new Double(10));
+		motivoCat.setValorMotivoCobroCatalogoActo(new Double(40));
+		motivoCat.setIdCatalogoActoNotarial(actoNot);
+		motivoCat.setIdMotivoCobroActo(motivoS);
+
 		assertNotNull(actNotRepo.findById(actoNot.getIdCatalogoActoNotarial()));
 		assertNotNull(actNotSvc.getActoNotarialById(actoNot.getIdCatalogoActoNotarial()));
 		assertNotNull(actNotCont.obtenerActoNotarialPorId(actoNot.getIdCatalogoActoNotarial()));
-
 	}
 
 	@Test
-
-	@DisplayName("Debe pasar cuado se obtenga la lista de actos por nombre")
-	void getActoNotByNombre() {
+	@DisplayName("Debe pasar cuando se obtenga un objeto adjuntosLibro")
+	void desha() {
 		AdjuntoLibro adjuntoGuardado = new AdjuntoLibro();
 		BaseCobroActo baseObj = new BaseCobroActo();
 		baseObj.setNombreBaseCobroActo("por acto");
 		baseObj.setDescripcionBaseCobroActo("por acto notarial");
 		baseObj.setEstadoBaseCobroActo(true);
-		baseObj=baseRepo.save(baseObj);
+		baseObj = baseRepo.save(baseObj);
 		adjuntoGuardado.setNombreAdjuntoLibro("nuevo");
 		adjuntoGuardado.setArchivoAdjuntoLibro((byte) 1);
 		adjuntoGuardado.setObservacionAdjuntoLibro("111");
@@ -192,115 +249,34 @@ public class ActoNotarialTest {
 		actoNot.setValorExoneracionCatalogoActoNotarial(1l);
 		actoNot.setValorExtraCatalogoActoNotarial(1l);
 		actoNot = actNotRepo.save(actoNot);
-		assertNotNull(actNotRepo.getActosLike(actoNot.getNombreCatalogoActoNotarial()));
-		assertNotNull(actNotSvc.getActosLike(actoNot.getNombreCatalogoActoNotarial()));
-		assertNotNull(actNotCont.obtenerActoLikeNombre(actoNot.getNombreCatalogoActoNotarial()));
-	}
 
-	@Test
+		MotivoCobroActo motivo = new MotivoCobroActo();
+		motivo.setNombreMotivoCobroActo(null);
+		motivo.setDescripcionMotivoCobroActo(null);
+		motivo.setEstadoMotivoCobroActo(true);
+		MotivoCobroActo motivoS = motivoRepo.save(motivo);
 
-	@DisplayName("Debe pasar cuado se obtenga la lista de actos por nombre")
-	void getActoNotByLibro() {
-		BaseCobroActo baseObj = new BaseCobroActo();
-		baseObj.setNombreBaseCobroActo("por acto");
-		baseObj.setDescripcionBaseCobroActo("por acto notarial");
-		baseObj.setEstadoBaseCobroActo(true);
-		baseObj=baseRepo.save(baseObj);
-		AdjuntoLibro adjuntoGuardado = new AdjuntoLibro();
-		adjuntoGuardado.setNombreAdjuntoLibro("nuevo");
-		adjuntoGuardado.setArchivoAdjuntoLibro((byte) 1);
-		adjuntoGuardado.setObservacionAdjuntoLibro("111");
-		adjuntoGuardado = adjLibroRepo.save(adjuntoGuardado);
-		Libro libroGuardado = new Libro();
-		libroGuardado.setIdAdjuntoLibro(adjuntoGuardado);
-		libroGuardado.setEstadoActivo(false);
-		libroGuardado.setIdTipoLibro(1l);
-		libroGuardado.setNombreTipoLibro("jair");
-		libroGuardado = libroRepo.save(libroGuardado);
-		ActoNotarial actoNot = new ActoNotarial();
-		actoNot.setArticuloCatalogoActoNotarial("art 22");
-		actoNot.setEstadoCatalogoActoNotarial(false);
-		actoNot.setGravaIvaCatalogoActoNotarial(true);
-		actoNot.setHabilitanteCiudadanoCatalogoActoNotarial(false);
-		actoNot.setIdBaseCobroActo(baseObj);
-		actoNot.setIdTipoLibro(libroGuardado);
-		actoNot.setNombreCatalogoActoNotarial("multas");
-		actoNot.setTramiteUnilateralCatalogoActoNotarial(true);
-		actoNot.setValorExoneracionCatalogoActoNotarial(1l);
-		actoNot.setValorExtraCatalogoActoNotarial(1l);
-		actoNot = actNotRepo.save(actoNot);
-		assertNotNull(actNotRepo.getActosByIdLibro(libroGuardado.getIdTipoLibro().toString()));
-		assertNotNull(actNotSvc.getActosLibros(libroGuardado.getIdTipoLibro().toString()));
-		assertNotNull(actNotCont.obtenerActoLibro(libroGuardado.getIdTipoLibro().toString()));
-	}
-
-	@Test
-
-	@DisplayName("Debe pasar cuado se obtenga la lista de actos por nombre")
-	void getLibroConActos() {
-		BaseCobroActo baseObj = new BaseCobroActo();
-		baseObj.setNombreBaseCobroActo("por acto");
-		baseObj.setDescripcionBaseCobroActo("por acto notarial");
-		baseObj.setEstadoBaseCobroActo(true);
-		baseObj=baseRepo.save(baseObj);
-		AdjuntoLibro adjuntoGuardado = new AdjuntoLibro();
-		adjuntoGuardado.setNombreAdjuntoLibro("nuevo");
-		adjuntoGuardado.setArchivoAdjuntoLibro((byte) 1);
-		adjuntoGuardado.setObservacionAdjuntoLibro("111");
-		adjuntoGuardado = adjLibroRepo.save(adjuntoGuardado);
-		Libro libroGuardado = new Libro();
-		libroGuardado.setIdAdjuntoLibro(adjuntoGuardado);
-		libroGuardado.setEstadoActivo(false);
-		libroGuardado.setIdTipoLibro(1l);
-		libroGuardado.setNombreTipoLibro("jair");
-		libroGuardado = libroRepo.save(libroGuardado);
-		ActoNotarial actoNot = new ActoNotarial();
-		actoNot.setArticuloCatalogoActoNotarial("art 22");
-		actoNot.setEstadoCatalogoActoNotarial(false);
-		actoNot.setGravaIvaCatalogoActoNotarial(true);
-		actoNot.setHabilitanteCiudadanoCatalogoActoNotarial(false);
-		actoNot.setIdBaseCobroActo(baseObj);
-		actoNot.setIdTipoLibro(libroGuardado);
-		actoNot.setNombreCatalogoActoNotarial("multas");
-		actoNot.setTramiteUnilateralCatalogoActoNotarial(true);
-		actoNot.setValorExoneracionCatalogoActoNotarial(1l);
-		actoNot.setValorExtraCatalogoActoNotarial(1l);
-		actoNot = actNotRepo.save(actoNot);
-		assertNotNull(libroRepo.getAllLibrosWithActosN());
-		assertNotNull(libroSvc.getLibrosWithActN());
-		assertNotNull(libroCont.obtenerLibrosConActosN());
+		MotivoCobroCatalogoActo motivoCat = new MotivoCobroCatalogoActo();
+		motivoCat.setEstadoMotivoCobroCatalogoActo(true);
+		motivoCat.setPorcentajeMotivoCobroCatalogoActo(new Double(10));
+		motivoCat.setValorMotivoCobroCatalogoActo(new Double(40));
+		motivoCat.setIdCatalogoActoNotarial(actoNot);
+		motivoCat.setIdMotivoCobroActo(motivoS);
+		
+		assertNotNull(motivoCatRepo.findById(motivoCat.getIdMotivoCobroCatalogoActo()));
+		assertNotNull(motivoCatSvc.getMotivoCobroCatalogoById(motivoCat.getIdMotivoCobroCatalogoActo()));
+		assertNotNull(motivoCatCont.getMotivoCobroCatalogoById(motivoCat.getIdMotivoCobroCatalogoActo()));
 
 	}
 
 	@Test
-
-	@DisplayName("Debe pasar cuando se pruebe todo lo del modelo")
-	void probarModelo() {
-		Libro libro = new Libro();
-		BaseCobroActo baseObj = new BaseCobroActo();
-		baseObj.setNombreBaseCobroActo("por acto");
-		baseObj.setDescripcionBaseCobroActo("por acto notarial");
-		baseObj.setEstadoBaseCobroActo(true);
-		baseObj=baseRepo.save(baseObj);
-		ActoNotarial acto = new ActoNotarial(1l, baseObj, libro, "iar", "art 24", true, 2l, 2l, true, true, true, 12.50,
-				true);
-		acto.setIdCatalogoActoNotarial(4l);
-		acto.toString();
-		acto.getArticuloCatalogoActoNotarial();
-		acto.getEstadoCatalogoActoNotarial();
-		acto.getGravaIvaCatalogoActoNotarial();
-		acto.getHabilitanteCiudadanoCatalogoActoNotarial();
-		acto.getIdBaseCobroActo();
-		acto.getIdCatalogoActoNotarial();
-		acto.getIdTipoLibro();
-		acto.getNombreCatalogoActoNotarial();
-		acto.getTramiteUnilateralCatalogoActoNotarial();
-		acto.getValorExoneracionCatalogoActoNotarial();
-		acto.getValorExtraCatalogoActoNotarial();
-		acto.getTarifaCatalogoActoNotarial();
-		acto.getUsaCalculoTablaCatalogoActoNotarial();
-		acto.setTarifaCatalogoActoNotarial(null);
-		acto.setUsaCalculoTablaCatalogoActoNotarial(null);
+	@DisplayName("La prueba pasa cuando se instancie todo lo relacionado al modelo")
+	void modeloAdjuntoLibro() {
+		MotivoCobroActo motivo = new MotivoCobroActo();
+		motivo.setNombreMotivoCobroActo(null);
+		motivo.setDescripcionMotivoCobroActo(null);
+		motivo.setEstadoMotivoCobroActo(true);
+		MotivoCobroActo motivoS = motivoRepo.save(motivo);
 	}
 
 }

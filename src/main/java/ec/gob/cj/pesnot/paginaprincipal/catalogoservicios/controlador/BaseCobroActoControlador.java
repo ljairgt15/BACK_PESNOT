@@ -36,7 +36,7 @@ public class BaseCobroActoControlador {
 	@GetMapping("/getBaseById/{id}")
 	public Optional<BaseCobroActo> obtenerActoPorId(@PathVariable ("id") Long id) {
 		
-		return baseCobroService.actoById(id);	
+		return baseCobroService.baseById(id);	
 	}
 	@GetMapping("/getBaseCobroByNombre/{nombre}")
 	public Optional<BaseCobroActo> obtenerBaseCobroByNombre(@PathVariable("nombre") String id) {

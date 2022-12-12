@@ -40,6 +40,17 @@ public class BaseCobroActo {
 		this.descripcionBaseCobroActo = descripcionBaseCobroActo;
 		this.estadoBaseCobroActo = estadoBaseCobroActo;
 	}
+	
+	
+
+
+
+	public BaseCobroActo(String nombreBaseCobroActo, String descripcionBaseCobroActo, boolean estadoBaseCobroActo) {
+		super();
+		this.nombreBaseCobroActo = nombreBaseCobroActo;
+		this.descripcionBaseCobroActo = descripcionBaseCobroActo;
+		this.estadoBaseCobroActo = estadoBaseCobroActo;
+	}
 
 
 
