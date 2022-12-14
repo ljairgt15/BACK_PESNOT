@@ -1,21 +1,29 @@
 package ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.EntityManager;
+
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.AuditoriaAdministracionPesnot;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.Libro;
+import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.repository.AuditoriaAdministracionPesnotRepository;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.repository.LibroRepository;
 
 @Service
 public class LibroService {
-
 	public LibroRepository libroRepository;
+	public AuditoriaAdministracionPesnotRepository auditoriaRepo;
 
-	public LibroService(LibroRepository libroRepository) {
+	public LibroService(LibroRepository libroRepository, AuditoriaAdministracionPesnotRepository auditoriaRepo) {
 		super();
 		this.libroRepository = libroRepository;
+		this.auditoriaRepo=auditoriaRepo;
 	}
 
 	public List<Libro> getLibros() {
@@ -44,4 +52,24 @@ public class LibroService {
 		return libroRepository.findById(idEntrante);
 	}
 
+
+	public Libro ingresarAdministracion(Libro libroEntrante) {
+		Optional<Libro> libroAntiguo = libroRepository.findById(libroEntrante.getIdTipoLibro());
+		String datosAntiguos = libroAntiguo.toString();
+		AuditoriaAdministracionPesnot audi = new AuditoriaAdministracionPesnot();
+		try {
+			Libro libroNuevo = libroRepository.save(libroEntrante);
+			String datosNuevos = libroNuevo.toString();
+			audi.setNombreTabla(libroNuevo.getClass().getSimpleName());
+			audi.setAccion("MODIFICACIÓN");
+			audi.setValoresAnteriores(datosAntiguos);
+			audi.setValoresActuales(datosNuevos);
+			audi = auditoriaRepo.save(audi);	
+			return libroNuevo;
+		} catch (Exception e) {
+			System.out.println(">>>> ERROR:JPAGenericDAO:update " + e);
+		}	
+		
+		return null;
+	}
 }

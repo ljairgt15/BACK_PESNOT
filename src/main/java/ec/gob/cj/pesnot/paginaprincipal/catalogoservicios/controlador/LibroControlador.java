@@ -17,45 +17,51 @@ import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.service.LibroService;
 @RestController
 @RequestMapping("Libros")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-public class LibroControlador {	
-	
+public class LibroControlador {
+
 	@Autowired
 	private LibroService libroService;
 
 	public LibroControlador(LibroService libroService) {
 		super();
 		this.libroService = libroService;
-	}	
-	
+	}
+
 	@GetMapping("/getLibros")
-	public List<Libro> obtenerLibros()
-	{		
-	List<Libro> ListaLibros = libroService.getLibros();	
-	return ListaLibros;	
+	public List<Libro> obtenerLibros() {
+		List<Libro> ListaLibros = libroService.getLibros();
+		return ListaLibros;
 	}
+
 	@GetMapping("/getLibrosConActosN")
-	public List<Libro> obtenerLibrosConActosN()
-	{		
-	List<Libro> ListaLibros = libroService.getLibrosWithActN();
-	return ListaLibros;	
+	public List<Libro> obtenerLibrosConActosN() {
+		List<Libro> ListaLibros = libroService.getLibrosWithActN();
+		return ListaLibros;
 	}
+
 	@GetMapping("/getLibrosActivos")
-	public List<Libro> obtenerLibrosActivos()
-	{		
-	List<Libro> ListaLibros = libroService.getLibrosActivos();	
-	return ListaLibros;	
+	public List<Libro> obtenerLibrosActivos() {
+		List<Libro> ListaLibros = libroService.getLibrosActivos();
+		return ListaLibros;
 	}
-	
+
 	@PostMapping("/saveLibros")
 	public Libro guardarLibro(@RequestBody Libro objLibro) {
-		
-		return libroService.ingresarLibrosL(objLibro);		
+
+		return libroService.ingresarLibrosL(objLibro);
 	}
-	
+
+	@PostMapping("/saveLibrosAdministracion")
+	public Libro guardarLibroAdmin(@RequestBody Libro objLibro) {
+
+		return libroService.ingresarAdministracion(objLibro);
+	}
+
 	@GetMapping("/getLibroById/{id}")
 	public Optional<Libro> obtenerLibroById(@PathVariable("id") Long id) {
 		return libroService.libroById(id);
 	}
+
 	@GetMapping("/getLibroByNombre/{nombre}")
 	public Optional<Libro> obtenerLibroByNombre(@PathVariable("nombre") String id) {
 		return libroService.getLibroByNombre(id);
