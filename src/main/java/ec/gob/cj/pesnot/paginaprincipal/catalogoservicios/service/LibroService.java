@@ -20,10 +20,11 @@ public class LibroService {
 	public LibroRepository libroRepository;
 	public AuditoriaAdministracionPesnotRepository auditoriaRepo;
 
-	public LibroService(LibroRepository libroRepository, AuditoriaAdministracionPesnotRepository auditoriaRepo) {
+	//public LibroService(LibroRepository libroRepository, AuditoriaAdministracionPesnotRepository auditoriaRepo) {
+    public LibroService(LibroRepository libroRepository) {
 		super();
 		this.libroRepository = libroRepository;
-		this.auditoriaRepo=auditoriaRepo;
+		//this.auditoriaRepo=auditoriaRepo;
 	}
 
 	public List<Libro> getLibros() {
@@ -52,24 +53,22 @@ public class LibroService {
 		return libroRepository.findById(idEntrante);
 	}
 
-
-	public Libro ingresarAdministracion(Libro libroEntrante) {
-		Optional<Libro> libroAntiguo = libroRepository.findById(libroEntrante.getIdTipoLibro());
-		String datosAntiguos = libroAntiguo.toString();
-		AuditoriaAdministracionPesnot audi = new AuditoriaAdministracionPesnot();
-		try {
-			Libro libroNuevo = libroRepository.save(libroEntrante);
-			String datosNuevos = libroNuevo.toString();
-			audi.setNombreTabla(libroNuevo.getClass().getSimpleName());
-			audi.setAccion("MODIFICACIÓN");
-			audi.setValoresAnteriores(datosAntiguos);
-			audi.setValoresActuales(datosNuevos);
-			audi = auditoriaRepo.save(audi);	
-			return libroNuevo;
-		} catch (Exception e) {
-			System.out.println(">>>> ERROR:JPAGenericDAO:update " + e);
-		}	
-		
-		return null;
-	}
+	/*
+	 * public Optional<Libro> ingresarAdministracion(Libro libroEntrante) {
+	 * Optional<Libro> libroAntiguo =
+	 * libroRepository.findById(libroEntrante.getIdTipoLibro()); String
+	 * datosAntiguos = libroAntiguo.toString(); AuditoriaAdministracionPesnot audi =
+	 * new AuditoriaAdministracionPesnot();
+	 * 
+	 * try { Libro libroNuevo = libroRepository.save(libroEntrante);
+	 * 
+	 * String datosNuevos = libroAntiguo.toString();
+	 * audi.setNombreTabla(libroAntiguo.getClass().getSimpleName());
+	 * audi.setAccion("MODIFICACIÓN"); audi.setValoresAnteriores(datosAntiguos);
+	 * audi.setValoresActuales(datosNuevos); audi = auditoriaRepo.save(audi); return
+	 * libroAntiguo; } catch (Exception e) {
+	 * System.out.println(">>>> ERROR:JPAGenericDAO:update " + e); }
+	 * 
+	 * return null; }
+	 */
 }

@@ -52,7 +52,7 @@ public class LibroControlador {
 	}
 
 	@PostMapping("/saveLibrosAdministracion")
-	public Libro guardarLibroAdmin(@RequestBody Libro objLibro) {
+	public Optional<Libro> guardarLibroAdmin(@RequestBody Libro objLibro) {
 
 		return libroService.ingresarAdministracion(objLibro);
 	}
