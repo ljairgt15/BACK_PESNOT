@@ -108,10 +108,4 @@ public class BaseCobroActo {
 				+ ", descripcionBaseCobroActo=" + descripcionBaseCobroActo + ", estadoBaseCobroActo="
 				+ estadoBaseCobroActo + "]";
 	}
-	
-	
-	
-	
-	
-
 }

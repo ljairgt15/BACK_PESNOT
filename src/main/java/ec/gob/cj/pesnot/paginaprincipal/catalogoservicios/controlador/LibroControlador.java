@@ -51,11 +51,12 @@ public class LibroControlador {
 		return libroService.ingresarLibrosL(objLibro);
 	}
 
-	@PostMapping("/saveLibrosAdministracion")
-	public Optional<Libro> guardarLibroAdmin(@RequestBody Libro objLibro) {
-
-		return libroService.ingresarAdministracion(objLibro);
-	}
+	/*
+	 * @PostMapping("/saveLibrosAdministracion") public Optional<Libro>
+	 * guardarLibroAdmin(@RequestBody Libro objLibro) {
+	 * 
+	 * return libroService.ingresarAdministracion(objLibro); }
+	 */
 
 	@GetMapping("/getLibroById/{id}")
 	public Optional<Libro> obtenerLibroById(@PathVariable("id") Long id) {

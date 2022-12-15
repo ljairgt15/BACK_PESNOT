@@ -18,7 +18,7 @@ import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.repository.LibroReposi
 @Service
 public class LibroService {
 	public LibroRepository libroRepository;
-	public AuditoriaAdministracionPesnotRepository auditoriaRepo;
+	//public AuditoriaAdministracionPesnotRepository auditoriaRepo;
 
 	//public LibroService(LibroRepository libroRepository, AuditoriaAdministracionPesnotRepository auditoriaRepo) {
     public LibroService(LibroRepository libroRepository) {
@@ -46,6 +46,7 @@ public class LibroService {
 	}
 
 	public Libro ingresarLibrosL(Libro libro) {
+		
 		return libroRepository.save(libro);
 	}
 

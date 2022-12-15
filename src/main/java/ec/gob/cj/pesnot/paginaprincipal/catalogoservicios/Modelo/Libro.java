@@ -1,7 +1,5 @@
 package ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo;
 
-
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
@@ -47,6 +44,16 @@ public class Libro {
 	public Libro(Long idTipoLibro, AdjuntoLibro idAdjuntoLibro, String nombreTipoLibro, boolean estadoActivo) {
 		super();
 		this.idTipoLibro = idTipoLibro;
+		this.idAdjuntoLibro = idAdjuntoLibro;
+		this.nombreTipoLibro = nombreTipoLibro;
+		this.estadoActivo = estadoActivo;
+	}
+	
+
+
+
+	public Libro(AdjuntoLibro idAdjuntoLibro, String nombreTipoLibro, boolean estadoActivo) {
+		super();
 		this.idAdjuntoLibro = idAdjuntoLibro;
 		this.nombreTipoLibro = nombreTipoLibro;
 		this.estadoActivo = estadoActivo;
