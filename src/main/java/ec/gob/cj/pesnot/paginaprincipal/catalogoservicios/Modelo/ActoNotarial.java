@@ -32,6 +32,11 @@ public class ActoNotarial {
 	@JsonProperty(access = Access.READ_WRITE)
 	private Libro idTipoLibro;
 	
+	@ManyToOne(targetEntity = ClasificacionNumeroIntervinienteActo.class, fetch = FetchType.EAGER)
+	@JoinColumn(name = "IDCLASIFICACIONNUMEROINTERVIENTEACTO",nullable=false)
+	@JsonProperty(access = Access.READ_WRITE)
+	private ClasificacionNumeroIntervinienteActo idClasificacionNumeroInterveniente;
+	
 	@Column(name = "NOMBRECATALOGOACTONOTARIAL")
 	private String nombreCatalogoActoNotarial;
 
@@ -62,27 +67,28 @@ public class ActoNotarial {
 	@Column(name="USACALCULOTABLACATALOGOACTONOTARIAL")
 	private Boolean usaCalculoTablaCatalogoActoNotarial;
 	
+	
+	
 
 	
 	
 	public ActoNotarial() {
 		super();
 	}
-	
-	
-
 
 
 	public ActoNotarial(Long idCatalogoActoNotarial, BaseCobroActo idBaseCobroActo, Libro idTipoLibro,
-			String nombreCatalogoActoNotarial, String articuloCatalogoActoNotarial,
-			Boolean gravaIvaCatalogoActoNotarial, Long valorExoneracionCatalogoActoNotarial,
-			Long valorExtraCatalogoActoNotarial, Boolean habilitanteCiudadanoCatalogoActoNotarial,
-			Boolean tramiteUnilateralCatalogoActoNotarial, Boolean estadoCatalogoActoNotarial,
-			Double tarifaCatalogoActoNotarial, Boolean usaCalculoTablaCatalogoActoNotarial) {
+			ClasificacionNumeroIntervinienteActo idClasificacionNumeroInterveniente, String nombreCatalogoActoNotarial,
+			String articuloCatalogoActoNotarial, Boolean gravaIvaCatalogoActoNotarial,
+			Long valorExoneracionCatalogoActoNotarial, Long valorExtraCatalogoActoNotarial,
+			Boolean habilitanteCiudadanoCatalogoActoNotarial, Boolean tramiteUnilateralCatalogoActoNotarial,
+			Boolean estadoCatalogoActoNotarial, Double tarifaCatalogoActoNotarial,
+			Boolean usaCalculoTablaCatalogoActoNotarial) {
 		super();
 		this.idCatalogoActoNotarial = idCatalogoActoNotarial;
 		this.idBaseCobroActo = idBaseCobroActo;
 		this.idTipoLibro = idTipoLibro;
+		this.idClasificacionNumeroInterveniente = idClasificacionNumeroInterveniente;
 		this.nombreCatalogoActoNotarial = nombreCatalogoActoNotarial;
 		this.articuloCatalogoActoNotarial = articuloCatalogoActoNotarial;
 		this.gravaIvaCatalogoActoNotarial = gravaIvaCatalogoActoNotarial;
@@ -94,6 +100,7 @@ public class ActoNotarial {
 		this.tarifaCatalogoActoNotarial = tarifaCatalogoActoNotarial;
 		this.usaCalculoTablaCatalogoActoNotarial = usaCalculoTablaCatalogoActoNotarial;
 	}
+
 
 
 
@@ -106,9 +113,13 @@ public class ActoNotarial {
 
 
 
+
+
 	public void setIdCatalogoActoNotarial(Long idCatalogoActoNotarial) {
 		this.idCatalogoActoNotarial = idCatalogoActoNotarial;
 	}
+
+
 
 
 
@@ -120,9 +131,13 @@ public class ActoNotarial {
 
 
 
+
+
 	public void setIdBaseCobroActo(BaseCobroActo idBaseCobroActo) {
 		this.idBaseCobroActo = idBaseCobroActo;
 	}
+
+
 
 
 
@@ -134,9 +149,32 @@ public class ActoNotarial {
 
 
 
+
+
 	public void setIdTipoLibro(Libro idTipoLibro) {
 		this.idTipoLibro = idTipoLibro;
 	}
+
+
+
+
+
+
+	public ClasificacionNumeroIntervinienteActo getIdClasificacionNumeroInterveniente() {
+		return idClasificacionNumeroInterveniente;
+	}
+
+
+
+
+
+
+	public void setIdClasificacionNumeroInterveniente(
+			ClasificacionNumeroIntervinienteActo idClasificacionNumeroInterveniente) {
+		this.idClasificacionNumeroInterveniente = idClasificacionNumeroInterveniente;
+	}
+
+
 
 
 
@@ -148,9 +186,13 @@ public class ActoNotarial {
 
 
 
+
+
 	public void setNombreCatalogoActoNotarial(String nombreCatalogoActoNotarial) {
 		this.nombreCatalogoActoNotarial = nombreCatalogoActoNotarial;
 	}
+
+
 
 
 
@@ -162,9 +204,13 @@ public class ActoNotarial {
 
 
 
+
+
 	public void setArticuloCatalogoActoNotarial(String articuloCatalogoActoNotarial) {
 		this.articuloCatalogoActoNotarial = articuloCatalogoActoNotarial;
 	}
+
+
 
 
 
@@ -176,9 +222,13 @@ public class ActoNotarial {
 
 
 
+
+
 	public void setGravaIvaCatalogoActoNotarial(Boolean gravaIvaCatalogoActoNotarial) {
 		this.gravaIvaCatalogoActoNotarial = gravaIvaCatalogoActoNotarial;
 	}
+
+
 
 
 
@@ -190,9 +240,13 @@ public class ActoNotarial {
 
 
 
+
+
 	public void setValorExoneracionCatalogoActoNotarial(Long valorExoneracionCatalogoActoNotarial) {
 		this.valorExoneracionCatalogoActoNotarial = valorExoneracionCatalogoActoNotarial;
 	}
+
+
 
 
 
@@ -204,9 +258,13 @@ public class ActoNotarial {
 
 
 
+
+
 	public void setValorExtraCatalogoActoNotarial(Long valorExtraCatalogoActoNotarial) {
 		this.valorExtraCatalogoActoNotarial = valorExtraCatalogoActoNotarial;
 	}
+
+
 
 
 
@@ -218,9 +276,13 @@ public class ActoNotarial {
 
 
 
+
+
 	public void setHabilitanteCiudadanoCatalogoActoNotarial(Boolean habilitanteCiudadanoCatalogoActoNotarial) {
 		this.habilitanteCiudadanoCatalogoActoNotarial = habilitanteCiudadanoCatalogoActoNotarial;
 	}
+
+
 
 
 
@@ -232,9 +294,13 @@ public class ActoNotarial {
 
 
 
+
+
 	public void setTramiteUnilateralCatalogoActoNotarial(Boolean tramiteUnilateralCatalogoActoNotarial) {
 		this.tramiteUnilateralCatalogoActoNotarial = tramiteUnilateralCatalogoActoNotarial;
 	}
+
+
 
 
 
@@ -246,9 +312,13 @@ public class ActoNotarial {
 
 
 
+
+
 	public void setEstadoCatalogoActoNotarial(Boolean estadoCatalogoActoNotarial) {
 		this.estadoCatalogoActoNotarial = estadoCatalogoActoNotarial;
 	}
+
+
 
 
 
@@ -260,6 +330,8 @@ public class ActoNotarial {
 
 
 
+
+
 	public void setTarifaCatalogoActoNotarial(Double tarifaCatalogoActoNotarial) {
 		this.tarifaCatalogoActoNotarial = tarifaCatalogoActoNotarial;
 	}
@@ -267,9 +339,13 @@ public class ActoNotarial {
 
 
 
+
+
 	public Boolean getUsaCalculoTablaCatalogoActoNotarial() {
 		return usaCalculoTablaCatalogoActoNotarial;
 	}
+
+
 
 
 
@@ -282,10 +358,12 @@ public class ActoNotarial {
 
 
 
+
 	@Override
 	public String toString() {
 		return "ActoNotarial [idCatalogoActoNotarial=" + idCatalogoActoNotarial + ", idBaseCobroActo=" + idBaseCobroActo
-				+ ", idTipoLibro=" + idTipoLibro + ", nombreCatalogoActoNotarial=" + nombreCatalogoActoNotarial
+				+ ", idTipoLibro=" + idTipoLibro + ", idClasificacionNumeroInterveniente="
+				+ idClasificacionNumeroInterveniente + ", nombreCatalogoActoNotarial=" + nombreCatalogoActoNotarial
 				+ ", articuloCatalogoActoNotarial=" + articuloCatalogoActoNotarial + ", gravaIvaCatalogoActoNotarial="
 				+ gravaIvaCatalogoActoNotarial + ", valorExoneracionCatalogoActoNotarial="
 				+ valorExoneracionCatalogoActoNotarial + ", valorExtraCatalogoActoNotarial="
@@ -295,6 +373,11 @@ public class ActoNotarial {
 				+ ", tarifaCatalogoActoNotarial=" + tarifaCatalogoActoNotarial
 				+ ", usaCalculoTablaCatalogoActoNotarial=" + usaCalculoTablaCatalogoActoNotarial + "]";
 	}
+	
+	
+	
+	
+	
 	
 	
 

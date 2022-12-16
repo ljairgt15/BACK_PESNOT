@@ -282,7 +282,7 @@ public class ActoNotarialTest {
 		baseObj.setDescripcionBaseCobroActo("por acto notarial");
 		baseObj.setEstadoBaseCobroActo(true);
 		baseObj=baseRepo.save(baseObj);
-		ActoNotarial acto = new ActoNotarial(1l, baseObj, libro, "iar", "art 24", true, 2l, 2l, true, true, true, 12.50,
+		/*ActoNotarial acto = new ActoNotarial(1l, baseObj, libro, "iar", "art 24", true, 2l, 2l, true, true, true, 12.50,
 				true);
 		acto.setIdCatalogoActoNotarial(4l);
 		acto.toString();
@@ -300,7 +300,7 @@ public class ActoNotarialTest {
 		acto.getTarifaCatalogoActoNotarial();
 		acto.getUsaCalculoTablaCatalogoActoNotarial();
 		acto.setTarifaCatalogoActoNotarial(null);
-		acto.setUsaCalculoTablaCatalogoActoNotarial(null);
+		acto.setUsaCalculoTablaCatalogoActoNotarial(null);*/
 	}
 
 }

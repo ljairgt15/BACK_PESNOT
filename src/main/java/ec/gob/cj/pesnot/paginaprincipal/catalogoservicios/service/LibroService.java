@@ -1,18 +1,10 @@
 package ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.service;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-
-import javax.persistence.EntityManager;
-
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.AuditoriaAdministracionPesnot;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.Libro;
-import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.repository.AuditoriaAdministracionPesnotRepository;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.repository.LibroRepository;
 
 @Service
