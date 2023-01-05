@@ -11,6 +11,6 @@ import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.RangoTarifa;
 @Repository
 public interface RangoTarifaRepository extends JpaRepository <RangoTarifa,Long>{
 
-	@Query(nativeQuery = true,value="SELECT * FROM RANGOTARIFA r WHERE r.VALORMAXIMORANGOTARIFA=:valorMax AND r.VALORMINIMORANGOTARIFA=:valorMin")
+	@Query(nativeQuery = true,value="SELECT * FROM RangoTarifa r WHERE r.VALORMAXIMORANGOTARIFA=:valorMax AND r.VALORMINIMORANGOTARIFA=:valorMin")
 	Optional<RangoTarifa> getRangoByMinMax(@Param("valorMax") Double valorMax, @Param("valorMin") Double valorMin);	
 }

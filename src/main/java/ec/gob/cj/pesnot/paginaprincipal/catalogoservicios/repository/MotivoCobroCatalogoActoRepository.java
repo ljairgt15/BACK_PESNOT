@@ -14,7 +14,7 @@ import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.MotivoCobroCata
 public interface MotivoCobroCatalogoActoRepository extends JpaRepository <MotivoCobroCatalogoActo,Long> {
 	
     @Modifying
-	@Query(nativeQuery = true,value = "update MOTIVOCOBROCATALOGOACTO set ESTADOMOTIVOCOBROCATALOGOACTO=0 where IDCATALOGOACTONOTARIAL =:idActo") 
+	@Query(nativeQuery = true,value = "update MotivoCobroCatalogoacto set ESTADOMOTIVOCOBROCATALOGOACTO=0 where IDCATALOGOACTONOTARIAL =:idActo") 
 	void deshabilitar(@Param("idActo") String idActo);
 	
 }
