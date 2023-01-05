@@ -12,7 +12,7 @@ import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.AdjuntoLibro;
 @Repository
 public interface AdjuntoLibroRepository extends JpaRepository<AdjuntoLibro, Long>{
 	
-	@Query(nativeQuery = true,value="SELECT TOP 1 * FROM AdjuntoLibro c WHERE c.NOMBREADJUNTOLIBRO LIKE :nombre%")
+	@Query(nativeQuery = true,value="SELECT TOP 1 * FROM AdjuntoLibro c WHERE c.NombreAdjuntoLibro LIKE :nombre%")
 	Optional<AdjuntoLibro> getAdjuntoByNombre(@Param("nombre") String nombre);
 
 }

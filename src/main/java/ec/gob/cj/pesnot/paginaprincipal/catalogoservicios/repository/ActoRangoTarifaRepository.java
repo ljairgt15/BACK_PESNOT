@@ -11,7 +11,7 @@ import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.ActoRangoTarifa
 @Repository
 public interface ActoRangoTarifaRepository extends JpaRepository <ActoRangoTarifa, Long> {
     @Modifying
-	@Query(nativeQuery = true,value = "update ActoRangoTarifa set ESTADOACTORANGOTARIFA=0 where IDCATALOGOACTONOTARIAL =:idActo") 
+	@Query(nativeQuery = true,value = "update ActoRangoTarifa set estadoActoRangoTarifa=0 where idCatalogoActoNotarial =:idActo") 
 	void deshabilitar(@Param("idActo") String idActo);
 
 }

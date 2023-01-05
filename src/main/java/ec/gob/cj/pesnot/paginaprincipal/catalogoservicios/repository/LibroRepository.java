@@ -13,12 +13,12 @@ import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.Libro;
 
 @Repository
 public interface LibroRepository extends JpaRepository<Libro, Long > {
-	@Query(nativeQuery = true,value="SELECT TOP 1 * FROM TipoLibro c WHERE c.NOMBRETIPOLIBRO LIKE :nombre%")
+	@Query(nativeQuery = true,value="SELECT TOP 1 * FROM TipoLibro c WHERE c.nombreTipoLibro LIKE :nombre%")
 	Optional<Libro> getLibroByNombre(@Param("nombre") String nombre);
 	
-	@Query(nativeQuery = true,value="SELECT * FROM TipoLibro where ESTADOACTIVO='true'")
+	@Query(nativeQuery = true,value="SELECT * FROM TipoLibro where estadoActivo='true'")
 	List<Libro> getAllActives();
 	
-	@Query(nativeQuery = true,value="select  DISTINCT j.IDTIPOLIBRO, j.ESTADOACTIVO, j.NOMBRETIPOLIBRO, j.IDADJUNTOLIBRO from CatalogoActoNotarial as c left join TipoLibro as j on j.IDTIPOLIBRO=c.IDTIPOLIBRO")
+	@Query(nativeQuery = true,value="select  DISTINCT j.idTipoLibro, j.estadoActivo, j.nombreTipoLibro, j.idAdjuntoLibro from CatalogoActoNotarial as c left join TipoLibro as j on j.idTipoLibro=c.idTipoLibro")
 	List<Libro>getAllLibrosWithActosN();
 }
