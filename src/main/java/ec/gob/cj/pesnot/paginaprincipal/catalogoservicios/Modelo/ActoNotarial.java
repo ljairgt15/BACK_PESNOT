@@ -14,57 +14,57 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @Entity
-@Table(name = "CATALOGOACTONOTARIAL")
+@Table(name = "CatalogoActoNotarial")
 public class ActoNotarial {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="IDCATALOGOACTONOTARIAL")
+	@Column(name="idCatalogoActoNotarial")
 	private Long idCatalogoActoNotarial;
 	
 	@ManyToOne(targetEntity = BaseCobroActo.class, fetch = FetchType.EAGER)
-	@JoinColumn(name = "IDBASECOBROACTO",nullable=false)
+	@JoinColumn(name = "idBaseCobroActo",nullable=false)
 	@JsonProperty(access = Access.READ_WRITE)
 	private BaseCobroActo idBaseCobroActo;
 
 	@ManyToOne(targetEntity = Libro.class, fetch = FetchType.EAGER)
-	@JoinColumn(name = "IDTIPOLIBRO",nullable=false)
+	@JoinColumn(name = "idTipoLibro",nullable=false)
 	@JsonProperty(access = Access.READ_WRITE)
 	private Libro idTipoLibro;
 	
 	@ManyToOne(targetEntity = ClasificacionNumeroIntervinienteActo.class, fetch = FetchType.EAGER)
-	@JoinColumn(name = "IDCLASIFICACIONNUMEROINTERVIENTEACTO",nullable=false)
+	@JoinColumn(name = "idClasificacionNumeroIntervienteActo",nullable=false)
 	@JsonProperty(access = Access.READ_WRITE)
 	private ClasificacionNumeroIntervinienteActo idClasificacionNumeroInterveniente;
 	
-	@Column(name = "NOMBRECATALOGOACTONOTARIAL")
+	@Column(name = "nombreCatalogoActoNotarial")
 	private String nombreCatalogoActoNotarial;
 
-	@Column(name = "ARTICULOCATALOGOACTONOTARIAL")
+	@Column(name = "articuloCatalogoActoNotarial")
 	private String articuloCatalogoActoNotarial;
 	
-	@Column(name = "GRAVAIVACATALOGOACTONOTARIAL")
+	@Column(name = "gravaIVACatalogoActoNotarial")
 	private Boolean gravaIvaCatalogoActoNotarial;
 	
-	@Column(name = "VALOREXONERACIONCATALOGOACTONOTARIAL") 	
+	@Column(name = "valorExoneracionCatalogoActoNotaria") 	
 	private Long valorExoneracionCatalogoActoNotarial;
 	
-	@Column(name = "VALOREXTRACATALOGOACTONOTARIAL") 	
+	@Column(name = "valorExtraCatalogoActoNotarial") 	
 	private Long valorExtraCatalogoActoNotarial;
 
-	@Column(name = "HABILITANTECIUDADANOCATALOGOACTONOTARIAL")
+	@Column(name = "habilitableCiudadanoCatalogoActoNotarial")
 	private Boolean habilitanteCiudadanoCatalogoActoNotarial;
 	
-	@Column(name = "TRAMITEUNILATERALCATALOGOACTONOTARIAL")
+	@Column(name = "tramiteUnilateralCatalogoActoNotarial")
 	private Boolean tramiteUnilateralCatalogoActoNotarial;
 
-	@Column(name = "ESTADOCATALAGOACTONOTARIAL")
+	@Column(name = "estadoCatalogoActoNotarial")
 	private Boolean estadoCatalogoActoNotarial;
 	
-	@Column(name="TARIFACATALOGOACTONOTARIAL")
+	@Column(name="tarifaCatalogoActoNotarial")
 	private Double tarifaCatalogoActoNotarial;
 	
-	@Column(name="USACALCULOTABLACATALOGOACTONOTARIAL")
+	@Column(name="usaCalculoTablaCatalogoActoNotarial")
 	private Boolean usaCalculoTablaCatalogoActoNotarial;
 	
 	

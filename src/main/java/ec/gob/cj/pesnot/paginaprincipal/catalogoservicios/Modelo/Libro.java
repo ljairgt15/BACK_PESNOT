@@ -1,4 +1,4 @@
-package ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo;
+	package ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,23 +14,23 @@ import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 
 @Entity
-@Table(name ="TIPOLIBRO")
+@Table(name ="TipoLibro")
 public class Libro {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="IDTIPOLIBRO")
+	@Column(name="idTipoLibro")
 	private Long idTipoLibro;
 	
 	@ManyToOne(targetEntity = AdjuntoLibro.class, fetch = FetchType.EAGER)
-	@JoinColumn(name = "IDADJUNTOLIBRO",nullable=false)
+	@JoinColumn(name = "idAdjuntoLibro",nullable=false)
 	@JsonProperty(access = Access.READ_WRITE)
 	private AdjuntoLibro idAdjuntoLibro;
 	
-	@Column(name="NOMBRETIPOLIBRO")
+	@Column(name="nombreTipoLibro")
 	private String nombreTipoLibro;
 	
-	@Column(name="ESTADOACTIVO")
+	@Column(name="estadoActivo")
 	private boolean estadoActivo;
 	
 	

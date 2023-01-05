@@ -8,18 +8,18 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "CLASIFICACIONNUMEROINTERVINIENTEACTO")
+@Table(name = "ClasificacionNumeroIntervienteacto")
 public class ClasificacionNumeroIntervinienteActo {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="IDCLASIFICACIONNUMEROINTERVINIENTEACTO") 
+	@Column(name="idClasificacionNumeroIntervienteActo") 
 	private Long idClasificacionNumeroIntervinienteActo;
 	
-	@Column(name="NOMBRECLASIFICACIONNUMEROINTERVINIENTEACTO")
+	@Column(name="nombreClasificacionNumeroIntervienteActo")
 	private String nombreClasificacionNumeroIntervinienteActo;
 	
-	@Column(name="ESTADOCLASIFICACIONNUMEROINTERVINIENTEACTO") 
+	@Column(name="estadoClasificacionNumeroIntervienteActo") 
 	private Boolean estadoClasificacionNumeroIntervinienteActo;
 
 	public ClasificacionNumeroIntervinienteActo() {

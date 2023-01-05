@@ -14,30 +14,30 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @Entity
-@Table(name = "MOTIVOCOBROCATALOGOACTO")
+@Table(name = "MotivoCobroCatalogoacto")
 public class MotivoCobroCatalogoActo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "IDMOTIVOCOBROCATALOGOACTO")
+	@Column(name = "idMotivoCobroCatalogoActo")
 	private Long idMotivoCobroCatalogoActo;
 
 	@ManyToOne(targetEntity = ActoNotarial.class, fetch = FetchType.EAGER)
-	@JoinColumn(name = "IDCATALOGOACTONOTARIAL", nullable = false)
+	@JoinColumn(name = "idCatalogoActoNotarial", nullable = false)
 	@JsonProperty(access = Access.READ_WRITE)
 	private ActoNotarial idCatalogoActoNotarial;
 
 	@ManyToOne(targetEntity = MotivoCobroActo.class, fetch = FetchType.EAGER)
-	@JoinColumn(name = "IDMOTIVOCOBROACTO", nullable = false)
+	@JoinColumn(name = "idMotivoCobroActo", nullable = false)
 	@JsonProperty(access = Access.READ_WRITE)
 	private MotivoCobroActo idMotivoCobroActo;
 
-	@Column(name = "VALORMOTIVOCOBROCATALOGOACTO")
+	@Column(name = "valorMotivoCobroCatalogoActo")
 	private Double valorMotivoCobroCatalogoActo;
 
-	@Column(name = "PORCENTAJEMOTIVOCOBROCATALOGOACTO")
+	@Column(name = "porcentajeMotivoCobroCatalogoActo")
 	private Double porcentajeMotivoCobroCatalogoActo;
 
-	@Column(name = "ESTADOMOTIVOCOBROCATALOGOACTO")
+	@Column(name = "estadoMotivoCobroCatalogoActo")
 	private Boolean estadoMotivoCobroCatalogoActo;
 
 	public MotivoCobroCatalogoActo() {

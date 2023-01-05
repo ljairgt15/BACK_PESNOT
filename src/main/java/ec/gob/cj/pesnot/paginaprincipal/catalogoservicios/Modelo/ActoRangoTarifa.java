@@ -12,37 +12,37 @@ import javax.persistence.ManyToOne;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
-@Entity(name = "ACTORANGOTARIFA")
+@Entity(name = "ActoRangoTarifa")
 public class ActoRangoTarifa {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "IDACTORANGOTARIFA")
+	@Column(name = "idActoRangoTarifa")
 	private Long idActoRangoTarifa;
 
 	@ManyToOne(targetEntity = RangoTarifa.class, fetch = FetchType.EAGER)
-	@JoinColumn(name = "IDRANGOTARIFA", nullable = false)
+	@JoinColumn(name = "idRangoTarifa", nullable = false)
 	@JsonProperty(access = Access.READ_WRITE)
 	private RangoTarifa idRangoTarifa;
 
 	@ManyToOne(targetEntity = ActoNotarial.class, fetch = FetchType.EAGER)
-	@JoinColumn(name = "IDCATALOGOACTONOTARIAL", nullable = false)
+	@JoinColumn(name = "idCatalogoActoNotarial", nullable = false)
 	@JsonProperty(access = Access.READ_WRITE)
 	private ActoNotarial idCatalogoActoNotarial;
 
-	@Column(name = "PORCENTAJEACTORANGOTARIFA")
+	@Column(name = "porcentajeActoRangoTarifa")
 	private Double porcentajeActoRangoTarifa;
 
-	@Column(name = "PORCENTAJEPARTICIPACIONNOTARIOACTORANGOTARIFA")
+	@Column(name = "porcentajeParticipacionNotarioActoRangoTarifa")
 	private Double porcentajeParticipacionNotarioActoRangoTarifa;
 
-	@Column(name = "PORCENTAJEPARTICIPACIONESTADOACTORANGOTARIFA")
+	@Column(name = "porcentajeParticipacionEstadoActoRangoTarifa")
 	private Double porcentajeParticipacionEstadoActoRangoTarifa;
 
-	@Column(name = "EXCEDENTEACTORANGOTARIFA")
+	@Column(name = "excedenteActoRangoTarifa")
 	private Double excedenteActoRangoTarifa;
 
-	@Column(name = "ESTADOACTORANGOTARIFA")
+	@Column(name = "estadoActoRangoTarifa")
 	private Boolean estadoActoRangoTarifa;
 
 	public ActoRangoTarifa() {

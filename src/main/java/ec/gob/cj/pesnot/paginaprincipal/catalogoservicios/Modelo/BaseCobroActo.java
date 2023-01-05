@@ -8,20 +8,20 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name ="BASECOBROACTO")
+@Table(name ="BaseCobroActo")
 public class BaseCobroActo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="IDBASECOBROACTO")
+	@Column(name="idBaseCobroActo")
 	private Long idBaseCobroActo;
 	
-	@Column(name="NOMBREBASECOBROACTO")
+	@Column(name="nombreBaseCobroActo")
 	private String nombreBaseCobroActo;
 	
-	@Column(name="DESCRIPCIONBASECOBROACTO")
+	@Column(name="descripcionBaseCobroActo")
 	private String descripcionBaseCobroActo;
 	
-	@Column(name="ESTADOBASECOBROACTO")
+	@Column(name="estadoBaseCobroActo")
 	private boolean estadoBaseCobroActo;
 	
 	

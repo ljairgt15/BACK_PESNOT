@@ -8,21 +8,21 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "RANGOTARIFA")
+@Table(name = "RangoTarifa")
 public class RangoTarifa {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "IDRANGOTARIFA")
+	@Column(name = "idRangoTarifa")
 	private Long idRangoTarifa;
 
-	@Column(name = "VALORMAXIMORANGOTARIFA")
+	@Column(name = "valorMaximoRangoTarifa")
 	private Double valorMaximoRangoTarifa;
 
-	@Column(name = "VALORMINIMORANGOTARIFA")
+	@Column(name = "valorMinimoRangoTarifa")
 	private Double valorMinimoRangoTarifa;
 
-	@Column(name = "ESTADORANGOTARIFA")
+	@Column(name = "estadoRangoTarifa")
 	private Boolean estadoRangoTarifa;
 
 	public RangoTarifa() {
