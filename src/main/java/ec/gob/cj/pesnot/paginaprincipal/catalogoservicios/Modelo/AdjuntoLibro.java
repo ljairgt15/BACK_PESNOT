@@ -20,7 +20,7 @@ public class AdjuntoLibro {
 	private String nombreAdjuntoLibro;
 	
 	@Column(name="archivoAdjuntoLibro")
-	private byte archivoAdjuntoLibro;
+	private String archivoAdjuntoLibro;
 	
 	@Column(name="observacionAdjuntoLibro")
 	private String observacionAdjuntoLibro;
@@ -31,7 +31,7 @@ public class AdjuntoLibro {
 	}
 
 
-	public AdjuntoLibro(Long idAdjuntoLibro, String nombreAdjuntoLibro, byte archivoAdjuntoLibro,
+	public AdjuntoLibro(Long idAdjuntoLibro, String nombreAdjuntoLibro, String archivoAdjuntoLibro,
 			String observacionAdjuntoLibro) {
 		super();
 		this.idAdjuntoLibro = idAdjuntoLibro;
@@ -61,12 +61,12 @@ public class AdjuntoLibro {
 	}
 
 
-	public byte getArchivoAdjuntoLibro() {
+	public String getArchivoAdjuntoLibro() {
 		return archivoAdjuntoLibro;
 	}
 
 
-	public void setArchivoAdjuntoLibro(byte archivoAdjuntoLibro) {
+	public void setArchivoAdjuntoLibro(String archivoAdjuntoLibro) {
 		this.archivoAdjuntoLibro = archivoAdjuntoLibro;
 	}
 
