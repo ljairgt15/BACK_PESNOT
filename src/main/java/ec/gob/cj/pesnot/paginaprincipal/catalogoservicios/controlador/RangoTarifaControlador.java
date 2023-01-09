@@ -39,7 +39,7 @@ public class RangoTarifaControlador {
 		return service.getRangoTarifaById(id);
 	}
 	@GetMapping("/getRangoTarifaByMinMax/{max}/{min}")
-	private Optional<RangoTarifa> obtenerRangoTarifaByMinMax(@PathVariable("max") Double max, @PathVariable("min") Double min)
+	private RangoTarifa obtenerRangoTarifaByMinMax(@PathVariable("max") Double max, @PathVariable("min") Double min)
 	{
 		return service.getRangoTarifaByMinMax(max, min);
 	}

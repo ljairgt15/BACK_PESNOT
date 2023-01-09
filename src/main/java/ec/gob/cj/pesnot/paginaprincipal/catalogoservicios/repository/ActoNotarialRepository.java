@@ -31,4 +31,6 @@ public interface ActoNotarialRepository extends JpaRepository<ActoNotarial, Long
 	
 	@Query(nativeQuery = true,value = "SELECT TOP 1 * FROM CatalogoActoNotarial c WHERE c.idTipoLibro= :idTipoLibro AND c.idBaseCobroActo= :idBaseCobroActo AND c.idClasificacionNumeroIntervienteActo= :idClasificacion AND c.nombreCatalogoActoNotarial= :nombreCatalogo")
 	ActoNotarial getActoUnico(@Param("nombreCatalogo") String nombre, @Param("idTipoLibro") String idTipoLibro, @Param("idBaseCobroActo") String idBaseCobroActo, @Param("idClasificacion") String idClasificacion);
+
+
 }

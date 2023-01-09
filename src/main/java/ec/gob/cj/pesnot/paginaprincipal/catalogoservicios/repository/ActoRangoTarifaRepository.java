@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.ActoNotarial;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.ActoRangoTarifa;
 
 @Repository
@@ -13,5 +14,8 @@ public interface ActoRangoTarifaRepository extends JpaRepository <ActoRangoTarif
     @Modifying
 	@Query(nativeQuery = true,value = "update ActoRangoTarifa set estadoActoRangoTarifa=0 where idCatalogoActoNotarial =:idActo") 
 	void deshabilitar(@Param("idActo") String idActo);
+    
+	@Query(nativeQuery = true,value = "SELECT TOP 1 * FROM ActoRangoTarifa c WHERE c.idCatalogoActoNotarial= :idCatalogoActoNotarial AND c.idRangoTarifa= :idRangoTarifa")
+	ActoRangoTarifa getActoRangoUnico(@Param("idCatalogoActoNotarial") String idCatalogoActoNotarial, @Param("idRangoTarifa") String idRangoTarifa);
 
 }

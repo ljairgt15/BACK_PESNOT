@@ -13,5 +13,8 @@ import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.MotivoCobroActo
 public interface MotivoCobroActoRepository extends JpaRepository<MotivoCobroActo,Long> {
 	@Query(nativeQuery = true,value="SELECT TOP 1 * FROM MotivoCobroActo c WHERE c.nombreMotivoCobroActo LIKE :nombre%")
 	Optional<MotivoCobroActo> getMotivoCobroByNombre(@Param("nombre") String nombre);
+	
+	@Query(nativeQuery = true,value="SELECT TOP 1 * FROM MotivoCobroActo c WHERE c.nombreMotivoCobroActo = : nombre")
+	MotivoCobroActo getMotivoCobroUnico(@Param("nombre") String nombre);
 
 }

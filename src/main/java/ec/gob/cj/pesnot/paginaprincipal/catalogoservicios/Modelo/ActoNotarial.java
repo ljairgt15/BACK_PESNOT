@@ -1,5 +1,7 @@
 package ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -50,10 +52,10 @@ public class ActoNotarial {
 	private Boolean gravaIvaCatalogoActoNotarial;
 	
 	@Column(name = "valorExoneracionCatalogoActoNotarial") 	
-	private Long valorExoneracionCatalogoActoNotarial;
+	private BigDecimal valorExoneracionCatalogoActoNotarial;
 	
 	@Column(name = "valorExtraCatalogoActoNotarial") 	
-	private Long valorExtraCatalogoActoNotarial;
+	private BigDecimal valorExtraCatalogoActoNotarial;
 
 	@Column(name = "habilitableCiudadanoCatalogoActoNotarial")
 	private Boolean habilitanteCiudadanoCatalogoActoNotarial;
@@ -84,7 +86,7 @@ public class ActoNotarial {
 			ClasificacionNumeroIntervinienteActo idClasificacionNumeroInterveniente, String nombreCatalogoActoNotarial,
 			Long idTasaImpuesto,
 			String articuloCatalogoActoNotarial, Boolean gravaIvaCatalogoActoNotarial,
-			Long valorExoneracionCatalogoActoNotarial, Long valorExtraCatalogoActoNotarial,
+			BigDecimal valorExoneracionCatalogoActoNotarial, BigDecimal valorExtraCatalogoActoNotarial,
 			Boolean habilitanteCiudadanoCatalogoActoNotarial, Boolean tramiteUnilateralCatalogoActoNotarial,
 			Boolean estadoCatalogoActoNotarial, Double tarifaCatalogoActoNotarial,
 			Boolean usaCalculoTablaCatalogoActoNotarial) {
@@ -188,22 +190,22 @@ public class ActoNotarial {
 	}
 
 
-	public Long getValorExoneracionCatalogoActoNotarial() {
+	public BigDecimal getValorExoneracionCatalogoActoNotarial() {
 		return valorExoneracionCatalogoActoNotarial;
 	}
 
 
-	public void setValorExoneracionCatalogoActoNotarial(Long valorExoneracionCatalogoActoNotarial) {
+	public void setValorExoneracionCatalogoActoNotarial(BigDecimal valorExoneracionCatalogoActoNotarial) {
 		this.valorExoneracionCatalogoActoNotarial = valorExoneracionCatalogoActoNotarial;
 	}
 
 
-	public Long getValorExtraCatalogoActoNotarial() {
+	public BigDecimal getValorExtraCatalogoActoNotarial() {
 		return valorExtraCatalogoActoNotarial;
 	}
 
 
-	public void setValorExtraCatalogoActoNotarial(Long valorExtraCatalogoActoNotarial) {
+	public void setValorExtraCatalogoActoNotarial(BigDecimal valorExtraCatalogoActoNotarial) {
 		this.valorExtraCatalogoActoNotarial = valorExtraCatalogoActoNotarial;
 	}
 

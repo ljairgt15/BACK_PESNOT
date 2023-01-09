@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-
+import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.ActoRangoTarifa;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.MotivoCobroCatalogoActo;
 
 @Repository
@@ -16,5 +16,8 @@ public interface MotivoCobroCatalogoActoRepository extends JpaRepository <Motivo
     @Modifying
 	@Query(nativeQuery = true,value = "update MotivoCobroCatalogoacto set estadoMotivoCobroCatalogoActo=0 where idCatalogoActoNotarial =:idActo") 
 	void deshabilitar(@Param("idActo") String idActo);
+    
+    @Query(nativeQuery = true,value = "SELECT TOP 1 * FROM MotivoCobroCatalogoacto c WHERE c.idCatalogoActoNotarial= :idCatalogoActoNotarial AND c.idMotivoCobroActo=:idMotivoCobroActo")
+	MotivoCobroCatalogoActo getActoMotivoUnico(@Param("idCatalogoActoNotarial") String idCatalogoActoNotarial, @Param("idMotivoCobroActo") String idMotivoCobroActo);
 	
 }
