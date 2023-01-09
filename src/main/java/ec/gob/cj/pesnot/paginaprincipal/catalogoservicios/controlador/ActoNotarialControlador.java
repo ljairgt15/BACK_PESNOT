@@ -43,6 +43,11 @@ public class ActoNotarialControlador {
 
 		return actoNotarialService.getTarifaActosMotivo(nombreBase, nombreClasificacion, nombreLibro, nombreActo, nombreMotivo);
 	}
+	@GetMapping("/getRangoActo/{nombreBase}/{nombreClasificacion}/{nombreLibro}/{nombreActo}/{max}/{min}")
+	public Double obtenerPrecioMotivoCobroActo(@PathVariable String nombreBase,@PathVariable String nombreClasificacion, @PathVariable String nombreLibro, @PathVariable String nombreActo, @PathVariable Double max, @PathVariable Double min ) {
+
+		return actoNotarialService.getTarifaActosTabla(nombreBase, nombreClasificacion, nombreLibro, nombreActo, max, min);
+	}
 	
 	@GetMapping("/getActosActivos")
 	public List<ActoNotarial> obtenerActosNotarialesActivos() {
