@@ -14,7 +14,7 @@ import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.Libro;
 @Repository
 public interface LibroRepository extends JpaRepository<Libro, Long > {
 	@Query(nativeQuery = true,value="SELECT TOP 1 * FROM TipoLibro c WHERE c.nombreTipoLibro LIKE :nombre%")
-	Optional<Libro> getLibroByNombre(@Param("nombre") String nombre);
+	Libro getLibroByNombre(@Param("nombre") String nombre);
 	
 	@Query(nativeQuery = true,value="SELECT * FROM TipoLibro where estadoActivo='true'")
 	List<Libro> getAllActives();

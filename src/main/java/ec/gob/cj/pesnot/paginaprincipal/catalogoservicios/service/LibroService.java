@@ -33,7 +33,7 @@ public class LibroService {
 		return libroRepository.getAllLibrosWithActosN();
 	}
 
-	public Optional<Libro> getLibroByNombre(String adjuntoLibro) {
+	public Libro getLibroByNombre(String adjuntoLibro) {
 		return libroRepository.getLibroByNombre(adjuntoLibro);
 	}
 

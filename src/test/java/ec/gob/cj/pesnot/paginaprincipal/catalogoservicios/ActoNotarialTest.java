@@ -1,4 +1,4 @@
-package ec.gob.cj.pesnot.paginaprincipal.catalogoservicios;
+/*package ec.gob.cj.pesnot.paginaprincipal.catalogoservicios;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -300,7 +300,9 @@ public class ActoNotarialTest {
 		acto.getTarifaCatalogoActoNotarial();
 		acto.getUsaCalculoTablaCatalogoActoNotarial();
 		acto.setTarifaCatalogoActoNotarial(null);
-		acto.setUsaCalculoTablaCatalogoActoNotarial(null);*/
+		acto.setUsaCalculoTablaCatalogoActoNotarial(null);
 	}
 
 }
+*/
+

@@ -40,8 +40,8 @@ public class BaseCobroActoControlador {
 		return baseCobroService.baseById(id);	
 	}
 	@GetMapping("/getBaseCobroByNombre/{nombre}")
-	public Optional<BaseCobroActo> obtenerBaseCobroByNombre(@PathVariable("nombre") String id) {
-		return baseCobroService.getActoByNombre(id);
+	public BaseCobroActo obtenerBaseCobroByNombre(@PathVariable("nombre") String id) {
+		return baseCobroService.getBaseByNombre(id);
 	}
 
 	

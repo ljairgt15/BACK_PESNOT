@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.ActoNotarial;
+import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.RangoMotivo;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.service.ActoNotarialService;
 
 @RestController
@@ -50,6 +51,13 @@ public class ActoNotarialControlador {
 		return actoNotarialService.getActoNotarialById(id);
 
 	}
+	@GetMapping("getActoByParametros/{nombreBase}/{nombreClasificacion}/{nombreLibro}/{nombreActo}")
+	public ActoNotarial obtenerActoNotarialPorParametros( @PathVariable String nombreBase,@PathVariable String nombreClasificacion, @PathVariable String nombreLibro, @PathVariable String nombreActo) {
+
+		return actoNotarialService.getActoByParametros(nombreBase, nombreClasificacion, nombreLibro, nombreActo);
+
+	}
+	
 	@GetMapping("getActosLike/{nombre}")
 	public List<ActoNotarial> obtenerActoLikeNombre(@PathVariable("nombre") String nombre) {
 
@@ -65,8 +73,13 @@ public class ActoNotarialControlador {
 	@GetMapping("geActoConTarifas")
 	public List<ActoNotarial> obtenerActosTarifa() {
 		return actoNotarialService.getActosConTarifas();
-
 	}
+	
+	@GetMapping("getTarifas")
+	public List<RangoMotivo> obtenerTarifas() {
+		return actoNotarialService.getActosPrecio();
+	}
+	
 	@PostMapping("/saveActNot")
 	public ActoNotarial guardarActNot(@RequestBody ActoNotarial objAct) {
 		

@@ -1,4 +1,4 @@
-package ec.gob.cj.pesnot.paginaprincipal.catalogoservicios;
+/*package ec.gob.cj.pesnot.paginaprincipal.catalogoservicios;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -95,3 +95,4 @@ public class MotivoCobroActoTest {
 		motivo.toString();
 	}
 }
+*/

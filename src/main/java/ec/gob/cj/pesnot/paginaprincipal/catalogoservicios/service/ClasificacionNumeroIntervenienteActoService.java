@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.ClasificacionNumeroIntervinienteActo;
+import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.Libro;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.repository.ClasificacionNumeroIntervenienteActoRepository;
 
 @Service
@@ -28,6 +29,9 @@ public class ClasificacionNumeroIntervenienteActoService {
 
 	public ClasificacionNumeroIntervinienteActo ingresarBase(ClasificacionNumeroIntervinienteActo baseActo) {
 		return clasifiacionNumeroIntervenienteActoRepository.save(baseActo);
+	}
+	public ClasificacionNumeroIntervinienteActo getClasificacionByNombre(String clasificacionNombre) {
+		return clasifiacionNumeroIntervenienteActoRepository.getClasificacionByNombre(clasificacionNombre);
 	}
 
 }

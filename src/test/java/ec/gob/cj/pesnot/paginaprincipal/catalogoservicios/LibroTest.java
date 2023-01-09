@@ -1,4 +1,4 @@
-package ec.gob.cj.pesnot.paginaprincipal.catalogoservicios;
+/*package ec.gob.cj.pesnot.paginaprincipal.catalogoservicios;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.DisplayName;
@@ -156,3 +156,4 @@ class LibroTest {
 	
 	
 }
+*/

@@ -64,7 +64,7 @@ public class LibroControlador {
 	}
 
 	@GetMapping("/getLibroByNombre/{nombre}")
-	public Optional<Libro> obtenerLibroByNombre(@PathVariable("nombre") String id) {
+	public Libro obtenerLibroByNombre(@PathVariable("nombre") String id) {
 		return libroService.getLibroByNombre(id);
 	}
 

@@ -13,6 +13,6 @@ import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.BaseCobroActo;
 public interface BaseCobroActoRepository extends JpaRepository<BaseCobroActo,Long>{
 
 	@Query(nativeQuery = true,value="SELECT TOP 1 * FROM BaseCobroActo c WHERE c.nombreBaseCobroActo LIKE :nombre%")
-	Optional<BaseCobroActo> getBaseActoByNombre(@Param("nombre") String nombre);
+	BaseCobroActo getBaseActoByNombre(@Param("nombre") String nombre);
 
 }

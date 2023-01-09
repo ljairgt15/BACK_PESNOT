@@ -12,9 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.BaseCobroActo;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.ClasificacionNumeroIntervinienteActo;
-import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.service.BaseCobroActoService;
+import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.Libro;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.service.ClasificacionNumeroIntervenienteActoService;
 
 @RestController
@@ -23,28 +22,33 @@ import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.service.ClasificacionN
 public class ClasificacionNumeroIntervenienteActoControlador {
 	
 	@Autowired
-	private ClasificacionNumeroIntervenienteActoService Service;
+	private ClasificacionNumeroIntervenienteActoService clasificacionSvc;
 	
 	public ClasificacionNumeroIntervenienteActoControlador(ClasificacionNumeroIntervenienteActoService ServiceEntrante
 			) {
 		super();
-		this.Service=ServiceEntrante;
+		this.clasificacionSvc=ServiceEntrante;
 	}
 	
 	@GetMapping("/getClasificacion")
 	public List <ClasificacionNumeroIntervinienteActo> obtenerBaseCobroActos(){
-		return Service.getBaseCobro();
+		return clasificacionSvc.getBaseCobro();
 	}
 	
 	@GetMapping("/getClasificacionById/{id}")
 	public Optional<ClasificacionNumeroIntervinienteActo> obtenerActoPorId(@PathVariable ("id") Long id) {
 		
-		return Service.baseById(id);	
+		return clasificacionSvc.baseById(id);	
+	}
+	
+	@GetMapping("/getClasificacionByNombre/{nombre}")
+	public ClasificacionNumeroIntervinienteActo obtenerobtenerClasifiacionByNombre(@PathVariable("nombre") String nombre) {
+		return clasificacionSvc.getClasificacionByNombre(nombre);
 	}
 	
 	@PostMapping("/saveClasificacion")
 	public ClasificacionNumeroIntervinienteActo guardarBaseCobro(@RequestBody ClasificacionNumeroIntervinienteActo baseObj) {
-		return Service.ingresarBase(baseObj);
+		return clasificacionSvc.ingresarBase(baseObj);
 	}
 
 }
