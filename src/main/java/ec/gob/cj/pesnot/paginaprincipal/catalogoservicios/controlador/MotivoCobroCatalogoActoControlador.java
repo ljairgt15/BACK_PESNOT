@@ -36,6 +36,7 @@ public class MotivoCobroCatalogoActoControlador {
 		return motivoSvc.getMotivoCobroCatalogo();
 	}
 
+
 	@GetMapping("/getMotivoCobroCatalogoById/{id}")
 	public Optional<MotivoCobroCatalogoActo> getMotivoCobroCatalogoById(@PathVariable("id") Long id) {
 		return motivoSvc.getMotivoCobroCatalogoById(id);

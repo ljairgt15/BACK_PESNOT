@@ -9,16 +9,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.ActoNotarial;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.ActoRangoTarifa;
+import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.MotivoCobroCatalogoActo;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.RangoTarifa;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.repository.ActoRangoTarifaRepository;
 
 @Service
 public class ActoRangoTarifaService {
-	@Autowired
-	private RangoTarifaService rangoSvc;
+
 	
-	@Autowired
-	private ActoNotarialService actoNotarialSvc;
 
 	public ActoRangoTarifaRepository actoRangoTarifaRepository;
 
@@ -45,16 +43,12 @@ public class ActoRangoTarifaService {
 
 		return actoRangoTarifaRepository.findById(id);
 	}
-	
-	public Double getTarifaActosTabla( String nombreBase, String nombreClasificacion, String nombreLibro, String nombreActo, Double max, Double min) {
-		ActoNotarial actoBuscado=actoNotarialSvc.getActoByParametros(nombreBase, nombreClasificacion, nombreLibro, nombreActo);
-		RangoTarifa rangoBuscado= rangoSvc.getRangoTarifaByMinMax(max, min);
-		ActoRangoTarifa actoRangoBuscado= new ActoRangoTarifa();
-		String idActo= actoBuscado.getIdCatalogoActoNotarial().toString();
-		String idRango= rangoBuscado.getIdRangoTarifa().toString();
-		actoRangoBuscado= actoRangoTarifaRepository.getActoRangoUnico(idActo,idRango);
-		return actoRangoBuscado.getPorcentajeActoRangoTarifa()*425;
-
+	public ActoRangoTarifa getTarifa(String idActo, String idMotivo) {
+		
+		return actoRangoTarifaRepository.getActoRangoUnico(idActo, idMotivo);
+		
 	}
+	
+
 
 }

@@ -12,6 +12,7 @@ import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.ActoRangoTarifa
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.BaseCobroActo;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.ClasificacionNumeroIntervinienteActo;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.Libro;
+import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.MotivoCobroActo;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.MotivoCobroCatalogoActo;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.RangoMotivo;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.RangoTarifa;
@@ -37,6 +38,13 @@ public class ActoNotarialService {
 	
 	@Autowired
 	private ClasificacionNumeroIntervenienteActoService clasificacionSvc;
+	
+	@Autowired
+	private MotivoCobroActoService motivoCobroActoSvc;
+	@Autowired
+	private RangoTarifaService rangoTSvc;
+	
+	
 
 	public ActoNotarialService(ActoNotarialRepository actoNotarialRepository) {
 		super();
@@ -118,8 +126,27 @@ public class ActoNotarialService {
 		
 	}
 	
+	public Double getTarifaActosMotivo( String nombreBase, String nombreClasificacion, String nombreLibro, String nombreActo, String nombreMotivo) {
+		ActoNotarial actoBuscado=this.getActoByParametros(nombreBase, nombreClasificacion, nombreLibro, nombreActo);
+		MotivoCobroActo motivoBuscado= motivoCobroActoSvc.getMotivoUnico(nombreMotivo);
+		MotivoCobroCatalogoActo actoMotivoBuscado= new MotivoCobroCatalogoActo();
+		String idActo= actoBuscado.getIdCatalogoActoNotarial().toString();
+		String idMotivo= motivoBuscado.getIdMotivoCobroActo().toString();
+		actoMotivoBuscado= motivoSvc.getTarifa(idActo, idMotivo);
+		return actoMotivoBuscado.getValorMotivoCobroCatalogoActo();
 
+	}
+	
+	public Double getTarifaActosTabla( String nombreBase, String nombreClasificacion, String nombreLibro, String nombreActo, Double max, Double min) {
+		ActoNotarial actoBuscado=this.getActoByParametros(nombreBase, nombreClasificacion, nombreLibro, nombreActo);
+		RangoTarifa rangoBuscado= rangoTSvc.getRangoTarifaByMinMax(max, min);
+		ActoRangoTarifa actoRangoBuscado= new ActoRangoTarifa();
+		String idActo= actoBuscado.getIdCatalogoActoNotarial().toString();
+		String idRango= rangoBuscado.getIdRangoTarifa().toString();
+		actoRangoBuscado= rangoSvc.getTarifa(idActo,idRango);
+		return actoRangoBuscado.getPorcentajeActoRangoTarifa()*425;
 
+	}
 	public List<ActoNotarial> getActosLibros(String libro) {
 
 		List<ActoNotarial> ListaActosLibros = new ArrayList<>();
@@ -160,8 +187,4 @@ public class ActoNotarialService {
 		return listadoPrecios;
 	}
 	
-	// tal vez con un iterador
-	public Double getPrecioActoTabla(List<RangoMotivo> tarifasCatalogos, ActoNotarial actoBuscado, RangoTarifa rangoBuscado) {
-		return 20.00;
-	}
 }

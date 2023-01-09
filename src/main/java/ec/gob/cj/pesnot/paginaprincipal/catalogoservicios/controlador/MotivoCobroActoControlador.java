@@ -34,7 +34,7 @@ public class MotivoCobroActoControlador {
 
 		return motivoCobroActoSvc.getMotivoCobroActo();
 	}
-
+	
 	@PostMapping("/saveMotivoCobroActo")
 	public MotivoCobroActo guardarMotivoCobroActo(@RequestBody MotivoCobroActo motivoCobroAdj) {
 
