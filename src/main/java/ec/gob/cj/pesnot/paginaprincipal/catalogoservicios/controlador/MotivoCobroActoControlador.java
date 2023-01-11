@@ -53,6 +53,13 @@ public class MotivoCobroActoControlador {
 		return motivoCobroActoSvc.getMotivoCobroActoLike(nombre);
 	}
 	
+
+	@GetMapping("/getMotivoCobroActoUnico/{nombre}")
+	public MotivoCobroActo obtenerMotivoCobroActoUnico(@PathVariable("nombre") String nombre){
+		
+		return motivoCobroActoSvc.getMotivoUnico(nombre);
+	}
+	
 	
 	
 	

@@ -1,5 +1,7 @@
 package ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,10 +19,10 @@ public class RangoTarifa {
 	private Long idRangoTarifa;
 
 	@Column(name = "valorMaximoRangoTarifa")
-	private Double valorMaximoRangoTarifa;
+	private BigDecimal valorMaximoRangoTarifa;
 
 	@Column(name = "valorMinimoRangoTarifa")
-	private Double valorMinimoRangoTarifa;
+	private BigDecimal valorMinimoRangoTarifa;
 
 	@Column(name = "estadoRangoTarifa")
 	private Boolean estadoRangoTarifa;
@@ -29,7 +31,7 @@ public class RangoTarifa {
 		super();
 	}
 
-	public RangoTarifa(Long idRangoTarifa, Double valorMaximoRangoTarifa, Double valorMinimoRangoTarifa,
+	public RangoTarifa(Long idRangoTarifa, BigDecimal valorMaximoRangoTarifa, BigDecimal valorMinimoRangoTarifa,
 			Boolean estadoRangoTarifa) {
 		super();
 		this.idRangoTarifa = idRangoTarifa;
@@ -46,19 +48,19 @@ public class RangoTarifa {
 		this.idRangoTarifa = idRangoTarifa;
 	}
 
-	public Double getValorMaximoRangoTarifa() {
+	public BigDecimal getValorMaximoRangoTarifa() {
 		return valorMaximoRangoTarifa;
 	}
 
-	public void setValorMaximoRangoTarifa(Double valorMaximoRangoTarifa) {
+	public void setValorMaximoRangoTarifa(BigDecimal valorMaximoRangoTarifa) {
 		this.valorMaximoRangoTarifa = valorMaximoRangoTarifa;
 	}
 
-	public Double getValorMinimoRangoTarifa() {
+	public BigDecimal getValorMinimoRangoTarifa() {
 		return valorMinimoRangoTarifa;
 	}
 
-	public void setValorMinimoRangoTarifa(Double valorMinimoRangoTarifa) {
+	public void setValorMinimoRangoTarifa(BigDecimal valorMinimoRangoTarifa) {
 		this.valorMinimoRangoTarifa = valorMinimoRangoTarifa;
 	}
 

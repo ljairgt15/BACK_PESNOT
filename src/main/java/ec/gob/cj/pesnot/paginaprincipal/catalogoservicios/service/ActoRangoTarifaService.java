@@ -43,7 +43,7 @@ public class ActoRangoTarifaService {
 
 		return actoRangoTarifaRepository.findById(id);
 	}
-	public ActoRangoTarifa getTarifa(String idActo, String idMotivo) {
+	public ActoRangoTarifa getActoRangoUnico(String idActo, String idMotivo) {
 		
 		return actoRangoTarifaRepository.getActoRangoUnico(idActo, idMotivo);
 		

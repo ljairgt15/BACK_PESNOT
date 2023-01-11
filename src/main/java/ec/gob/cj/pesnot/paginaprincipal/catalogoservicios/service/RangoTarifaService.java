@@ -1,5 +1,6 @@
 package ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,7 +34,7 @@ public class RangoTarifaService {
 	{
 		return rangoTarifarepo.findById(id);
 	}
-	public RangoTarifa getRangoTarifaByMinMax(Double max, Double min)
+	public RangoTarifa getRangoTarifaByMinMax(BigDecimal max, BigDecimal min)
 	{
 		return rangoTarifarepo.getRangoByMinMax(max,min);
 	}

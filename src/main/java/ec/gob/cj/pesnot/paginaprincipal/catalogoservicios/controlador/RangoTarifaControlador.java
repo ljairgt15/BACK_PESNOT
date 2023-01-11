@@ -1,5 +1,6 @@
 package ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.controlador;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,7 +40,7 @@ public class RangoTarifaControlador {
 		return service.getRangoTarifaById(id);
 	}
 	@GetMapping("/getRangoTarifaByMinMax/{max}/{min}")
-	private RangoTarifa obtenerRangoTarifaByMinMax(@PathVariable("max") Double max, @PathVariable("min") Double min)
+	private RangoTarifa obtenerRangoTarifaByMinMax(@PathVariable("max") BigDecimal  max, @PathVariable("min")BigDecimal min)
 	{
 		return service.getRangoTarifaByMinMax(max, min);
 	}

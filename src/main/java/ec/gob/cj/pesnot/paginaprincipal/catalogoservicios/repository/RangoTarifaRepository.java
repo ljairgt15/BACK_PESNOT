@@ -1,6 +1,8 @@
 package ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.repository;
 
 
+import java.math.BigDecimal;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -11,6 +13,6 @@ import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.RangoTarifa;
 public interface RangoTarifaRepository extends JpaRepository <RangoTarifa,Long>{
 
 	@Query(nativeQuery = true,value="SELECT * FROM RangoTarifa r WHERE r.valorMaximoRangoTarifa=:valorMax AND r.valorMinimoRangoTarifa=:valorMin")
-	RangoTarifa getRangoByMinMax(@Param("valorMax") Double valorMax, @Param("valorMin") Double valorMin);
+	RangoTarifa getRangoByMinMax(@Param("valorMax") BigDecimal valorMax, @Param("valorMin")BigDecimal valorMin);
 	
 }

@@ -1,5 +1,7 @@
 package ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.controlador;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.ActoNotarial;
@@ -23,9 +27,7 @@ public class ActoNotarialControlador {
 	@Autowired
 	private ActoNotarialService actoNotarialService;
 
-
-	public ActoNotarialControlador(ActoNotarialService actoNotarialService
-			) {
+	public ActoNotarialControlador(ActoNotarialService actoNotarialService) {
 		super();
 		this.actoNotarialService = actoNotarialService;
 	}
@@ -37,18 +39,69 @@ public class ActoNotarialControlador {
 		return ListaActosNotariales;
 
 	}
-	
+
 	@GetMapping("/getMotivoCobroActo/{nombreBase}/{nombreClasificacion}/{nombreLibro}/{nombreActo}/{nombreMotivo}")
-	public Double obtenerPrecioMotivoCobroActo(@PathVariable String nombreBase,@PathVariable String nombreClasificacion, @PathVariable String nombreLibro, @PathVariable String nombreActo, @PathVariable String nombreMotivo) {
+	public Double obtenerPrecioMotivoCobroActo(@PathVariable String nombreBase,
+			@PathVariable String nombreClasificacion, @PathVariable String nombreLibro, @PathVariable String nombreActo,
+			@PathVariable String nombreMotivo) {
 
-		return actoNotarialService.getTarifaActosMotivo(nombreBase, nombreClasificacion, nombreLibro, nombreActo, nombreMotivo);
+		return actoNotarialService.getTarifaActosMotivo(nombreBase, nombreClasificacion, nombreLibro, nombreActo,
+				nombreMotivo);
 	}
+
+	@PostMapping("geTarifaMotivo/")
+	public Double obtenerActoNotarialPorParametros(@RequestBody ActoNotarial acto, @PathVariable String nombreActo) {
+
+		return actoNotarialService.getTarifaActosMotivoconActo(acto, nombreActo);
+	}
+
 	@GetMapping("/getRangoActo/{nombreBase}/{nombreClasificacion}/{nombreLibro}/{nombreActo}/{max}/{min}")
-	public Double obtenerPrecioMotivoCobroActo(@PathVariable String nombreBase,@PathVariable String nombreClasificacion, @PathVariable String nombreLibro, @PathVariable String nombreActo, @PathVariable Double max, @PathVariable Double min ) {
+	public Double obtenerPrecioMotivoCobroActo(@PathVariable String nombreBase,
+			@PathVariable String nombreClasificacion, @PathVariable String nombreLibro, @PathVariable String nombreActo,
+			@PathVariable BigDecimal max, @PathVariable BigDecimal min) {
 
-		return actoNotarialService.getTarifaActosTabla(nombreBase, nombreClasificacion, nombreLibro, nombreActo, max, min);
+		return actoNotarialService.getTarifaActosTabla(nombreBase, nombreClasificacion, nombreLibro, nombreActo, max,
+				min);
 	}
-	
+
+	@GetMapping("/getTarifaGeneral")
+	public Double obtenerPrecioGeneral(
+			@RequestParam(name = "boolean", required = true, defaultValue = "null") Boolean usaCalculo,
+			@RequestParam(name = "base", required = true, defaultValue = "null") String nombreBase,
+			@RequestParam(name = "clasificacion", required = true, defaultValue = "null") String nombreClasificacion,
+			@RequestParam(name = "libro", required = true, defaultValue = "null") String nombreLibro,
+			@RequestParam(name = "acto", required = true, defaultValue = "null") String nombreActo,
+			@RequestParam(name = "motivo", required = false, defaultValue = "null") String nombreMotivo,
+			@RequestParam(name = "max", required = false, defaultValue = "0") BigDecimal max,
+			@RequestParam(name = "min", required = false, defaultValue = "0") BigDecimal min) {
+		Double precio = null;
+		try {
+			ActoNotarial actoBuscado = actoNotarialService.getActoByParametros(nombreBase, nombreClasificacion,
+					nombreLibro, nombreActo);
+			if (actoBuscado == null) {
+				precio = null;
+				System.out.print("no se pudo");
+			} else {
+				if (usaCalculo) {
+					BigDecimal maximo = max.setScale(4, RoundingMode.UP);
+					BigDecimal minimo = min.setScale(4, RoundingMode.UP);
+					System.out.println("rango controlador" + maximo);
+					System.out.println("rango controlador" + minimo);
+					precio = actoNotarialService.getTarifaActosTablaConActo(actoBuscado, maximo, minimo);
+				} else {
+					precio = actoNotarialService.getTarifaActosMotivoconActo(actoBuscado, nombreMotivo);
+
+				}
+				return precio;
+			}
+			return precio;
+		} catch (NullPointerException err) {
+			System.out.println("No se puede encontrar la tarifa de dicho catalogo, revise bien los parametros mandados " + err);
+
+		}
+		return precio;
+	}
+
 	@GetMapping("/getActosActivos")
 	public List<ActoNotarial> obtenerActosNotarialesActivos() {
 
@@ -62,13 +115,27 @@ public class ActoNotarialControlador {
 		return actoNotarialService.getActoNotarialById(id);
 
 	}
+
 	@GetMapping("getActoByParametros/{nombreBase}/{nombreClasificacion}/{nombreLibro}/{nombreActo}")
-	public ActoNotarial obtenerActoNotarialPorParametros( @PathVariable String nombreBase,@PathVariable String nombreClasificacion, @PathVariable String nombreLibro, @PathVariable String nombreActo) {
+	public ActoNotarial obtenerActoNotarialPorParametros(@PathVariable String nombreBase,
+			@PathVariable String nombreClasificacion, @PathVariable String nombreLibro,
+			@PathVariable String nombreActo) {
 
 		return actoNotarialService.getActoByParametros(nombreBase, nombreClasificacion, nombreLibro, nombreActo);
-
 	}
-	
+
+	@PostMapping("getActoByParametros")
+	// @ResponseBody
+	public ActoNotarial obtenerActoNotarialPorParametrosII(@RequestBody String nombreBase,
+			@RequestBody String nombreClasificacion, @RequestBody String nombreLibro, @RequestBody String nombreActo) {
+		// public ActoNotarial obtenerActoNotarialPorParametrosII(
+		// @RequestParam(required=true) String nombreBase,@RequestParam(required=true)
+		// String nombreClasificacion, @RequestParam(required=true) String nombreLibro,
+		// @RequestParam(required=true) String nombreActo) {
+
+		return actoNotarialService.getActoByParametros(nombreBase, nombreClasificacion, nombreLibro, nombreActo);
+	}
+
 	@GetMapping("getActosLike/{nombre}")
 	public List<ActoNotarial> obtenerActoLikeNombre(@PathVariable("nombre") String nombre) {
 
@@ -81,19 +148,20 @@ public class ActoNotarialControlador {
 		return actoNotarialService.getActosLibros(libro);
 
 	}
+
 	@GetMapping("geActoConTarifas")
 	public List<ActoNotarial> obtenerActosTarifa() {
 		return actoNotarialService.getActosConTarifas();
 	}
-	
+
 	@GetMapping("getTarifas")
 	public List<RangoMotivo> obtenerTarifas() {
 		return actoNotarialService.getActosPrecio();
 	}
-	
+
 	@PostMapping("/saveActNot")
 	public ActoNotarial guardarActNot(@RequestBody ActoNotarial objAct) {
-		
-		return actoNotarialService.ingresarActoNotarialL(objAct);		
+
+		return actoNotarialService.ingresarActoNotarialL(objAct);
 	}
 }
