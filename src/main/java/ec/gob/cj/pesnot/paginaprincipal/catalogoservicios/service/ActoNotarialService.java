@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.ActoNotarial;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.ActoRangoTarifa;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.BaseCobroActo;
-import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.ClasificacionNumeroIntervinienteActo;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.Libro;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.MotivoCobroActo;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.MotivoCobroCatalogoActo;
@@ -37,8 +36,6 @@ public class ActoNotarialService {
 	@Autowired
 	private LibroService libroSvc;
 	
-	@Autowired
-	private ClasificacionNumeroIntervenienteActoService clasificacionSvc;
 	
 	@Autowired
 	private MotivoCobroActoService motivoCobroActoSvc;
@@ -97,7 +94,7 @@ public class ActoNotarialService {
 		return ListActosNotariales;
 	}
 	
-	public ActoNotarial getActoByParametros(String nombreBase, String nombreClasificacion, String nombreLibro, String nombreActo) {
+	public ActoNotarial getActoByParametros(String nombreBase, String nombreLibro, String nombreActo) {
 		BaseCobroActo base;
 		base= baseCobroService.getBaseByNombre(nombreBase);
 		String idBase;
@@ -105,11 +102,6 @@ public class ActoNotarialService {
 		Long numero=1l;
 		//idBase=(numero.toString());
 		
-
-		ClasificacionNumeroIntervinienteActo clasificacion;
-		clasificacion= clasificacionSvc.getClasificacionByNombre(nombreClasificacion);
-		String idClasificacion;
-		idClasificacion= clasificacion.getIdClasificacionNumeroIntervinienteActo().toString();
 		//idClasificacion= numero.toString();
 		
 		Libro libro;
@@ -121,7 +113,7 @@ public class ActoNotarialService {
 		//nombreActo="CATALOGO DE LA GACETA JUDICIAL";
 		
 		ActoNotarial actoBuscado= new ActoNotarial();
-		actoBuscado= actoNotarialRepository.getActoUnico(nombreActo, idLibro,idBase, idClasificacion);
+		actoBuscado= actoNotarialRepository.getActoUnico(nombreActo, idLibro,idBase);
 		
 		return actoBuscado;
 		
@@ -162,8 +154,8 @@ public class ActoNotarialService {
 		return actoMotivoBuscado.getValorMotivoCobroCatalogoActo();
 
 	}
-	public Double getTarifaActosMotivo( String nombreBase, String nombreClasificacion, String nombreLibro, String nombreActo, String nombreMotivo) {
-		ActoNotarial actoBuscado=this.getActoByParametros(nombreBase, nombreClasificacion, nombreLibro, nombreActo);
+	public Double getTarifaActosMotivo( String nombreBase, String nombreLibro, String nombreActo, String nombreMotivo) {
+		ActoNotarial actoBuscado=this.getActoByParametros(nombreBase, nombreLibro, nombreActo);
 		MotivoCobroActo motivoBuscado= motivoCobroActoSvc.getMotivoUnico(nombreMotivo);
 		MotivoCobroCatalogoActo actoMotivoBuscado= new MotivoCobroCatalogoActo();
 		String idActo= actoBuscado.getIdCatalogoActoNotarial().toString();
@@ -174,8 +166,8 @@ public class ActoNotarialService {
 	}
 	
 	
-	public Double getTarifaActosTabla( String nombreBase, String nombreClasificacion, String nombreLibro, String nombreActo, BigDecimal max, BigDecimal min) {
-		ActoNotarial actoBuscado=this.getActoByParametros(nombreBase, nombreClasificacion, nombreLibro, nombreActo);
+	public Double getTarifaActosTabla( String nombreBase,  String nombreLibro, String nombreActo, BigDecimal max, BigDecimal min) {
+		ActoNotarial actoBuscado=this.getActoByParametros(nombreBase, nombreLibro, nombreActo);
 		RangoTarifa rangoBuscado= rangoTSvc.getRangoTarifaByMinMax(max, min);
 		ActoRangoTarifa actoRangoBuscado= new ActoRangoTarifa();
 		String idActo= actoBuscado.getIdCatalogoActoNotarial().toString();
@@ -186,9 +178,9 @@ public class ActoNotarialService {
 	}
 	
 	
-	public Double getTarifaGeneral(String nombreBase, String nombreClasificacion, String nombreLibro, String nombreActo, String nombreMotivo, BigDecimal max, BigDecimal min) {
+	public Double getTarifaGeneral(String nombreBase, String nombreLibro, String nombreActo, String nombreMotivo, BigDecimal max, BigDecimal min) {
 		Double tarifa=null;
-		ActoNotarial actoBuscado=this.getActoByParametros(nombreBase, nombreClasificacion, nombreLibro, nombreActo);
+		ActoNotarial actoBuscado=this.getActoByParametros(nombreBase, nombreLibro, nombreActo);
 		boolean usaCalculoTarifa= actoBuscado.getUsaCalculoTablaCatalogoActoNotarial();
 		if(usaCalculoTarifa) {
 			//tarifa=this.getTarifaActosTabla(nombreBase, nombreClasificacion, nombreLibro, nombreActo, max, min);

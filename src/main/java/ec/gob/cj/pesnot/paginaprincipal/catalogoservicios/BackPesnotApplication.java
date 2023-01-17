@@ -1,5 +1,6 @@
 package ec.gob.cj.pesnot.paginaprincipal.catalogoservicios;
 import org.springframework.boot.SpringApplication;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
@@ -10,6 +11,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @SpringBootApplication
 @EnableJpaAuditing
 @EnableWebMvc
+@EnableSwagger2
+
 public class BackPesnotApplication extends SpringBootServletInitializer {
 	
 
