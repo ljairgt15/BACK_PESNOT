@@ -1,4 +1,4 @@
-package ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.controlador;
+package ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.MotivoCobroCatalogoActo;
+import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.model.MotivoCobroCatalogoActo;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.service.MotivoCobroCatalogoActoService;
 
 @RestController

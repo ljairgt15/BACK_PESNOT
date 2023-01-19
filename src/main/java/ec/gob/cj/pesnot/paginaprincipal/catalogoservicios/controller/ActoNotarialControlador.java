@@ -1,4 +1,4 @@
-package ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.controlador;
+package ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.controller;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.ActoNotarial;
-import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.RangoMotivo;
+import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.model.ActoNotarial;
+import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.model.RangoMotivo;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.service.ActoNotarialService;
 
 @RestController

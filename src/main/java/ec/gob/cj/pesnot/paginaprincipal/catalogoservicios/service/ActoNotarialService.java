@@ -8,14 +8,14 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.ActoNotarial;
-import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.ActoRangoTarifa;
-import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.BaseCobroActo;
-import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.Libro;
-import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.MotivoCobroActo;
-import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.MotivoCobroCatalogoActo;
-import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.RangoMotivo;
-import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.RangoTarifa;
+import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.model.ActoNotarial;
+import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.model.ActoRangoTarifa;
+import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.model.BaseCobroActo;
+import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.model.Libro;
+import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.model.MotivoCobroActo;
+import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.model.MotivoCobroCatalogoActo;
+import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.model.RangoMotivo;
+import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.model.RangoTarifa;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.repository.ActoNotarialRepository;
 
 @Service

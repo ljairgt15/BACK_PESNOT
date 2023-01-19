@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Service;
-import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.Libro;
+import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.model.Libro;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.repository.LibroRepository;
 
 @Service

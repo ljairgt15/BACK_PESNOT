@@ -1,4 +1,4 @@
-package ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo;
+package ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.model;
 
 public class RangoMotivo {
 	

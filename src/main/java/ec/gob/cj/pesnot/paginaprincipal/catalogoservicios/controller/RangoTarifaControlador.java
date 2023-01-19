@@ -1,4 +1,4 @@
-package ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.controlador;
+package ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.controller;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.RangoTarifa;
+import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.model.RangoTarifa;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.service.RangoTarifaService;
 
 @RestController

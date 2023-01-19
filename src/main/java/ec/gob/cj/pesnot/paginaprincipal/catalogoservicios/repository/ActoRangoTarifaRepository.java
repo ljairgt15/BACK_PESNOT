@@ -6,8 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.ActoNotarial;
-import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.ActoRangoTarifa;
+import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.model.ActoRangoTarifa;
 
 @Repository
 public interface ActoRangoTarifaRepository extends JpaRepository <ActoRangoTarifa, Long> {
