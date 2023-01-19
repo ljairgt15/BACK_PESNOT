@@ -12,28 +12,28 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.ActoRangoTarifa;
-import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.service.ActoRangoTarifaService;
+import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.TablaTarifaCatalogoActo;
+import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.service.TablaTarifaCatalogoActoService;
 
 @RestController
 @RequestMapping("ActoRango")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ActoRangoControlador {
 	@Autowired
-	private ActoRangoTarifaService service;
+	private TablaTarifaCatalogoActoService service;
 
-	public ActoRangoControlador(ActoRangoTarifaService serviceEntramter) {
+	public ActoRangoControlador(TablaTarifaCatalogoActoService serviceEntramter) {
 		super();
 		this.service = serviceEntramter;
 	}
 
 	@GetMapping("/getActoRangoTarifa")
-	private List<ActoRangoTarifa> obtenerActoRangoTarifa() {
+	private List<TablaTarifaCatalogoActo> obtenerActoRangoTarifa() {
 		return service.getActoRangoTarifa();
 	}
 	
 	@GetMapping("/getActoRangoTarifaById/{id}")
-	private Optional<ActoRangoTarifa> obtenerActoRangoTarifaById(@PathVariable("id") Long id)
+	private Optional<TablaTarifaCatalogoActo> obtenerActoRangoTarifaById(@PathVariable("id") Long id)
 	{
 		return service.getActoRangoTarifaById(id);
 	}
@@ -44,7 +44,7 @@ public class ActoRangoControlador {
 	}
 	
 	@PostMapping("/saveActoRangoTarifa")
-	private ActoRangoTarifa ingresarRangoTarifa(@RequestBody ActoRangoTarifa arangoTafEntrante)
+	private TablaTarifaCatalogoActo ingresarRangoTarifa(@RequestBody TablaTarifaCatalogoActo arangoTafEntrante)
 	{
 		return service.ingresarActoRangoTarifa(arangoTafEntrante);
 		

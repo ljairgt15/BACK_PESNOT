@@ -57,6 +57,7 @@ public class ActoNotarialControlador {
 	*/
 	
 	//TODO EDITAR QUIERO BUSCAR QUE EL ACTO A QUE TABLA PERTENECE Y A QUE RANGO PARA QUE ME DE EL PRECIO
+	/*
 	@GetMapping("/getRangoActo/{nombreBase}/{nombreLibro}/{nombreActo}/{max}/{min}")
 	public Double obtenerPrecioMotivoCobroActo(@PathVariable String nombreBase,
 			 @PathVariable String nombreLibro, @PathVariable String nombreActo,
@@ -65,6 +66,7 @@ public class ActoNotarialControlador {
 		return actoNotarialService.getTarifaActosTabla(nombreBase, nombreLibro, nombreActo, max,
 				min);
 	}
+	
 	
 	//TODO EDITAR TARIFAS
 	@GetMapping("/getTarifaGeneral")
@@ -104,6 +106,7 @@ public class ActoNotarialControlador {
 		}
 		return precio;
 	}
+	*/
 
 	@GetMapping("/getActosActivos")
 	public List<ActoNotarial> obtenerActosNotarialesActivos() {
@@ -164,7 +167,7 @@ public class ActoNotarialControlador {
 
 	@GetMapping("getTarifas")
 	public List<RangoMotivo> obtenerTarifas() {
-		return actoNotarialService.getActosPrecio();
+		return actoNotarialService.getListaMostrar();
 	}
 
 	@PostMapping("/saveActNot")

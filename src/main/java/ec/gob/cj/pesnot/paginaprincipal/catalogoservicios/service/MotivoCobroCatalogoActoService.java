@@ -14,11 +14,6 @@ public class MotivoCobroCatalogoActoService {
 	@Autowired
 	public MotivoCobroCatalogoActoRepository motivoCatalogoRepo;
 	
-
-	@Autowired
-	private MotivoCobroActoService motivoCobroActoSvc;
-	
-
 	public MotivoCobroCatalogoActoService(MotivoCobroCatalogoActoRepository motivoCatalogoRepoEntrante) {
 		super();
 		this.motivoCatalogoRepo=motivoCatalogoRepoEntrante;

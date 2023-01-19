@@ -1,6 +1,7 @@
 package ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,18 +27,21 @@ public class RangoTarifa {
 
 	@Column(name = "estadoRangoTarifa")
 	private Boolean estadoRangoTarifa;
+	
+	@Column(name = "fechaCreacionRangoTarifa")
+	private Date fechaCreacionRangoTarifa;
+	
+	@Column(name = "fechaModificacionRangoTarifa")
+	private Date fechaModificacionRangoTarifa;
+	
+	@Column(name = "usuarioCreacionRangoTarifa")
+	private Long usuarioCreacionRangoTarifa;
+	
+	@Column(name = "usuarioModificacionRangoTarifa")
+	private Long usuarioModificacionRangoTarifa;
 
 	public RangoTarifa() {
 		super();
-	}
-
-	public RangoTarifa(Long idRangoTarifa, BigDecimal valorMaximoRangoTarifa, BigDecimal valorMinimoRangoTarifa,
-			Boolean estadoRangoTarifa) {
-		super();
-		this.idRangoTarifa = idRangoTarifa;
-		this.valorMaximoRangoTarifa = valorMaximoRangoTarifa;
-		this.valorMinimoRangoTarifa = valorMinimoRangoTarifa;
-		this.estadoRangoTarifa = estadoRangoTarifa;
 	}
 
 	public Long getIdRangoTarifa() {
@@ -72,10 +76,45 @@ public class RangoTarifa {
 		this.estadoRangoTarifa = estadoRangoTarifa;
 	}
 
+	public Date getFechaCreacionRangoTarifa() {
+		return fechaCreacionRangoTarifa;
+	}
+
+	public void setFechaCreacionRangoTarifa(Date fechaCreacionRangoTarifa) {
+		this.fechaCreacionRangoTarifa = fechaCreacionRangoTarifa;
+	}
+
+	public Date getFechaModificacionRangoTarifa() {
+		return fechaModificacionRangoTarifa;
+	}
+
+	public void setFechaModificacionRangoTarifa(Date fechaModificacionRangoTarifa) {
+		this.fechaModificacionRangoTarifa = fechaModificacionRangoTarifa;
+	}
+
+	public Long getUsuarioCreacionRangoTarifa() {
+		return usuarioCreacionRangoTarifa;
+	}
+
+	public void setUsuarioCreacionRangoTarifa(Long usuarioCreacionRangoTarifa) {
+		this.usuarioCreacionRangoTarifa = usuarioCreacionRangoTarifa;
+	}
+
+	public Long getUsuarioModificacionRangoTarifa() {
+		return usuarioModificacionRangoTarifa;
+	}
+
+	public void setUsuarioModificacionRangoTarifa(Long usuarioModificacionRangoTarifa) {
+		this.usuarioModificacionRangoTarifa = usuarioModificacionRangoTarifa;
+	}
+
 	@Override
 	public String toString() {
 		return "RangoTarifa [idRangoTarifa=" + idRangoTarifa + ", valorMaximoRangoTarifa=" + valorMaximoRangoTarifa
 				+ ", valorMinimoRangoTarifa=" + valorMinimoRangoTarifa + ", estadoRangoTarifa=" + estadoRangoTarifa
-				+ "]";
+				+ ", fechaCreacionRangoTarifa=" + fechaCreacionRangoTarifa + ", fechaModificacionRangoTarifa="
+				+ fechaModificacionRangoTarifa + ", usuarioCreacionRangoTarifa=" + usuarioCreacionRangoTarifa
+				+ ", usuarioModificacionRangoTarifa=" + usuarioModificacionRangoTarifa + "]";
 	}
+	
 }
