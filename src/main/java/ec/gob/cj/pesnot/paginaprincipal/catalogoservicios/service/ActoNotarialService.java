@@ -205,7 +205,7 @@ public class ActoNotarialService {
 				rangoNuevo.setPrecio(tarifa.getIdTablaTarifa().getNombreTablaTarifa());
 				listadoPrecios.add(rangoNuevo);
 			}
-			return listadoPrecios;
+			//return listadoPrecios;
 		}
 
 		for (MotivoCobroCatalogoActo tarifa : listadoTarifasMotivo) {
@@ -249,7 +249,6 @@ public class ActoNotarialService {
 			System.out.println(
 					"No se puede encontrar la tabla asociada a dicho catalogo, revise bien los parametros mandados "
 							+ err);
-
 		}
 		return tarifa;
 	}
