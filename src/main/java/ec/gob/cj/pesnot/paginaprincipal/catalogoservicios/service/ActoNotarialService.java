@@ -3,6 +3,7 @@ package ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -175,6 +176,7 @@ public class ActoNotarialService {
 
 	// TRAE UNA LISTA PERSONALIZADA PARA QUE SE PUEDA JUNTAR ATRIBUTOS COMUNES TANTO
 	// DE TABLA MOTIVO, COMO DE TABLA DE RANGOS
+
 	public List<RangoMotivo> getListaMostrar() {
 		List<RangoMotivo> listadoPrecios = new ArrayList<RangoMotivo>();
 		List<MotivoCobroCatalogoActo> listadoTarifasMotivo = new ArrayList<MotivoCobroCatalogoActo>();
@@ -187,22 +189,13 @@ public class ActoNotarialService {
 		List<ActoNotarial> listadoActosConTarifa = this.getActosConTarifas();
 		List<ActoNotarial> listadoActosSinTarifa = new ArrayList<ActoNotarial>();
 
-		int pos = 0;
-		for (int j = 0; j < listadoActosConTarifa.size(); j++) {
-			boolean esta = false;
-			for (int k = 0; k < listadoActosActivos.size(); k++) {
-				if (listadoActosConTarifa.get(j) != listadoActosActivos.get(k)) {
-					esta = true;
-				}
-			}
-			if (esta) {
-				listadoActosSinTarifa.add(listadoActosConTarifa.get(j));
-				pos = pos + 1;
-			}
+		List<Long> idsEnTarifas = new ArrayList<Long>();
+		for (ActoNotarial id : listadoActosConTarifa) {
+			idsEnTarifas.add(id.getIdCatalogoActoNotarial());
 		}
-		System.out.println(listadoActosActivos.size());
-		System.out.println(listadoActosConTarifa.size());
-		System.out.println(listadoActosSinTarifa.size());
+
+		listadoActosSinTarifa = listadoActosActivos.stream()
+				.filter(acto -> !idsEnTarifas.contains(acto.getIdCatalogoActoNotarial())).collect(Collectors.toList());
 
 		for (TablaTarifaCatalogoActo tarifa : listadoTarifaRango) {
 			if (tarifa.getEstadoActivo()) {
@@ -232,7 +225,6 @@ public class ActoNotarialService {
 			rangoNuevo.setPrecio(null);
 			listadoPrecios.add(rangoNuevo);
 		}
-
 		return listadoPrecios;
 	}
 
