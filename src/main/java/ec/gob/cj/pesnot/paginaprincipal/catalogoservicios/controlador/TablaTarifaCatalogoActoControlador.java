@@ -16,13 +16,17 @@ import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.TablaTarifaCata
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.service.TablaTarifaCatalogoActoService;
 
 @RestController
-@RequestMapping("")
+@RequestMapping("/")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class TablaTarifaCatalogoActoControlador {
 	
 	@Autowired
 	TablaTarifaCatalogoActoService service;
 	
+	public TablaTarifaCatalogoActoControlador(TablaTarifaCatalogoActoService service) {
+		super();
+		this.service = service;
+	}
 	
 	@GetMapping("/getTablaActo")
 	public List<TablaTarifaCatalogoActo> getAll(){
@@ -30,7 +34,7 @@ public class TablaTarifaCatalogoActoControlador {
 		return service.getActoRangoTarifa();
 	}
 	
-	@GetMapping("/getTablaActo")
+	@GetMapping("/getTablaActoActivos")
 	public List<TablaTarifaCatalogoActo> getAllActivos(){
 		return service.getActoRangoTarifaActivos();
 	}

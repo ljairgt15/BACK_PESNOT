@@ -15,7 +15,7 @@ import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.Libro;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.service.LibroService;
 
 @RestController
-@RequestMapping("Libros")
+@RequestMapping("/")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class LibroControlador {
 
@@ -27,25 +27,25 @@ public class LibroControlador {
 		this.libroService = libroService;
 	}
 
-	@GetMapping("/getLibros")
+	@GetMapping("/libros")
 	public List<Libro> obtenerLibros() {
 		List<Libro> ListaLibros = libroService.getLibros();
 		return ListaLibros;
 	}
 
-	@GetMapping("/getLibrosConActosN")
+	@GetMapping("/libros/actos")
 	public List<Libro> obtenerLibrosConActosN() {
 		List<Libro> ListaLibros = libroService.getLibrosWithActN();
 		return ListaLibros;
 	}
 
-	@GetMapping("/getLibrosActivos")
+	@GetMapping("/libros/activos")
 	public List<Libro> obtenerLibrosActivos() {
 		List<Libro> ListaLibros = libroService.getLibrosActivos();
 		return ListaLibros;
 	}
 
-	@PostMapping("/saveLibros")
+	@PostMapping("/libros")
 	public Libro guardarLibro(@RequestBody Libro objLibro) {
 
 		return libroService.ingresarLibrosL(objLibro);
@@ -58,12 +58,12 @@ public class LibroControlador {
 	 * return libroService.ingresarAdministracion(objLibro); }
 	 */
 
-	@GetMapping("/getLibroById/{id}")
+	@GetMapping("/libros/{id}")
 	public Optional<Libro> obtenerLibroById(@PathVariable("id") Long id) {
 		return libroService.libroById(id);
 	}
 
-	@GetMapping("/getLibroByNombre/{nombre}")
+	@GetMapping("/libros/nombre/{nombre}")
 	public Libro obtenerLibroByNombre(@PathVariable("nombre") String id) {
 		return libroService.getLibroByNombre(id);
 	}

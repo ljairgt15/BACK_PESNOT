@@ -16,7 +16,7 @@ import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.BaseCobroActo;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.service.BaseCobroActoService;
 
 @RestController
-@RequestMapping("BaseCobroActo")
+@RequestMapping("/")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class BaseCobroActoControlador {
 	
@@ -29,23 +29,23 @@ public class BaseCobroActoControlador {
 		this.baseCobroService=baseCobroServiceEntrante;
 	}
 	
-	@GetMapping("/getBaseCobro")
+	@GetMapping("/BaseCobroActo")
 	public List <BaseCobroActo> obtenerBaseCobroActos(){
 		return baseCobroService.getBaseCobro();
 	}
 	
-	@GetMapping("/getBaseById/{id}")
+	@GetMapping("/BaseCobroActo/{id}")
 	public Optional<BaseCobroActo> obtenerActoPorId(@PathVariable ("id") Long id) {
 		
 		return baseCobroService.baseById(id);	
 	}
-	@GetMapping("/getBaseCobroByNombre/{nombre}")
+	@GetMapping("/BaseCobroActo/nombre/{nombre}")
 	public BaseCobroActo obtenerBaseCobroByNombre(@PathVariable("nombre") String id) {
 		return baseCobroService.getBaseByNombre(id);
 	}
 
 	
-	@PostMapping("/saveBaseCobro")
+	@PostMapping("/BaseCobroActo")
 	public BaseCobroActo guardarBaseCobro(@RequestBody BaseCobroActo baseObj) {
 		return baseCobroService.ingresarBase(baseObj);
 	}

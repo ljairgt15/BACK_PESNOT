@@ -16,7 +16,7 @@ import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.TablaTarifaRang
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.service.TablaTarifaRangoService;
 
 @RestController
-@RequestMapping("")
+@RequestMapping("/")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class TablaTarifaRangoControlador {
 	
@@ -25,39 +25,39 @@ public class TablaTarifaRangoControlador {
 	TablaTarifaRangoService service;
 	
 	
-	@GetMapping("/getTablaRango")
+	@GetMapping("/tablaRangos")
 	public List<TablaTarifaRango> getAll(){
 		return service.getTablasConRangos();
 		
 	}
 	
-	@GetMapping("/getTablaRangoActivos")
+	@GetMapping("/tablaRangos/activos")
 	public List<TablaTarifaRango> getActivos(){
 		return service.getTablasRangosActivos();
 		
 	}
 	
-	@GetMapping("/getTablaRangoById/{id}")
+	@GetMapping("/tablaRangos/{id}")
 	private Optional<TablaTarifaRango> obtenerTablaRangoTarifaById(@PathVariable("id") Long id)
 	{
 		return service.getTablaRangosById(id); 
 	}
-	@GetMapping("/actualizar/{id}")
+	@GetMapping("/tablaRangos/desactivar/{id}")
 	public void deshabilitar(@PathVariable("id") String id) {
 		service.deshabilitar(id);
 	}
 	
-	@GetMapping("/getTablaRangoUnico/{idTabla}/{idRango}")
+	@GetMapping("/tablaRangos/tabla/{idTabla}/rango/{idRango}")
 	private TablaTarifaRango getTablaRangoUnico(@PathVariable("idTabla") String idTabla, @PathVariable("idRango") String idRango) {
 		return service.getTablaRangoUnico(idTabla, idRango);
 	}
 	
-	@GetMapping("/getTablaRangoByNombreTabla/{idTabla}")
+	@GetMapping("/tablaRangos/{idTabla}")
 	private List <TablaTarifaRango> getTablaRangoUnico(@PathVariable("idTabla") String idTabla){
 		return service.getTablaConRangos(idTabla);
 	}
 	
-	@PostMapping("/saveRangoTarifa")
+	@PostMapping("/tablaRangos")
 	private TablaTarifaRango ingresarTablaRangoTarifa(@RequestBody TablaTarifaRango entrante)
 	{
 		return service.ingresarTablasRango(entrante);

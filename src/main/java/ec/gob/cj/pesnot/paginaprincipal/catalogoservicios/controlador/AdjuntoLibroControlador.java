@@ -15,7 +15,7 @@ import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.AdjuntoLibro;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.service.AdjuntoLibroService;
 
 @RestController
-@RequestMapping("AdjuntoLibro")
+@RequestMapping("/")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class AdjuntoLibroControlador {
 	
@@ -27,25 +27,25 @@ public class AdjuntoLibroControlador {
 		this.aLibroService = aLibroService;
 	}	
 	
-	@GetMapping("/getAdjLibros")
+	@GetMapping("/adjuntosLibros")
 	public List<AdjuntoLibro> obtenerAdjLibros()
 	{		
 	List<AdjuntoLibro> ListaAdjLibros = aLibroService.getAdjuntoLibros();
 	return ListaAdjLibros;	
 	}	
 	
-	@PostMapping("/saveAdjLibros")
+	@PostMapping("/adjuntosLibros")
 	public AdjuntoLibro guardarAdjLibro(@RequestBody AdjuntoLibro objAdjLibro) {
 		
 		return aLibroService.ingresarAdjuntoLibro(objAdjLibro);		
 	}
 	
-	@GetMapping("/getAdjLibroById/{id}")
+	@GetMapping("/adjuntosLibros/{id}")
 	public Optional<AdjuntoLibro> obtenerAdjLibroById(@PathVariable("id") Long id) {
 		return aLibroService.aLibroById(id);
 	}
 	
-	@GetMapping("/getAdjLibroByNombre/{nombre}")
+	@GetMapping("/adjuntosLibros/nombre/{nombre}")
 	public Optional<AdjuntoLibro> obtenerAdjLibroByNombre(@PathVariable("nombre") String id) {
 		return aLibroService.getAdjuntoLibroByNombre(id);
 	}
