@@ -38,5 +38,9 @@ public class RangoTarifaService {
 	{
 		return rangoTarifarepo.getRangoByMinMax(max,min);
 	}
+	
+	public List<RangoTarifa> getRangosActivos(){
+		return rangoTarifarepo.getRangosActivos();
+	}
 
 }

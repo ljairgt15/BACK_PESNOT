@@ -18,6 +18,9 @@ public class TablaTarifaService {
 	public List <TablaTarifa> getTablas(){
 		return tablaTarifaRepo.findAll();
 	}
+	public List<TablaTarifa> getTablasActivas(){
+		return tablaTarifaRepo.getTablaTarifaActivos();
+	}
 	
 	public Optional<TablaTarifa> getTablaById(Long id) {
 		return tablaTarifaRepo.findById(id);
@@ -30,4 +33,5 @@ public class TablaTarifaService {
 	public TablaTarifa getUnicoByNombre(String nombre) {
 		return tablaTarifaRepo.getTablaByNombre(nombre);
 	}
+	
 }

@@ -34,6 +34,11 @@ public class RangoTarifaControlador {
 		return service.getRangoTarifa();
 	}
 	
+	@GetMapping("/getRangoTarifaActivos")
+	private List<RangoTarifa> obtenerRangoTarifaActivos() {
+		return service.getRangosActivos();
+	}
+	
 	@GetMapping("/getRangoTarifaById/{id}")
 	private Optional<RangoTarifa> obtenerRangoTarifaById(@PathVariable("id") Long id)
 	{

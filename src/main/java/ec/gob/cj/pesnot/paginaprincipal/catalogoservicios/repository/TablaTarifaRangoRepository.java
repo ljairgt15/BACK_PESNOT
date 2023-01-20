@@ -20,6 +20,9 @@ public interface TablaTarifaRangoRepository extends JpaRepository <TablaTarifaRa
 	
 	@Query(nativeQuery = true, value = "SELECT * FROM TablaTarifaRango c WHERE c.idTablaTarifa= :idTablaTarifa")
 	List<TablaTarifaRango> getTablaUnicaConRango(@Param("idTablaTarifa") String idTablaTarifa);
+	
+	@Query(nativeQuery = true,value = "	select * from TablaTarifaRango r where r.estadoTablaTarifaRango='true'")
+	List<TablaTarifaRango> getTablaRangoActivos();
 
 }
 

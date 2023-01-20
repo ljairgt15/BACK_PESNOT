@@ -19,6 +19,9 @@ public class TablaTarifaCatalogoActoService {
 		return actoRangoTarifaRepository.findAll();
 
 	}
+	public List<TablaTarifaCatalogoActo> getActoRangoTarifaActivos(){
+		return actoRangoTarifaRepository.getTablaCatalogoActivos();
+	}
 
 	public TablaTarifaCatalogoActo ingresarActoRangoTarifa(TablaTarifaCatalogoActo actoRangoTarifa) {
 		return actoRangoTarifaRepository.save(actoRangoTarifa);

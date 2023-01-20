@@ -1,5 +1,7 @@
 package ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -17,5 +19,8 @@ public interface TablaTarifaCatalogoActoRepository extends JpaRepository<TablaTa
 	@Query(nativeQuery = true, value = "SELECT TOP 1 * FROM TablaTarifaCatalogoActo c WHERE c.idCatalogoActoNotarial= :idCatalogoActoNotarial AND c.idTablaTarifa= :idTablaTarifa")
 	TablaTarifaCatalogoActo getTablaActo(@Param("idCatalogoActoNotarial") String idCatalogoActoNotarial,
 			@Param("idTablaTarifa") String idTablaTarifa);
+	
+	@Query(nativeQuery = true,value = "select * from TablaTarifaCatalogoActo r where r.estadoActivo='true'")
+	List<TablaTarifaCatalogoActo> getTablaCatalogoActivos();
 
 }

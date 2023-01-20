@@ -20,6 +20,10 @@ public class TablaTarifaRangoService {
 		return repoTablaRango.findAll();
 	}
 	
+	public List<TablaTarifaRango> getTablasRangosActivos(){
+		return repoTablaRango.getTablaRangoActivos();
+	}
+	
 	public Optional<TablaTarifaRango> getTablaRangosById(Long id ) {
 		return repoTablaRango.findById(id);
 	}
@@ -29,8 +33,8 @@ public class TablaTarifaRangoService {
 	}
 	
 	@Transactional
-	public void deshabilitar(String idCatalogo) {
-		repoTablaRango.deshabilitar(idCatalogo);
+	public void deshabilitar(String idTabla) {
+		repoTablaRango.deshabilitar(idTabla);
 	}
 	
 	public TablaTarifaRango getTablaRangoUnico(String idTabla, String idRango) {
