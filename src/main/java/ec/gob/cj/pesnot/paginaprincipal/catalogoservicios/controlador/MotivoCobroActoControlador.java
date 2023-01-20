@@ -16,7 +16,7 @@ import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.MotivoCobroActo
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.service.MotivoCobroActoService;
 
 @RestController
-@RequestMapping("MotivoCobroActo")
+@RequestMapping("/")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class MotivoCobroActoControlador {
 
