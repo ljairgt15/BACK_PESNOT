@@ -23,29 +23,29 @@ public class TablaTarifaControlador {
 	TablaTarifaService service;
 	
 	
-	@GetMapping("/getTabla")
+	@GetMapping("/tablas")
 	public List<TablaTarifa> getAll(){
 		return service.getTablas();
 	}
 	
-	@GetMapping("/getRangoTarifaActivos")
+	@GetMapping("/tablas/activos")
 	public List<TablaTarifa> getAllActivos(){
 		return service.getTablasActivas();
 	}
 	
-	@GetMapping("/getTablaById/{id}")
+	@GetMapping("/tablas/{id}")
 	private Optional<TablaTarifa> obtenerTablaById(@PathVariable("id") Long id)
 	{
 		return service.getTablaById(id);
 	}
 	
-	@GetMapping("/getTabla/{nombre}")
+	@GetMapping("/tablas/nombre/{nombre}")
 	private TablaTarifa obtenerByNombre(@PathVariable("nombre") String  nombre)
 	{
 		return service.getUnicoByNombre(nombre);
 	}
 	
-	@PostMapping("/saveTablaTarifa")
+	@PostMapping("/tablas")
 	private TablaTarifa ingresarTabla (@RequestBody  TablaTarifa entrante)
 	{
 		return service.ingresarTabla(entrante);

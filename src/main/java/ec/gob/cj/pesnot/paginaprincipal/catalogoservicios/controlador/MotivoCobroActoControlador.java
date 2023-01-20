@@ -29,25 +29,25 @@ public class MotivoCobroActoControlador {
 
 	}
 
-	@GetMapping("/getMotivoCobroActo")
+	@GetMapping("/motivosCobro")
 	public List<MotivoCobroActo> obtenerMotivoCobroActo() {
 
 		return motivoCobroActoSvc.getMotivoCobroActo();
 	}
 	
-	@PostMapping("/saveMotivoCobroActo")
+	@PostMapping("/motivosCobro")
 	public MotivoCobroActo guardarMotivoCobroActo(@RequestBody MotivoCobroActo motivoCobroAdj) {
 
 		return motivoCobroActoSvc.ingresarMotivoCobroActo(motivoCobroAdj);
 	}
 
-	@GetMapping("/getMotivoCobroActoById/{id}")
+	@GetMapping("/motivosCobro/{id}")
 	public Optional<MotivoCobroActo> obtenerMotivoCobroActoPorId(@PathVariable("id") Long id) {
 
 		return motivoCobroActoSvc.getMotivoCobroActoById(id);
 	}
 
-	@GetMapping("/getMotivoCobroActoByNombre/{nombre}")
+	@GetMapping("/motivosCobro/nombre/{nombre}")
 	public Optional<MotivoCobroActo> obtenerMotivoCobroActoPorNombre(@PathVariable("nombre") String nombre){
 		
 		return motivoCobroActoSvc.getMotivoCobroActoLike(nombre);

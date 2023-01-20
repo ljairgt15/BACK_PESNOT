@@ -29,23 +29,23 @@ public class BaseCobroActoControlador {
 		this.baseCobroService=baseCobroServiceEntrante;
 	}
 	
-	@GetMapping("/BaseCobroActo")
+	@GetMapping("/basesCobroActos")
 	public List <BaseCobroActo> obtenerBaseCobroActos(){
 		return baseCobroService.getBaseCobro();
 	}
 	
-	@GetMapping("/BaseCobroActo/{id}")
+	@GetMapping("/basesCobroActos/{id}")
 	public Optional<BaseCobroActo> obtenerActoPorId(@PathVariable ("id") Long id) {
 		
 		return baseCobroService.baseById(id);	
 	}
-	@GetMapping("/BaseCobroActo/nombre/{nombre}")
+	@GetMapping("/basesCobroActos/nombre/{nombre}")
 	public BaseCobroActo obtenerBaseCobroByNombre(@PathVariable("nombre") String id) {
 		return baseCobroService.getBaseByNombre(id);
 	}
 
 	
-	@PostMapping("/BaseCobroActo")
+	@PostMapping("/baseCobroActos")
 	public BaseCobroActo guardarBaseCobro(@RequestBody BaseCobroActo baseObj) {
 		return baseCobroService.ingresarBase(baseObj);
 	}

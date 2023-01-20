@@ -16,7 +16,7 @@ import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.MotivoCobroCata
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.service.MotivoCobroCatalogoActoService;
 
 @RestController
-@RequestMapping("MotivoCobroCatalogo")
+@RequestMapping("/")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class MotivoCobroCatalogoActoControlador {
 
@@ -30,25 +30,25 @@ public class MotivoCobroCatalogoActoControlador {
 
 	}
 
-	@GetMapping("/getMotivoCobroCatalogo")
+	@GetMapping("/motivosCobroActos")
 	public List<MotivoCobroCatalogoActo> getMotivoCobroCatalogo() {
 
 		return motivoSvc.getMotivoCobroCatalogo();
 	}
 
 
-	@GetMapping("/getMotivoCobroCatalogoById/{id}")
+	@GetMapping("/motivosCobroActos/{id}")
 	public Optional<MotivoCobroCatalogoActo> getMotivoCobroCatalogoById(@PathVariable("id") Long id) {
 		return motivoSvc.getMotivoCobroCatalogoById(id);
 	}
 
-	@PostMapping("/saveMotivoCatalogoActo")
+	@PostMapping("/motivosCobroActos")
 	public MotivoCobroCatalogoActo guardarMotivoCobroCatalogoActo(@RequestBody MotivoCobroCatalogoActo motivo) {
 		return motivoSvc.ingresarMotivoCobroCatalogoActo(motivo);
 
 	}
 
-	@GetMapping("/actualizar/{id}")
+	@GetMapping("/motivosCobroActos/desactivar/{id}")
 	public void deshabilitar(@PathVariable("id") String id) {
 		motivoSvc.deshabilitar(id);
 	}

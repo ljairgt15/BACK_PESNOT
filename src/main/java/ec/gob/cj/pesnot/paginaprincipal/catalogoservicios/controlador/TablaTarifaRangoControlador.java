@@ -36,6 +36,10 @@ public class TablaTarifaRangoControlador {
 		return service.getTablasRangosActivos();
 		
 	}
+	@GetMapping("/tablaRangos/tabla/{idTabla}")
+	private List <TablaTarifaRango> getTablaRangoUnico(@PathVariable("idTabla") String idTabla){
+		return service.getTablaConRangos(idTabla);
+	}
 	
 	@GetMapping("/tablaRangos/{id}")
 	private Optional<TablaTarifaRango> obtenerTablaRangoTarifaById(@PathVariable("id") Long id)
@@ -52,10 +56,7 @@ public class TablaTarifaRangoControlador {
 		return service.getTablaRangoUnico(idTabla, idRango);
 	}
 	
-	@GetMapping("/tablaRangos/{idTabla}")
-	private List <TablaTarifaRango> getTablaRangoUnico(@PathVariable("idTabla") String idTabla){
-		return service.getTablaConRangos(idTabla);
-	}
+
 	
 	@PostMapping("/tablaRangos")
 	private TablaTarifaRango ingresarTablaRangoTarifa(@RequestBody TablaTarifaRango entrante)

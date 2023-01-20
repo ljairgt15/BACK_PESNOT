@@ -51,7 +51,7 @@ public class TablaTarifaRango {
 	private Date fechaCreacionTablaTarifa;
 
 	@Column(name = "fechaModificacionTablaTarifaRango")
-	private Date porcentajeParticipacionEstadoActoRangoTarifa;
+	private Date fechaModificacionTablaTarifaRango;
 
 	@Column(name = "usuarioCreacionTablaTarifaRango")
 	private Long usuarioCreacionTablaTarifa;
@@ -131,11 +131,11 @@ public class TablaTarifaRango {
 	}
 
 	public Date getPorcentajeParticipacionEstadoActoRangoTarifa() {
-		return porcentajeParticipacionEstadoActoRangoTarifa;
+		return fechaModificacionTablaTarifaRango;
 	}
 
 	public void setPorcentajeParticipacionEstadoActoRangoTarifa(Date porcentajeParticipacionEstadoActoRangoTarifa) {
-		this.porcentajeParticipacionEstadoActoRangoTarifa = porcentajeParticipacionEstadoActoRangoTarifa;
+		this.fechaModificacionTablaTarifaRango = porcentajeParticipacionEstadoActoRangoTarifa;
 	}
 
 	public Long getUsuarioCreacionTablaTarifa() {
@@ -170,7 +170,7 @@ public class TablaTarifaRango {
 				+ ", porcentajeParticipacionEstadoTablaTarifaRango=" + porcentajeParticipacionEstadoTablaTarifaRango
 				+ ", excedenteTablaTarifaRango=" + excedenteTablaTarifaRango + ", fechaCreacionTablaTarifa="
 				+ fechaCreacionTablaTarifa + ", porcentajeParticipacionEstadoActoRangoTarifa="
-				+ porcentajeParticipacionEstadoActoRangoTarifa + ", usuarioCreacionTablaTarifa="
+				+ fechaModificacionTablaTarifaRango + ", usuarioCreacionTablaTarifa="
 				+ usuarioCreacionTablaTarifa + ", usuarioModificacionTablaTarifa=" + usuarioModificacionTablaTarifa
 				+ ", estadoTablaTarifaRango=" + estadoTablaTarifaRango + "]";
 	}

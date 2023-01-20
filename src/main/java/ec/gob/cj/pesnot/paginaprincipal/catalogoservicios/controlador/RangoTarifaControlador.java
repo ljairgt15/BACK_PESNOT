@@ -17,7 +17,7 @@ import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.RangoTarifa;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.service.RangoTarifaService;
 
 @RestController
-@RequestMapping("RangoTarifa")
+@RequestMapping("/")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class RangoTarifaControlador {
 
@@ -29,29 +29,29 @@ public class RangoTarifaControlador {
 		this.service = serviceEntramter;
 	}
 
-	@GetMapping("/getRangoTarifa")
+	@GetMapping("/rangos")
 	private List<RangoTarifa> obtenerRangoTarifa() {
 		return service.getRangoTarifa();
 	}
 	
-	@GetMapping("/getRangoTarifaActivos")
+	@GetMapping("/rangos/activos")
 	private List<RangoTarifa> obtenerRangoTarifaActivos() {
 		return service.getRangosActivos();
 	}
 	
-	@GetMapping("/getRangoTarifaById/{id}")
+	@GetMapping("/rangos/{id}")
 	private Optional<RangoTarifa> obtenerRangoTarifaById(@PathVariable("id") Long id)
 	{
 		return service.getRangoTarifaById(id);
 	}
-	@GetMapping("/getRangoTarifaByMinMax/{max}/{min}")
+	@GetMapping("/rangos/maximo/{max}/minimo/{min}")
 	private RangoTarifa obtenerRangoTarifaByMinMax(@PathVariable("max") BigDecimal  max, @PathVariable("min")BigDecimal min)
 	{
 		return service.getRangoTarifaByMinMax(max, min);
 	}
 
 	
-	@PostMapping("/saveRangoTarifa")
+	@PostMapping("/rangos")
 	private RangoTarifa ingresarRangoTarifa(@RequestBody RangoTarifa rangoTafEntrante)
 	{
 		return service.ingresarRangoTarifa(rangoTafEntrante);

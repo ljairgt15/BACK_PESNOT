@@ -28,36 +28,36 @@ public class TablaTarifaCatalogoActoControlador {
 		this.service = service;
 	}
 	
-	@GetMapping("/getTablaActo")
+	@GetMapping("/tablaActos")
 	public List<TablaTarifaCatalogoActo> getAll(){
 		
 		return service.getActoRangoTarifa();
 	}
 	
-	@GetMapping("/getTablaActoActivos")
+	@GetMapping("/tablaActos/activos")
 	public List<TablaTarifaCatalogoActo> getAllActivos(){
 		return service.getActoRangoTarifaActivos();
 	}
 	
-	@GetMapping("/getTablaCatalogo/{id}")
+	@GetMapping("/tablaActos/{id}")
 	private Optional<TablaTarifaCatalogoActo> obtenerRangoTarifaById(@PathVariable("id") Long id)
 	{
 		return service.getActoRangoTarifaById(id);
 	}
 	
-	@GetMapping("/getTablaCatalogoUnico/{idTabla}/{idCatalogo}")
+	@GetMapping("/tablaActos/tabla/{idTabla}/acto/{idCatalogo}")
 	private TablaTarifaCatalogoActo getTablaTarifaCatalogoActo(@PathVariable("idTabla") String idTabla, @PathVariable("idCatalogo") String idCatalogo) {
 		return service.getTablaActoUnico(idCatalogo, idTabla);
 	}
 	
-	@PostMapping("/saveRangoTarifa")
+	@PostMapping("/tablaActos")
 	private TablaTarifaCatalogoActo ingresarTablaTarifaCatalogoActo(@RequestBody  TablaTarifaCatalogoActo entrante)
 	{
 		return service.ingresarActoRangoTarifa(entrante);
 		
 	}
 	
-	@GetMapping("/actualizar/{id}")
+	@GetMapping("tablaActos/desactivar/{id}")
 	public void deshabilitar(@PathVariable("id") String id) {
 		service.deshabilitar(id);
 	}

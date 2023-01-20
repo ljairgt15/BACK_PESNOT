@@ -18,7 +18,7 @@ import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.RangoMotivo;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.service.ActoNotarialService;
 
 @RestController
-@RequestMapping("ActoNotarial")
+@RequestMapping("/")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ActoNotarialControlador {
 	@Autowired
@@ -29,7 +29,7 @@ public class ActoNotarialControlador {
 		this.actoNotarialService = actoNotarialService;
 	}
 
-	@GetMapping("/getActos")
+	@GetMapping("/actosnotariales")
 	public List<ActoNotarial> obtenerActosNotariales() {
 
 		List<ActoNotarial> ListaActosNotariales = actoNotarialService.getActosNotariales();
@@ -37,7 +37,7 @@ public class ActoNotarialControlador {
 
 	}
 
-	@GetMapping("/getMotivoCobroActo/{nombreBase}/{nombreLibro}/{nombreActo}/{nombreMotivo}")
+	@GetMapping("/actosnotariales/obtenerTarifaMotivos/{nombreBase}/{nombreLibro}/{nombreActo}/{nombreMotivo}")
 	public Double obtenerPrecioMotivoCobroActo(@PathVariable String nombreBase,
 			 @PathVariable String nombreLibro, @PathVariable String nombreActo,
 			@PathVariable String nombreMotivo) {
@@ -106,14 +106,14 @@ public class ActoNotarialControlador {
 	}
 	*/
 
-	@GetMapping("/getActosActivos")
+	@GetMapping("/actosnotariales/activos")
 	public List<ActoNotarial> obtenerActosNotarialesActivos() {
 
 		List<ActoNotarial> ListaActosNotariales = actoNotarialService.getActosNotarialesActivos();
 		return ListaActosNotariales;
 	}
 
-	@GetMapping("getActoById/{id}")
+	@GetMapping("actosnotariales/{id}")
 	public Optional<ActoNotarial> obtenerActoNotarialPorId(@PathVariable("id") Long id) {
 
 		return actoNotarialService.getActoNotarialById(id);
@@ -121,7 +121,7 @@ public class ActoNotarialControlador {
 	}
 	
 	//CON PAT 
-	@GetMapping("getActoByParametros/{nombreBase}/{nombreLibro}/{nombreActo}")
+	@GetMapping("actosnotariales/base/{nombreBase}/libro/{nombreLibro}/nombre/{nombreActo}")
 	public ActoNotarial obtenerActoNotarialPorParametros(@PathVariable String nombreBase,
 			 @PathVariable String nombreLibro,
 			@PathVariable String nombreActo) {
@@ -145,30 +145,30 @@ public class ActoNotarialControlador {
 	}
 	*/
 
-	@GetMapping("getActosLike/{nombre}")
+	@GetMapping("actosnotariales/nombre/{nombre}")
 	public List<ActoNotarial> obtenerActoLikeNombre(@PathVariable("nombre") String nombre) {
 
 		return actoNotarialService.getActosLike(nombre);
 
 	}
 
-	@GetMapping("geActoByLibros/{libro}")
+	@GetMapping("actosnotariales/libro/{libro}")
 	public List<ActoNotarial> obtenerActoLibro(@PathVariable("libro") String libro) {
 		return actoNotarialService.getActosLibros(libro);
 
 	}
 
-	@GetMapping("geActoConTarifas")
+	@GetMapping("actosnotariales/tarifasAsociadas")
 	public List<ActoNotarial> obtenerActosTarifa() {
 		return actoNotarialService.getActosConTarifas();
 	}
 
-	@GetMapping("getTarifas")
+	@GetMapping("actosnotariales/tarifasGenerales")
 	public List<RangoMotivo> obtenerTarifas() {
 		return actoNotarialService.getListaMostrar();
 	}
 
-	@PostMapping("/saveActNot")
+	@PostMapping("/actosnotariales")
 	public ActoNotarial guardarActNot(@RequestBody ActoNotarial objAct) {
 
 		return actoNotarialService.ingresarActoNotarialL(objAct);
