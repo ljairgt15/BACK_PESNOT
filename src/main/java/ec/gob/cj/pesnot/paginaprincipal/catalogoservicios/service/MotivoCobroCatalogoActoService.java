@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.MotivoCobroCatalogoActo;
+import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.TablaTarifaCatalogoActo;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.repository.MotivoCobroCatalogoActoRepository;
 
 @Service
@@ -21,6 +22,9 @@ public class MotivoCobroCatalogoActoService {
 	
 	public List<MotivoCobroCatalogoActo> getMotivoCobroCatalogo(){
 		return motivoCatalogoRepo.findAll();
+	}
+	public List<MotivoCobroCatalogoActo> getMotivosAsociadas(String idCatalogo){
+		return  motivoCatalogoRepo.getMotivosAsociadasTabla(idCatalogo);
 	}
 	
 	public MotivoCobroCatalogoActo ingresarMotivoCobroCatalogoActo(MotivoCobroCatalogoActo motivo) {

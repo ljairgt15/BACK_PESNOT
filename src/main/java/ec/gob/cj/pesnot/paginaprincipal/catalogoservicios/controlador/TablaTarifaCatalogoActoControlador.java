@@ -38,6 +38,11 @@ public class TablaTarifaCatalogoActoControlador {
 	public List<TablaTarifaCatalogoActo> getAllActivos(){
 		return service.getActoRangoTarifaActivos();
 	}
+	@GetMapping("/tablaActos/acto/{id}")
+	public List<TablaTarifaCatalogoActo> getTablasAsociadas(@PathVariable("id") String id){
+		return service.getTablasAsociadas(id);
+	}
+	
 	
 	@GetMapping("/tablaActos/{id}")
 	private Optional<TablaTarifaCatalogoActo> obtenerRangoTarifaById(@PathVariable("id") Long id)
@@ -61,5 +66,6 @@ public class TablaTarifaCatalogoActoControlador {
 	public void deshabilitar(@PathVariable("id") String id) {
 		service.deshabilitar(id);
 	}
+	
 
 }

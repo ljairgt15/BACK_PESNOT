@@ -35,6 +35,11 @@ public class MotivoCobroCatalogoActoControlador {
 
 		return motivoSvc.getMotivoCobroCatalogo();
 	}
+	@GetMapping("/motivoActos/acto/{id}")
+	public List<MotivoCobroCatalogoActo> getMotivosAsociadas(@PathVariable("id") String id){
+		return motivoSvc.getMotivosAsociadas(id);
+	}
+	
 
 
 	@GetMapping("/motivosCobroActos/{id}")

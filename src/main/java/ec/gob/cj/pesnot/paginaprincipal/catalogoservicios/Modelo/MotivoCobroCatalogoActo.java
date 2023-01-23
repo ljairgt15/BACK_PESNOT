@@ -39,71 +39,101 @@ public class MotivoCobroCatalogoActo {
 
 	@Column(name = "estadoMotivoCobroCatalogoActo")
 	private Boolean estadoMotivoCobroCatalogoActo;
+	
+	@Column(name = "porcentajeParticipacionEstadoMotivoCobroCatalogoActo")
+	private Double 	porcentajeParticipacionEstadoMotivoCobroCatalogoActo;
+	
+	@Column(name = "porcentajeParticipacionNotarioMotivoCobroCatalogoActo")
+	private Double porcentajeParticipacionNotarioMotivoCobroCatalogoActo;
+
 
 	public MotivoCobroCatalogoActo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public MotivoCobroCatalogoActo(Long idMotivoCobroCatalogoActo, ActoNotarial idCatalogoActoNotarial,
-			MotivoCobroActo idMotivoCobroActo, Double valorMotivoCobroCatalogoActo,
-			Double porcentajeMotivoCobroCatalogoActo, Boolean estadoMotivoCobroCatalogoActo) {
-		super();
-		this.idMotivoCobroCatalogoActo = idMotivoCobroCatalogoActo;
-		this.idCatalogoActoNotarial = idCatalogoActoNotarial;
-		this.idMotivoCobroActo = idMotivoCobroActo;
-		this.valorMotivoCobroCatalogoActo = valorMotivoCobroCatalogoActo;
-		this.porcentajeMotivoCobroCatalogoActo = porcentajeMotivoCobroCatalogoActo;
-		this.estadoMotivoCobroCatalogoActo = estadoMotivoCobroCatalogoActo;
-	}
 
 	public Long getIdMotivoCobroCatalogoActo() {
 		return idMotivoCobroCatalogoActo;
 	}
 
+
 	public void setIdMotivoCobroCatalogoActo(Long idMotivoCobroCatalogoActo) {
 		this.idMotivoCobroCatalogoActo = idMotivoCobroCatalogoActo;
 	}
+
 
 	public ActoNotarial getIdCatalogoActoNotarial() {
 		return idCatalogoActoNotarial;
 	}
 
+
 	public void setIdCatalogoActoNotarial(ActoNotarial idCatalogoActoNotarial) {
 		this.idCatalogoActoNotarial = idCatalogoActoNotarial;
 	}
+
 
 	public MotivoCobroActo getIdMotivoCobroActo() {
 		return idMotivoCobroActo;
 	}
 
+
 	public void setIdMotivoCobroActo(MotivoCobroActo idMotivoCobroActo) {
 		this.idMotivoCobroActo = idMotivoCobroActo;
 	}
+
 
 	public Double getValorMotivoCobroCatalogoActo() {
 		return valorMotivoCobroCatalogoActo;
 	}
 
+
 	public void setValorMotivoCobroCatalogoActo(Double valorMotivoCobroCatalogoActo) {
 		this.valorMotivoCobroCatalogoActo = valorMotivoCobroCatalogoActo;
 	}
+
 
 	public Double getPorcentajeMotivoCobroCatalogoActo() {
 		return porcentajeMotivoCobroCatalogoActo;
 	}
 
+
 	public void setPorcentajeMotivoCobroCatalogoActo(Double porcentajeMotivoCobroCatalogoActo) {
 		this.porcentajeMotivoCobroCatalogoActo = porcentajeMotivoCobroCatalogoActo;
 	}
+
 
 	public Boolean getEstadoMotivoCobroCatalogoActo() {
 		return estadoMotivoCobroCatalogoActo;
 	}
 
+
 	public void setEstadoMotivoCobroCatalogoActo(Boolean estadoMotivoCobroCatalogoActo) {
 		this.estadoMotivoCobroCatalogoActo = estadoMotivoCobroCatalogoActo;
 	}
+
+
+	public Double getPorcentajeParticipacionEstadoMotivoCobroCatalogoActo() {
+		return porcentajeParticipacionEstadoMotivoCobroCatalogoActo;
+	}
+
+
+	public void setPorcentajeParticipacionEstadoMotivoCobroCatalogoActo(
+			Double porcentajeParticipacionEstadoMotivoCobroCatalogoActo) {
+		this.porcentajeParticipacionEstadoMotivoCobroCatalogoActo = porcentajeParticipacionEstadoMotivoCobroCatalogoActo;
+	}
+
+
+	public Double getPorcentajeParticipacionNotarioMotivoCobroCatalogoActo() {
+		return porcentajeParticipacionNotarioMotivoCobroCatalogoActo;
+	}
+
+
+	public void setPorcentajeParticipacionNotarioMotivoCobroCatalogoActo(
+			Double porcentajeParticipacionNotarioMotivoCobroCatalogoActo) {
+		this.porcentajeParticipacionNotarioMotivoCobroCatalogoActo = porcentajeParticipacionNotarioMotivoCobroCatalogoActo;
+	}
+
 
 	@Override
 	public String toString() {
@@ -111,9 +141,12 @@ public class MotivoCobroCatalogoActo {
 				+ ", idCatalogoActoNotarial=" + idCatalogoActoNotarial + ", idMotivoCobroActo=" + idMotivoCobroActo
 				+ ", valorMotivoCobroCatalogoActo=" + valorMotivoCobroCatalogoActo
 				+ ", porcentajeMotivoCobroCatalogoActo=" + porcentajeMotivoCobroCatalogoActo
-				+ ", estadoMotivoCobroCatalogoActo=" + estadoMotivoCobroCatalogoActo + "]";
+				+ ", estadoMotivoCobroCatalogoActo=" + estadoMotivoCobroCatalogoActo
+				+ ", porcentajeParticipacionEstadoMotivoCobroCatalogoActo="
+				+ porcentajeParticipacionEstadoMotivoCobroCatalogoActo
+				+ ", porcentajeParticipacionNotarioMotivoCobroCatalogoActo="
+				+ porcentajeParticipacionNotarioMotivoCobroCatalogoActo + "]";
 	}
 
-	
 
 }

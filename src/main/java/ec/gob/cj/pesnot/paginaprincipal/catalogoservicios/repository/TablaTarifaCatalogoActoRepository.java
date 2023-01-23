@@ -20,7 +20,12 @@ public interface TablaTarifaCatalogoActoRepository extends JpaRepository<TablaTa
 	TablaTarifaCatalogoActo getTablaActo(@Param("idCatalogoActoNotarial") String idCatalogoActoNotarial,
 			@Param("idTablaTarifa") String idTablaTarifa);
 	
+	
+	
 	@Query(nativeQuery = true,value = "select * from TablaTarifaCatalogoActo r where r.estadoActivo='true'")
 	List<TablaTarifaCatalogoActo> getTablaCatalogoActivos();
+	
+	@Query(nativeQuery = true,value = "select * from TablaTarifaCatalogoActo r where r.idCatalogoActoNotarial= :idCatalogoActoNotarial")
+	List<TablaTarifaCatalogoActo> getTablasAsociadasTabla(@Param("idCatalogoActoNotarial") String idCatalogoActoNotarial);
 
 }

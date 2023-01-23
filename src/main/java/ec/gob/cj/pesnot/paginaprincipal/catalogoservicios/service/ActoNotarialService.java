@@ -196,6 +196,18 @@ public class ActoNotarialService {
 
 		listadoActosSinTarifa = listadoActosActivos.stream()
 				.filter(acto -> !idsEnTarifas.contains(acto.getIdCatalogoActoNotarial())).collect(Collectors.toList());
+		
+		for (MotivoCobroCatalogoActo tarifa : listadoTarifasMotivo) {
+			if (tarifa.getEstadoMotivoCobroCatalogoActo()) {
+				RangoMotivo rangoNuevo = new RangoMotivo();
+				rangoNuevo.setId(tarifa.getIdMotivoCobroCatalogoActo());
+				rangoNuevo.setActo(tarifa.getIdCatalogoActoNotarial());
+				String precio= tarifa.getIdCatalogoActoNotarial().getTarifaCatalogoActoNotarial().toString();
+				System.out.println("precio"+precio);
+				rangoNuevo.setPrecio(precio);
+				listadoPrecios.add(rangoNuevo);
+			}
+		}
 
 		for (TablaTarifaCatalogoActo tarifa : listadoTarifaRango) {
 			if (tarifa.getEstadoActivo()) {
@@ -208,15 +220,7 @@ public class ActoNotarialService {
 			//return listadoPrecios;
 		}
 
-		for (MotivoCobroCatalogoActo tarifa : listadoTarifasMotivo) {
-			if (tarifa.getEstadoMotivoCobroCatalogoActo()) {
-				RangoMotivo rangoNuevo = new RangoMotivo();
-				rangoNuevo.setId(tarifa.getIdMotivoCobroCatalogoActo());
-				rangoNuevo.setActo(tarifa.getIdCatalogoActoNotarial());
-				rangoNuevo.setPrecio(tarifa.getValorMotivoCobroCatalogoActo().toString());
-				listadoPrecios.add(rangoNuevo);
-			}
-		}
+
 
 		for (ActoNotarial actoSinTarifa : listadoActosSinTarifa) {
 			RangoMotivo rangoNuevo = new RangoMotivo();

@@ -22,6 +22,11 @@ public class TablaTarifaCatalogoActoService {
 	public List<TablaTarifaCatalogoActo> getActoRangoTarifaActivos(){
 		return actoRangoTarifaRepository.getTablaCatalogoActivos();
 	}
+	
+	public List<TablaTarifaCatalogoActo> getTablasAsociadas(String idCatalogo){
+		return actoRangoTarifaRepository.getTablasAsociadasTabla(idCatalogo);
+	}
+	
 
 	public TablaTarifaCatalogoActo ingresarActoRangoTarifa(TablaTarifaCatalogoActo actoRangoTarifa) {
 		return actoRangoTarifaRepository.save(actoRangoTarifa);
@@ -42,6 +47,7 @@ public class TablaTarifaCatalogoActoService {
 		
 	}
 	
+
 
 
 }
