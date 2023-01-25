@@ -274,7 +274,7 @@ public class ActoNotarialTest {
 
 	@Test
 
-	@DisplayName("Debe pasar cuando se pruebe todo lo del modelo")
+	@DisplayName("Debe pasar cuando se prueba el modelo")
 	void probarModelo() {
 		Libro libro = new Libro();
 		BaseCobroActo baseObj = new BaseCobroActo();

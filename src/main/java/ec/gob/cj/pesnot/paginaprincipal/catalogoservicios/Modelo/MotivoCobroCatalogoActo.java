@@ -49,7 +49,6 @@ public class MotivoCobroCatalogoActo {
 
 	public MotivoCobroCatalogoActo() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 

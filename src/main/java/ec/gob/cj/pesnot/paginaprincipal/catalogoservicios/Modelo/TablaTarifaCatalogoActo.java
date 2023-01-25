@@ -49,7 +49,6 @@ public class TablaTarifaCatalogoActo {
 
 	public TablaTarifaCatalogoActo() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Long getIdTablaTarifaCatalogoActo() {

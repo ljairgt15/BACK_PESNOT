@@ -27,7 +27,6 @@ public class MotivoCobroActo {
 
 	public MotivoCobroActo() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public MotivoCobroActo(Long idMotivoCobroActo, String nombreMotivoCobroActo, String descripcionMotivoCobroActo,

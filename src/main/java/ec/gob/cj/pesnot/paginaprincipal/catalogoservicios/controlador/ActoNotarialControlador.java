@@ -5,13 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.ActoNotarial;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.RangoMotivo;
@@ -21,52 +15,65 @@ import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.service.ActoNotarialSe
 @RequestMapping("/")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ActoNotarialControlador {
-	@Autowired
-	private ActoNotarialService actoNotarialService;
+    @Autowired
+    private ActoNotarialService actoNotarialService;
 
-	public ActoNotarialControlador(ActoNotarialService actoNotarialService) {
-		super();
-		this.actoNotarialService = actoNotarialService;
-	}
+    public ActoNotarialControlador(ActoNotarialService actoNotarialService) {
+        super();
+        this.actoNotarialService = actoNotarialService;
+    }
 
-	@GetMapping("/actosnotariales")
-	public List<ActoNotarial> obtenerActosNotariales() {
+    @GetMapping("/actosNotariales")
+    public List<ActoNotarial> obtenerActosNotariales() {
 
-		List<ActoNotarial> ListaActosNotariales = actoNotarialService.getActosNotariales();
-		return ListaActosNotariales;
+        List<ActoNotarial> ListaActosNotariales = actoNotarialService.getActosNotariales();
+        return ListaActosNotariales;
 
-	}
+    }
 
-	@GetMapping("/actosnotariales/obtenerTarifaMotivos/{nombreBase}/{nombreLibro}/{nombreActo}/{nombreMotivo}")
-	public Double obtenerPrecioMotivoCobroActo(@PathVariable String nombreBase,
-			 @PathVariable String nombreLibro, @PathVariable String nombreActo,
-			@PathVariable String nombreMotivo) {
+    @GetMapping("/actosNotariales/obtenerTarifaDeMotivosP/{nombreBase}/{nombreLibro}/{nombreActo}/{nombreMotivo}")
+    public Double obtenerPrecioMotivoActoP(@PathVariable String nombreBase, @PathVariable String nombreLibro, @PathVariable String nombreActo, @PathVariable String nombreMotivo) {
 
-		return actoNotarialService.getTarifaActosMotivo(nombreBase, nombreLibro, nombreActo,
-				nombreMotivo);
-	}
+        return actoNotarialService.getTarifaActosMotivo(nombreBase, nombreLibro, nombreActo, nombreMotivo);
+    }
+
+    @GetMapping("/actosNotariales/obtenerTarifaDeMotivos/{idActo}/{idMotivo}")
+    public Double obtenerPrecioMotivoActo(@PathVariable String idActo, @PathVariable String idMotivo) {
+
+        return actoNotarialService.getTarifaActosMotivoconId(idActo, idMotivo);
+    }
+
+    //TODO EDITAR QUIERO BUSCAR QUE EL ACTO A QUE TABLA PERTENECE Y A QUE RANGO PARA QUE ME DE EL PRECIO
+
+    @GetMapping("/actosNotariales/obtenerTarifaDeTabla/{idActo}/{idTabla}/{idRango}")
+    public Double obtenerPrecioTablaActo(@PathVariable String idActo, @PathVariable String idTabla, @PathVariable String idRango) {
+        return actoNotarialService.getTarifaActosTablaRango(idActo, idTabla, idRango);
+    }
+
+    @GetMapping("/actosNotariales/obtenerTarifa")
+    public Double obtenerPrecioGeneral(@RequestParam(name = "usaTablaMotivo", required = true, defaultValue = "true") Boolean usaCalculo, @RequestParam(name = "idActo", required = true, defaultValue = "") Long idActo, @RequestParam(name = "idMotivo", required = false, defaultValue = "null") Long idMotivo, @RequestParam(name = "idTabla", required = false, defaultValue = "") Long idTabla, @RequestParam(name = "idRango", required = false, defaultValue = "") Long idRango) {
+        Double precio = null;
+        try {
+            if (!usaCalculo) {
+                System.out.println("Entrando a motivos");
+                precio = actoNotarialService.getTarifaActosMotivoconId(idActo.toString(), idMotivo.toString());
+            } else {
+                System.out.println("Entrando a tabla");
+                precio = actoNotarialService.getTarifaActosTablaRango(idActo.toString(), idTabla.toString(), idRango.toString());
+            }
+            return precio;
+
+        } catch (NullPointerException err) {
+            System.out.println("No se puede encontrar la tarifa de dicho catalogo, revise bien los parametros mandados " + err);
+
+        } catch (Exception err) {
+            System.out.println("Error general " + err);
+
+        }
+        return precio;
+    }
 	/*
-	//BODY
-	@PostMapping("geTarifaMotivo/")
-	public Double obtenerActoNotarialPorParametros(@RequestBody ActoNotarial acto, @PathVariable String nombreActo) {
-
-		return actoNotarialService.getTarifaActosMotivoconActo(acto, nombreActo);
-	}
-	*/
-	
-	//TODO EDITAR QUIERO BUSCAR QUE EL ACTO A QUE TABLA PERTENECE Y A QUE RANGO PARA QUE ME DE EL PRECIO
-	/*
-	@GetMapping("/getRangoActo/{nombreBase}/{nombreLibro}/{nombreActo}/{max}/{min}")
-	public Double obtenerPrecioMotivoCobroActo(@PathVariable String nombreBase,
-			 @PathVariable String nombreLibro, @PathVariable String nombreActo,
-			@PathVariable BigDecimal max, @PathVariable BigDecimal min) {
-
-		return actoNotarialService.getTarifaActosTabla(nombreBase, nombreLibro, nombreActo, max,
-				min);
-	}
-	
-	
-	//TODO EDITAR TARIFAS
+	// Obtener Tarifas ya sea de tabla o tarifa para bpmn
 	@GetMapping("/getTarifaGeneral")
 	public Double obtenerPrecioGeneral(
 			@RequestParam(name = "boolean", required = true, defaultValue = "null") Boolean usaCalculo,
@@ -106,71 +113,54 @@ public class ActoNotarialControlador {
 	}
 	*/
 
-	@GetMapping("/actosnotariales/activos")
-	public List<ActoNotarial> obtenerActosNotarialesActivos() {
 
-		List<ActoNotarial> ListaActosNotariales = actoNotarialService.getActosNotarialesActivos();
-		return ListaActosNotariales;
-	}
+    @GetMapping("/actosNotariales/activos")
+    public List<ActoNotarial> obtenerActosNotarialesActivos() {
 
-	@GetMapping("actosnotariales/{id}")
-	public Optional<ActoNotarial> obtenerActoNotarialPorId(@PathVariable("id") Long id) {
+        List<ActoNotarial> ListaActosNotariales = actoNotarialService.getActosNotarialesActivos();
+        return ListaActosNotariales;
+    }
 
-		return actoNotarialService.getActoNotarialById(id);
+    @GetMapping("actosNotariales/{id}")
+    public Optional<ActoNotarial> obtenerActoNotarialPorId(@PathVariable("id") Long id) {
 
-	}
-	
-	//CON PAT 
-	@GetMapping("actosnotariales/base/{nombreBase}/libro/{nombreLibro}/nombre/{nombreActo}")
-	public ActoNotarial obtenerActoNotarialPorParametros(@PathVariable String nombreBase,
-			 @PathVariable String nombreLibro,
-			@PathVariable String nombreActo) {
+        return actoNotarialService.getActoNotarialById(id);
 
-		return actoNotarialService.getActoByParametros(nombreBase, nombreLibro, nombreActo);
-	}
-	
-	/*
-	//PRUEBA CON BODY
-	
-	@PostMapping("getActoByParametros")
-	// @ResponseBody
-	public ActoNotarial obtenerActoNotarialPorParametrosII(@RequestBody String nombreBase,
-			 @RequestBody String nombreLibro, @RequestBody String nombreActo) {
-		// public ActoNotarial obtenerActoNotarialPorParametrosII(
-		// @RequestParam(required=true) String nombreBase,@RequestParam(required=true)
-		// String nombreClasificacion, @RequestParam(required=true) String nombreLibro,
-		// @RequestParam(required=true) String nombreActo) {
+    }
 
-		return actoNotarialService.getActoByParametros(nombreBase, nombreLibro, nombreActo);
-	}
-	*/
+    //CON PAT
+    @GetMapping("actosNotariales/base/{nombreBase}/libro/{nombreLibro}/nombre/{nombreActo}")
+    public ActoNotarial obtenerActoNotarialPorParametros(@PathVariable String nombreBase, @PathVariable String nombreLibro, @PathVariable String nombreActo) {
 
-	@GetMapping("actosnotariales/nombre/{nombre}")
-	public List<ActoNotarial> obtenerActoLikeNombre(@PathVariable("nombre") String nombre) {
+        return actoNotarialService.getActoByParametros(nombreBase, nombreLibro, nombreActo);
+    }
 
-		return actoNotarialService.getActosLike(nombre);
+    @GetMapping("actosNotariales/nombre/{nombre}")
+    public List<ActoNotarial> obtenerActoLikeNombre(@PathVariable("nombre") String nombre) {
 
-	}
+        return actoNotarialService.getActosLike(nombre);
 
-	@GetMapping("actosnotariales/libro/{libro}")
-	public List<ActoNotarial> obtenerActoLibro(@PathVariable("libro") String libro) {
-		return actoNotarialService.getActosLibros(libro);
+    }
 
-	}
+    @GetMapping("actosNotariales/libro/{libro}")
+    public List<ActoNotarial> obtenerActoLibro(@PathVariable("libro") String libro) {
+        return actoNotarialService.getActosLibros(libro);
 
-	@GetMapping("actosnotariales/tarifasAsociadas")
-	public List<ActoNotarial> obtenerActosTarifa() {
-		return actoNotarialService.getActosConTarifas();
-	}
+    }
 
-	@GetMapping("actosnotariales/tarifasGenerales")
-	public List<RangoMotivo> obtenerTarifas() {
-		return actoNotarialService.getListaMostrar();
-	}
+    @GetMapping("actosNotariales/tarifasAsociadas")
+    public List<ActoNotarial> obtenerActosTarifa() {
+        return actoNotarialService.getActosConTarifas();
+    }
 
-	@PostMapping("/actosnotariales")
-	public ActoNotarial guardarActNot(@RequestBody ActoNotarial objAct) {
+    @GetMapping("actosNotariales/tarifasGenerales")
+    public List<RangoMotivo> obtenerTarifas() {
+        return actoNotarialService.getListaMostrar();
+    }
 
-		return actoNotarialService.ingresarActoNotarialL(objAct);
-	}
+    @PostMapping("/actosNotariales")
+    public ActoNotarial guardarActNot(@RequestBody ActoNotarial objAct) {
+
+        return actoNotarialService.ingresarActoNotarialL(objAct);
+    }
 }

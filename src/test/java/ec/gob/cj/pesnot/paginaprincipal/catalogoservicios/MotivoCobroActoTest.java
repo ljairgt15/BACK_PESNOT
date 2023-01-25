@@ -85,7 +85,7 @@ public class MotivoCobroActoTest {
 	}
 
 	@Test
-	@DisplayName("La prueba pasa cuando se instancie todo lo relacionado al modelo")
+	@DisplayName("La prueba pasa cuando se instancia lo relacionado al modelo")
 	void modeloAdjuntoLibro() {
 		MotivoCobroActo motivo = new MotivoCobroActo(new Long(1), "no", "aa", true);
 

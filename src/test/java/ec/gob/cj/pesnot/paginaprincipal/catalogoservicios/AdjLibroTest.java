@@ -114,7 +114,7 @@ public class AdjLibroTest {
 	}
 
 	@Test
-	@DisplayName("La prueba pasa cuando se instancie todo lo relacionado al modelo")
+	@DisplayName("La prueba pasa cuando se instancie lo relacionado al modelo")
 	void modeloAdjuntoLibro() {
 		Byte jair = (byte) 1;
 		AdjuntoLibro adjuntoGuardado = new AdjuntoLibro(1l, "nombre", jair, "111");

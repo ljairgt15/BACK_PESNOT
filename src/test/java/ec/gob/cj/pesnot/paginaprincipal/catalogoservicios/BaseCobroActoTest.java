@@ -85,7 +85,7 @@ public class BaseCobroActoTest {
 	}
 
 	@Test
-	@DisplayName("La prueba pasa cuando se instancie todo lo relacionado al modelo")
+	@DisplayName("La prueba pasa cuando se instancia lo relacionado al modelo")
 	void modeloAdjuntoLibro() {
 		BaseCobroActo baseObj1 = new BaseCobroActo(new Long(1),"nuvo","asa",true);
 		BaseCobroActo baseObj = new BaseCobroActo("nuvo","asa",true);
