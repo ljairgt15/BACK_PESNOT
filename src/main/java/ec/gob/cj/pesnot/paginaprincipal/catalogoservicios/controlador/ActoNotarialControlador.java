@@ -51,15 +51,16 @@ public class ActoNotarialControlador {
     }
 
     @GetMapping(value = "/actosNotariales/obtenerTarifa", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Double obtenerPrecioGeneral(@RequestParam(name = "usaTablaMotivo", required = true, defaultValue = "true") Boolean usaCalculo, @RequestParam(name = "idActo", required = true, defaultValue = "") Long idActo, @RequestParam(name = "idMotivo", required = false, defaultValue = "null") Long idMotivo, @RequestParam(name = "idTabla", required = false, defaultValue = "") Long idTabla, @RequestParam(name = "idRango", required = false, defaultValue = "") Long idRango) {
+    public Double obtenerPrecioGeneral(@RequestParam(name = "usaTablaMotivo", required = true, defaultValue = "true") Boolean usaTablaMotivo, @RequestParam(name = "idActo", required = true, defaultValue = "0") String idActo, @RequestParam(name = "idMotivo", required = false, defaultValue = "null") String idMotivo, @RequestParam(name = "idTabla", required = false, defaultValue = "null") String idTabla, @RequestParam(name = "idRango", required = false, defaultValue = "20") String idRango) {
+        System.out.println("Entrando a obtener precio general");
         Double precio = null;
         try {
-            if (!usaCalculo) {
+            if (!usaTablaMotivo) {
                 System.out.println("Entrando a motivos");
-                precio = actoNotarialService.getTarifaActosMotivoconId(idActo.toString(), idMotivo.toString());
+                precio = actoNotarialService.getTarifaActosMotivoconId(idActo, idMotivo);
             } else {
                 System.out.println("Entrando a tabla");
-                precio = actoNotarialService.getTarifaActosTablaRango(idActo.toString(), idTabla.toString(), idRango.toString());
+                precio = actoNotarialService.getTarifaActosTablaRango(idActo, idTabla, idRango);
             }
             return precio;
 

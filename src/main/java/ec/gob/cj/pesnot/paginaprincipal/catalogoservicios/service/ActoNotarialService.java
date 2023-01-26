@@ -231,37 +231,47 @@ public class ActoNotarialService {
                 .filter(acto -> !idsEnTarifas.contains(acto.getIdCatalogoActoNotarial())).collect(Collectors.toList());
 
         System.out.println("listadoSinTarifa"+ listadoActosSinTarifa.size());
+        try {
+            for (MotivoCobroCatalogoActo tarifa : listadoTarifasMotivo) {
+                if (tarifa.getEstadoMotivoCobroCatalogoActo()) {
+                    RangoMotivo rangoNuevo = new RangoMotivo();
+                    rangoNuevo.setId(tarifa.getIdMotivoCobroCatalogoActo());
+                    rangoNuevo.setActo(tarifa.getIdCatalogoActoNotarial());
+                    String precio = tarifa.getIdCatalogoActoNotarial().getTarifaCatalogoActoNotarial().toString();
+                    System.out.println("precio" + precio);
+                    rangoNuevo.setPrecio(precio);
+                    listadoPrecios.add(rangoNuevo);
+                }
+            }
 
-        for (MotivoCobroCatalogoActo tarifa : listadoTarifasMotivo) {
-            if (tarifa.getEstadoMotivoCobroCatalogoActo()) {
+            for (TablaTarifaCatalogoActo tarifa : listadoTarifaRango) {
+                if (tarifa.getEstadoActivo()) {
+                    RangoMotivo rangoNuevo = new RangoMotivo();
+                    rangoNuevo.setId(tarifa.getIdTablaTarifaCatalogoActo());
+                    rangoNuevo.setActo(tarifa.getIdCatalogoActoNotarial());
+                    rangoNuevo.setPrecio(tarifa.getIdTablaTarifa().getNombreTablaTarifa());
+                    listadoPrecios.add(rangoNuevo);
+                }
+                //return listadoPrecios;
+            }
+
+
+            for (ActoNotarial actoSinTarifa : listadoActosSinTarifa) {
                 RangoMotivo rangoNuevo = new RangoMotivo();
-                rangoNuevo.setId(tarifa.getIdMotivoCobroCatalogoActo());
-                rangoNuevo.setActo(tarifa.getIdCatalogoActoNotarial());
-                String precio = tarifa.getIdCatalogoActoNotarial().getTarifaCatalogoActoNotarial().toString();
-                System.out.println("precio" + precio);
-                rangoNuevo.setPrecio(precio);
+                rangoNuevo.setId(null);
+                rangoNuevo.setActo(actoSinTarifa);
+                rangoNuevo.setPrecio(null);
                 listadoPrecios.add(rangoNuevo);
             }
+            return listadoPrecios;
         }
-
-        for (TablaTarifaCatalogoActo tarifa : listadoTarifaRango) {
-            if (tarifa.getEstadoActivo()) {
-                RangoMotivo rangoNuevo = new RangoMotivo();
-                rangoNuevo.setId(tarifa.getIdTablaTarifaCatalogoActo());
-                rangoNuevo.setActo(tarifa.getIdCatalogoActoNotarial());
-                rangoNuevo.setPrecio(tarifa.getIdTablaTarifa().getNombreTablaTarifa());
-                listadoPrecios.add(rangoNuevo);
-            }
-            //return listadoPrecios;
+        catch (NullPointerException e) {
+            System.out.println("ERROR AL APUNTAR A UN ATRIBUTO NULL, REVISE LOS PARAMETROS MANDADOS");
+            System.out.println("O BASE DE DATOS");
         }
-
-
-        for (ActoNotarial actoSinTarifa : listadoActosSinTarifa) {
-            RangoMotivo rangoNuevo = new RangoMotivo();
-            rangoNuevo.setId(null);
-            rangoNuevo.setActo(actoSinTarifa);
-            rangoNuevo.setPrecio(null);
-            listadoPrecios.add(rangoNuevo);
+        catch (Exception e) {
+            System.out.println("ERROR GENERAL");
+            e.printStackTrace();
         }
         return listadoPrecios;
     }
