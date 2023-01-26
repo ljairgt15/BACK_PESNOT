@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,40 +26,40 @@ public class TablaTarifaRangoControlador {
 	TablaTarifaRangoService service;
 	
 	
-	@GetMapping("/tablaRangos")
+	@GetMapping(value="/tablaRangos", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<TablaTarifaRango> getAll(){
 		return service.getTablasConRangos();
 		
 	}
 	
-	@GetMapping("/tablaRangos/activos")
+	@GetMapping(value="/tablaRangos/activos", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<TablaTarifaRango> getActivos(){
 		return service.getTablasRangosActivos();
 		
 	}
-	@GetMapping("/tablaRangos/tabla/{idTabla}")
+	@GetMapping(value="/tablaRangos/tabla/{idTabla}", produces = MediaType.APPLICATION_JSON_VALUE)
 	private List <TablaTarifaRango> getTablaRangoUnico(@PathVariable("idTabla") String idTabla){
 		return service.getTablaConRangos(idTabla);
 	}
 	
-	@GetMapping("/tablaRangos/{id}")
+	@GetMapping(value="/tablaRangos/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	private Optional<TablaTarifaRango> obtenerTablaRangoTarifaById(@PathVariable("id") Long id)
 	{
 		return service.getTablaRangosById(id); 
 	}
-	@GetMapping("/tablaRangos/desactivar/{id}")
+	@GetMapping(value="/tablaRangos/desactivar/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public void deshabilitar(@PathVariable("id") String id) {
 		service.deshabilitar(id);
 	}
 	
-	@GetMapping("/tablaRangos/tabla/{idTabla}/rango/{idRango}")
+	@GetMapping(value="/tablaRangos/tabla/{idTabla}/rango/{idRango}")
 	private TablaTarifaRango getTablaRangoUnico(@PathVariable("idTabla") String idTabla, @PathVariable("idRango") String idRango) {
 		return service.getTablaRangoUnico(idTabla, idRango);
 	}
 	
 
 	
-	@PostMapping("/tablaRangos")
+	@PostMapping(value="/tablaRangos", produces = MediaType.APPLICATION_JSON_VALUE)
 	private TablaTarifaRango ingresarTablaRangoTarifa(@RequestBody TablaTarifaRango entrante)
 	{
 		return service.ingresarTablasRango(entrante);

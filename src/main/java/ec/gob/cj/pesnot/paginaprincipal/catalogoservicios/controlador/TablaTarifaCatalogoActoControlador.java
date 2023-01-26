@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,41 +29,41 @@ public class TablaTarifaCatalogoActoControlador {
 		this.service = service;
 	}
 	
-	@GetMapping("/tablaActos")
+	@GetMapping(value="/tablaActos", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<TablaTarifaCatalogoActo> getAll(){
 		
 		return service.getActoRangoTarifa();
 	}
 	
-	@GetMapping("/tablaActos/activos")
+	@GetMapping(value="/tablaActos/activos", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<TablaTarifaCatalogoActo> getAllActivos(){
 		return service.getActoRangoTarifaActivos();
 	}
-	@GetMapping("/tablaActos/acto/{id}")
+	@GetMapping(value="/tablaActos/acto/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<TablaTarifaCatalogoActo> getTablasAsociadas(@PathVariable("id") String id){
 		return service.getTablasAsociadas(id);
 	}
 	
 	
-	@GetMapping("/tablaActos/{id}")
+	@GetMapping(value="/tablaActos/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	private Optional<TablaTarifaCatalogoActo> obtenerRangoTarifaById(@PathVariable("id") Long id)
 	{
 		return service.getActoRangoTarifaById(id);
 	}
 	
-	@GetMapping("/tablaActos/tabla/{idTabla}/acto/{idCatalogo}")
+	@GetMapping(value="/tablaActos/tabla/{idTabla}/acto/{idCatalogo}", produces = MediaType.APPLICATION_JSON_VALUE)
 	private TablaTarifaCatalogoActo getTablaTarifaCatalogoActo(@PathVariable("idTabla") String idTabla, @PathVariable("idCatalogo") String idCatalogo) {
 		return service.getTablaActoUnico(idCatalogo, idTabla);
 	}
 	
-	@PostMapping("/tablaActos")
+	@PostMapping(value="/tablaActos", produces = MediaType.APPLICATION_JSON_VALUE)
 	private TablaTarifaCatalogoActo ingresarTablaTarifaCatalogoActo(@RequestBody  TablaTarifaCatalogoActo entrante)
 	{
 		return service.ingresarActoRangoTarifa(entrante);
 		
 	}
 	
-	@GetMapping("tablaActos/desactivar/{id}")
+	@GetMapping(value="tablaActos/desactivar/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public void deshabilitar(@PathVariable("id") String id) {
 		service.deshabilitar(id);
 	}

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
 
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.Modelo.BaseCobroActo;
 import ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.service.BaseCobroActoService;
@@ -29,23 +30,23 @@ public class BaseCobroActoControlador {
 		this.baseCobroService=baseCobroServiceEntrante;
 	}
 	
-	@GetMapping("/basesCobroActos")
+	@GetMapping(value="/basesCobroActos", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List <BaseCobroActo> obtenerBaseCobroActos(){
 		return baseCobroService.getBaseCobro();
 	}
 	
-	@GetMapping("/basesCobroActos/{id}")
+	@GetMapping(value="/basesCobroActos/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Optional<BaseCobroActo> obtenerActoPorId(@PathVariable ("id") Long id) {
 		
 		return baseCobroService.baseById(id);	
 	}
-	@GetMapping("/basesCobroActos/nombre/{nombre}")
+	@GetMapping(value="/basesCobroActos/nombre/{nombre}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public BaseCobroActo obtenerBaseCobroByNombre(@PathVariable("nombre") String id) {
 		return baseCobroService.getBaseByNombre(id);
 	}
 
 	
-	@PostMapping("/baseCobroActos")
+	@PostMapping(value="/baseCobroActos", produces = MediaType.APPLICATION_JSON_VALUE)
 	public BaseCobroActo guardarBaseCobro(@RequestBody BaseCobroActo baseObj) {
 		return baseCobroService.ingresarBase(baseObj);
 	}

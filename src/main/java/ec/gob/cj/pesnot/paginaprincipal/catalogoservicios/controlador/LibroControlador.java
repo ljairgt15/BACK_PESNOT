@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,25 +28,25 @@ public class LibroControlador {
 		this.libroService = libroService;
 	}
 
-	@GetMapping("/libros")
+	@GetMapping(value="/libros", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Libro> obtenerLibros() {
 		List<Libro> ListaLibros = libroService.getLibros();
 		return ListaLibros;
 	}
 
-	@GetMapping("/libros/actos")
+	@GetMapping(value="/libros/actos", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Libro> obtenerLibrosConActosN() {
 		List<Libro> ListaLibros = libroService.getLibrosWithActN();
 		return ListaLibros;
 	}
 
-	@GetMapping("/libros/activos")
+	@GetMapping(value="/libros/activos", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Libro> obtenerLibrosActivos() {
 		List<Libro> ListaLibros = libroService.getLibrosActivos();
 		return ListaLibros;
 	}
 
-	@PostMapping("/libros")
+	@PostMapping(value="/libros", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Libro guardarLibro(@RequestBody Libro objLibro) {
 
 		return libroService.ingresarLibrosL(objLibro);
@@ -58,12 +59,12 @@ public class LibroControlador {
 	 * return libroService.ingresarAdministracion(objLibro); }
 	 */
 
-	@GetMapping("/libros/{id}")
+	@GetMapping(value="/libros/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Optional<Libro> obtenerLibroById(@PathVariable("id") Long id) {
 		return libroService.libroById(id);
 	}
 
-	@GetMapping("/libros/nombre/{nombre}")
+	@GetMapping(value="/libros/nombre/{nombre}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Libro obtenerLibroByNombre(@PathVariable("nombre") String id) {
 		return libroService.getLibroByNombre(id);
 	}

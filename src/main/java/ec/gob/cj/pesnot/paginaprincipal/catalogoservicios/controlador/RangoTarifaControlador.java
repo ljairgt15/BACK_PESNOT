@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,29 +30,29 @@ public class RangoTarifaControlador {
 		this.service = serviceEntramter;
 	}
 
-	@GetMapping("/rangos")
+	@GetMapping(value="/rangos", produces = MediaType.APPLICATION_JSON_VALUE)
 	private List<RangoTarifa> obtenerRangoTarifa() {
 		return service.getRangoTarifa();
 	}
 	
-	@GetMapping("/rangos/activos")
+	@GetMapping(value="/rangos/activos", produces = MediaType.APPLICATION_JSON_VALUE)
 	private List<RangoTarifa> obtenerRangoTarifaActivos() {
 		return service.getRangosActivos();
 	}
 	
-	@GetMapping("/rangos/{id}")
+	@GetMapping(value="/rangos/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	private Optional<RangoTarifa> obtenerRangoTarifaById(@PathVariable("id") Long id)
 	{
 		return service.getRangoTarifaById(id);
 	}
-	@GetMapping("/rangos/maximo/{max}/minimo/{min}")
+	@GetMapping(value="/rangos/maximo/{max}/minimo/{min}", produces = MediaType.APPLICATION_JSON_VALUE)
 	private RangoTarifa obtenerRangoTarifaByMinMax(@PathVariable("max") BigDecimal  max, @PathVariable("min")BigDecimal min)
 	{
 		return service.getRangoTarifaByMinMax(max, min);
 	}
 
 	
-	@PostMapping("/rangos")
+	@PostMapping(value="/rangos", produces = MediaType.APPLICATION_JSON_VALUE)
 	private RangoTarifa ingresarRangoTarifa(@RequestBody RangoTarifa rangoTafEntrante)
 	{
 		return service.ingresarRangoTarifa(rangoTafEntrante);

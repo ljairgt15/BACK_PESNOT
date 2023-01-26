@@ -4,6 +4,7 @@ package ec.gob.cj.pesnot.paginaprincipal.catalogoservicios.controlador;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,29 +24,29 @@ public class TablaTarifaControlador {
 	TablaTarifaService service;
 	
 	
-	@GetMapping("/tablas")
+	@GetMapping(value="/tablas", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<TablaTarifa> getAll(){
 		return service.getTablas();
 	}
 	
-	@GetMapping("/tablas/activos")
+	@GetMapping(value="/tablas/activos", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<TablaTarifa> getAllActivos(){
 		return service.getTablasActivas();
 	}
 	
-	@GetMapping("/tablas/{id}")
+	@GetMapping(value="/tablas/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	private Optional<TablaTarifa> obtenerTablaById(@PathVariable("id") Long id)
 	{
 		return service.getTablaById(id);
 	}
 	
-	@GetMapping("/tablas/nombre/{nombre}")
+	@GetMapping(value="/tablas/nombre/{nombre}", produces = MediaType.APPLICATION_JSON_VALUE)
 	private TablaTarifa obtenerByNombre(@PathVariable("nombre") String  nombre)
 	{
 		return service.getUnicoByNombre(nombre);
 	}
 	
-	@PostMapping("/tablas")
+	@PostMapping(value="/tablas", produces = MediaType.APPLICATION_JSON_VALUE)
 	private TablaTarifa ingresarTabla (@RequestBody  TablaTarifa entrante)
 	{
 		return service.ingresarTabla(entrante);

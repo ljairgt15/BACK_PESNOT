@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,32 +30,32 @@ public class MotivoCobroActoControlador {
 
 	}
 
-	@GetMapping("/motivosCobro")
+	@GetMapping(value="/motivosCobro",produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<MotivoCobroActo> obtenerMotivoCobroActo() {
 
 		return motivoCobroActoSvc.getMotivoCobroActo();
 	}
 	
-	@PostMapping("/motivosCobro")
+	@PostMapping(value="/motivosCobro", produces = MediaType.APPLICATION_JSON_VALUE)
 	public MotivoCobroActo guardarMotivoCobroActo(@RequestBody MotivoCobroActo motivoCobroAdj) {
 
 		return motivoCobroActoSvc.ingresarMotivoCobroActo(motivoCobroAdj);
 	}
 
-	@GetMapping("/motivosCobro/{id}")
+	@GetMapping(value="/motivosCobro/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Optional<MotivoCobroActo> obtenerMotivoCobroActoPorId(@PathVariable("id") Long id) {
 
 		return motivoCobroActoSvc.getMotivoCobroActoById(id);
 	}
 
-	@GetMapping("/motivosCobro/nombre/{nombre}")
+	@GetMapping(value="/motivosCobro/nombre/{nombre}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Optional<MotivoCobroActo> obtenerMotivoCobroActoPorNombre(@PathVariable("nombre") String nombre){
 		
 		return motivoCobroActoSvc.getMotivoCobroActoLike(nombre);
 	}
 	
 
-	@GetMapping("/getMotivoCobroActoUnico/{nombre}")
+	@GetMapping(value="/getMotivoCobroActoUnico/{nombre}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public MotivoCobroActo obtenerMotivoCobroActoUnico(@PathVariable("nombre") String nombre){
 		
 		return motivoCobroActoSvc.getMotivoUnico(nombre);

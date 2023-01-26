@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,30 +31,30 @@ public class MotivoCobroCatalogoActoControlador {
 
 	}
 
-	@GetMapping("/motivosCobroActos")
+	@GetMapping(value="/motivosCobroActos", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<MotivoCobroCatalogoActo> getMotivoCobroCatalogo() {
 
 		return motivoSvc.getMotivoCobroCatalogo();
 	}
-	@GetMapping("/motivoActos/acto/{id}")
+	@GetMapping(value="/motivoActos/acto/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<MotivoCobroCatalogoActo> getMotivosAsociadas(@PathVariable("id") String id){
 		return motivoSvc.getMotivosAsociadas(id);
 	}
 	
 
 
-	@GetMapping("/motivosCobroActos/{id}")
+	@GetMapping(value="/motivosCobroActos/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Optional<MotivoCobroCatalogoActo> getMotivoCobroCatalogoById(@PathVariable("id") Long id) {
 		return motivoSvc.getMotivoCobroCatalogoById(id);
 	}
 
-	@PostMapping("/motivosCobroActos")
+	@PostMapping(value="/motivosCobroActos", produces = MediaType.APPLICATION_JSON_VALUE)
 	public MotivoCobroCatalogoActo guardarMotivoCobroCatalogoActo(@RequestBody MotivoCobroCatalogoActo motivo) {
 		return motivoSvc.ingresarMotivoCobroCatalogoActo(motivo);
 
 	}
 
-	@GetMapping("/motivosCobroActos/desactivar/{id}")
+	@GetMapping(value="/motivosCobroActos/desactivar/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public void deshabilitar(@PathVariable("id") String id) {
 		motivoSvc.deshabilitar(id);
 	}

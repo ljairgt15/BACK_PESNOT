@@ -203,16 +203,24 @@ public class ActoNotarialService {
     // DE TABLA MOTIVO, COMO DE TABLA DE RANGOS
 
     public List<RangoMotivo> getListaMostrar() {
+        System.out.println("ENTRANDO A TARIFA");
         List<RangoMotivo> listadoPrecios = new ArrayList<RangoMotivo>();
         List<MotivoCobroCatalogoActo> listadoTarifasMotivo = new ArrayList<MotivoCobroCatalogoActo>();
         listadoTarifasMotivo = motivoSvc.getMotivoCobroCatalogo();
+        System.out.println(listadoTarifasMotivo.size());
 
         List<TablaTarifaCatalogoActo> listadoTarifaRango = new ArrayList<TablaTarifaCatalogoActo>();
         listadoTarifaRango = tablaCatalogoSvc.getActoRangoTarifa();
 
+        System.out.println("listadoTarifasMotivo");
+        System.out.println(listadoTarifaRango.size());
+
         List<ActoNotarial> listadoActosActivos = this.getActosNotarialesActivos();
         List<ActoNotarial> listadoActosConTarifa = this.getActosConTarifas();
         List<ActoNotarial> listadoActosSinTarifa = new ArrayList<ActoNotarial>();
+
+        System.out.println("activos"+listadoActosActivos.size());
+        System.out.println("contarifa"+listadoActosConTarifa.size());
 
         List<Long> idsEnTarifas = new ArrayList<Long>();
         for (ActoNotarial id : listadoActosConTarifa) {
@@ -221,6 +229,8 @@ public class ActoNotarialService {
 
         listadoActosSinTarifa = listadoActosActivos.stream()
                 .filter(acto -> !idsEnTarifas.contains(acto.getIdCatalogoActoNotarial())).collect(Collectors.toList());
+
+        System.out.println("listadoSinTarifa"+ listadoActosSinTarifa.size());
 
         for (MotivoCobroCatalogoActo tarifa : listadoTarifasMotivo) {
             if (tarifa.getEstadoMotivoCobroCatalogoActo()) {

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,25 +28,25 @@ public class AdjuntoLibroControlador {
 		this.aLibroService = aLibroService;
 	}	
 	
-	@GetMapping("/adjuntosLibros")
+	@GetMapping(value="/adjuntosLibros", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<AdjuntoLibro> obtenerAdjLibros()
 	{		
 	List<AdjuntoLibro> ListaAdjLibros = aLibroService.getAdjuntoLibros();
 	return ListaAdjLibros;	
 	}	
 	
-	@PostMapping("/adjuntosLibros")
+	@PostMapping(value="/adjuntosLibros", produces = MediaType.APPLICATION_JSON_VALUE)
 	public AdjuntoLibro guardarAdjLibro(@RequestBody AdjuntoLibro objAdjLibro) {
 		
 		return aLibroService.ingresarAdjuntoLibro(objAdjLibro);		
 	}
 	
-	@GetMapping("/adjuntosLibros/{id}")
+	@GetMapping(value="/adjuntosLibros/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Optional<AdjuntoLibro> obtenerAdjLibroById(@PathVariable("id") Long id) {
 		return aLibroService.aLibroById(id);
 	}
 	
-	@GetMapping("/adjuntosLibros/nombre/{nombre}")
+	@GetMapping(value="/adjuntosLibros/nombre/{nombre}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Optional<AdjuntoLibro> obtenerAdjLibroByNombre(@PathVariable("nombre") String id) {
 		return aLibroService.getAdjuntoLibroByNombre(id);
 	}
